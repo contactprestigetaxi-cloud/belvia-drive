@@ -10,13 +10,13 @@ let BD_CONFIG = null;
 
 async function loadConfig() {
   try {
-    const r = await fetch('config.json?v=' + Date.now());
+    const r = await fetch('/config.json?v=' + Date.now());
     BD_CONFIG = await r.json();
     return BD_CONFIG;
   } catch(e) {
     // Try parent directory (for /en/ and /nl/ pages)
     try {
-      const r2 = await fetch('../config.json?v=' + Date.now());
+      const r2 = await fetch('/config.json?v=' + Date.now());
       BD_CONFIG = await r2.json();
       return BD_CONFIG;
     } catch(e2) {
