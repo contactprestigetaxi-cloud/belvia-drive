@@ -356,7 +356,10 @@ footer {
   transform: scaleX(1);
 }
 .service-card:has(.card-cover-link:hover) .card-icon,
-.service-card:has(.card-cover-link:focus) .
+.service-card:has(.card-cover-link:focus) .card-icon {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
 .service-card:has(.card-cover-link:hover) .card-link,
 .service-card:has(.card-cover-link:focus) .card-link {
   gap: .7rem;
@@ -378,8 +381,14 @@ footer {
   pointer-events: none;
 }
 
-.
-.service-card:hover .
+.card-icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(201,165,90,.28);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.8rem;
+  transition: border-color .3s, background .3s;
+}
+.service-card:hover .card-icon { border-color: var(--gold); background: var(--gold-dim); }
 .card-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
 .card-title {

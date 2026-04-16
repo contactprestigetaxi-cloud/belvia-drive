@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.belviadrive.be/sitemap.xml
 
-# Block admin paths
-Disallow: /admin
+# Allow Googlebot full access
+User-agent: Googlebot
+Allow: /
+
+# Allow Bingbot full access  
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.belviadrive.be/sitemap.xml
