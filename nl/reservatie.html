@@ -347,11 +347,11 @@
           <div class="form-group"><label for="flight-num">Numéro de vol</label><input type="text" id="flight-num" placeholder="Ex: SN 3702"></div>
           <div class="form-group"><label for="trip-bags">Aantal bagage</label>
             <select id="trip-bags">
-              <option value="0">Aucun bagage</option>
-              <option value="1">1 valise</option>
-              <option value="2">2 valises</option>
-              <option value="3">3 valises</option>
-              <option value="4">4 valises ou +</option>
+              <option value="0">Geen bagage</option>
+              <option value="1">1 koffer</option>
+              <option value="2">2 koffers</option>
+              <option value="3">3 koffers</option>
+              <option value="4">4+ koffers</option>
             </select>
           </div>
         </div>
@@ -417,9 +417,9 @@
         </div>
         <div class="form-group"><label for="trip-bags">Bagages</label>
           <select id="trip-bags">
-            <option value="0">Aucun bagage</option><option value="1">1 valise</option>
-            <option value="2">2 valises</option><option value="3">3 valises</option>
-            <option value="4">4 valises ou +</option>
+            <option value="0">Geen bagage</option><option value="1">1 koffer</option>
+            <option value="2">2 koffers</option><option value="3">3 koffers</option>
+            <option value="4">4+ koffers</option>
           </select>
         </div>
       </div>
@@ -438,7 +438,7 @@
     </div>
 
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(1)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(1)">← Terug</button>
       <button class="btn-next" id="btn2n" disabled onclick="goStep(3)">Prijzen bekijken →</button>
     </div>
   </div>
@@ -460,7 +460,7 @@
     <p class="api-note" id="api-note" style="display:none"></p>
     <div class="veh-grid" id="veh-grid"></div>
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(2)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(2)">← Terug</button>
       <button class="btn-next" id="btn3n" disabled onclick="goStep(4)">Doorgaan →</button>
     </div>
   </div>
@@ -508,7 +508,7 @@
       <label for="terms">Ik accepteer de <a href="#">algemene voorwaarden de transport</a> et la <a href="#">politique de confidentialité</a> de Belvia Drive.</label>
     </div>
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(3)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(3)">← Terug</button>
       <button class="btn-next" id="btn4n" disabled onclick="submitBooking()">Boeking bevestigen →</button>
     </div>
   </div>
@@ -535,7 +535,7 @@
         <div class="conf-row"><span class="conf-label">Paiement</span><span class="conf-val" id="cs-pay">—</span></div>
         <div class="conf-row conf-total"><span class="conf-label">Geschat totaal</span><span class="conf-val" id="cs-prix">—</span></div>
       </div>
-      <a href="index.html" class="btn btn-outline">← Retour à l'accueil</a>
+      <a href="index.html" class="btn btn-outline">← Terug à l'accueil</a>
     </div>
   </div>
 
@@ -684,7 +684,7 @@ const state = {
   dep: '', arr: '', date: '', heure: '',
   pax: 1, bags: 0, flightNum: '', terminal: '',
   dist: 18, duree: 28,
-  veh: null, prix: 0, vehAchternaam: '',
+  veh: null, prix: 0, vehName: '',
   pay: null,
   prenom: '', nom: '', gsm: '', email: '', notes: ''
 };
@@ -1075,7 +1075,7 @@ function _renderVehicles() {
       card.addEventListener('click', () => {
         document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        state.veh = key; state.prix = prix; state.vehAchternaam = t.nom;
+        state.veh = key; state.prix = prix; state.vehName = t.nom;
         document.getElementById('btn3n').disabled = false;
         // Popup aller-retour si trajet simple (sauf soirée)
         if (state.tripType === 'aller' && state.svc !== 'soiree') {
@@ -1112,7 +1112,7 @@ function buildRecap() {
     document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} à ${state.heure}` : '—';
   }
   
-  document.getElementById('rec-veh').textContent = state.vehAchternaam || '—';
+  document.getElementById('rec-veh').textContent = state.vehName || '—';
   document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 }
 
@@ -1150,7 +1150,7 @@ async function submitBooking() {
     passagiers: state.pax,
     bagages: state.bags,
     num_vol: state.flightNum || null,
-    vehicule: state.vehAchternaam,
+    vehicule: state.vehName,
     vehicule_key: state.veh,
     prix_estime: state.prix,
     paiement: state.pay,
@@ -1178,7 +1178,7 @@ async function submitBooking() {
   document.getElementById('cs-arr').textContent = state.arr || '—';
   document.getElementById('cs-date').textContent = `${state.date} à ${state.heure}`;
   document.getElementById('cs-pax').textContent = `${state.pax} passagier(s)`;
-  document.getElementById('cs-veh').textContent = state.vehAchternaam || '—';
+  document.getElementById('cs-veh').textContent = state.vehName || '—';
   document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (carte)' : 'Aan boord';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
