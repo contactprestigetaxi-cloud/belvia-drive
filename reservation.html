@@ -1249,11 +1249,22 @@ function closeAllerRetourModal(accept) {
       document.querySelectorAll('.trip-type-btn').forEach(b => b.classList.remove('active'));
       arBtn.classList.add('active');
     }
+    // Afficher le bloc retour
     const retourBlock = document.getElementById('flight-retour-block');
     if (retourBlock) retourBlock.style.display = state.svc === 'aeroport' ? 'block' : 'none';
+    // Reset tarifs et retourner à l'étape 2 pour remplir le retour
     state.dist = 0; state.distRetour = 0; state.duree = 0;
     state.veh = null; state.prix = 0;
-    buildVehicles();
+    document.getElementById('veh-grid').innerHTML = '';
+    document.getElementById('btn3n').disabled = true;
+    document.getElementById('btn2n').disabled = true;
+    goStep(2);
+    // Scroll vers le bloc retour + focus sur le premier champ
+    setTimeout(() => {
+      const retourDate = document.getElementById('retour-date');
+      if (retourBlock) retourBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (retourDate) retourDate.focus();
+    }, 400);
   }
 }
 </script>
