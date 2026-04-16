@@ -398,7 +398,7 @@
             <div class="form-group"><label for="retour-vol">Numéro de vol retour</label><input type="text" id="retour-vol" placeholder="Ex: SN 3703"></div>
           </div>
           <div class="form-row-2">
-            <div class="form-group"><label for="retour-adresse">Adresse de dépôt</label><div class="input-icon-wrap"><svg class="input-inner-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><input type="text" id="retour-adresse" class="input-padded" placeholder="Adresse de dépôt au retour…" autocomplete="off"></div></div>
+            <div class="form-group"><label for="retour-adresse">Adresse de dépôt</label><div class="input-icon-wrap"><svg class="input-inner-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><input type="text" id="retour-adresse" class="input-padded" placeholder="Adresse de dépôt au retour…" autocomplete="off"><button type="button" onclick="geolocateAddr('retour-adresse')" title="Utiliser ma position" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;color:#C9A55A;z-index:2;display:flex;align-items:center" aria-label="Utiliser ma position"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.25 8 13 8 13s8-7.75 8-13a8 8 0 00-8-8z"/></svg></button></div></div>
             <div class="form-group" style="display:flex;align-items:flex-end"><div style="font-size:.7rem;color:var(--white-muted);line-height:1.6;padding:.5rem 0">Votre chauffeur vous déposera à cette adresse à votre retour.</div></div>
           </div>
         </div>
@@ -406,8 +406,8 @@
 
       <!-- Date/heure standard (hors aéroport) -->
       <div class="form-row-2" id="date-heure-standard">
-        <div class="form-group"><label for="trip-date">Date du trajet</label><input type="date" id="trip-date" min="" oninput="checkStep2()" onchange="checkStep2()"></div>
-        <div class="form-group"><label for="trip-heure">Heure de prise en charge</label><input type="time" id="trip-heure" oninput="checkStep2()" onchange="checkStep2()"></div>
+        <div class="form-group"><label for="trip-date-std">Date du trajet</label><input type="date" id="trip-date-std" min="" oninput="checkStep2()" onchange="checkStep2()"></div>
+        <div class="form-group"><label for="trip-heure-std">Heure de prise en charge</label><input type="time" id="trip-heure-std" oninput="checkStep2()" onchange="checkStep2()"></div>
       </div>
       <div class="form-row-2">
         <div class="form-group"><label for="trip-pax">Passagers</label>
@@ -553,10 +553,14 @@
     <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:.8rem">Service Longue Distance</h3>
     <p style="color:var(--white-muted);font-size:.88rem;line-height:1.7;margin-bottom:1.5rem">Notre service Longue Distance est conçu pour les trajets de <strong style="color:var(--gold)">minimum 120 km</strong>.
     Pour votre trajet, la distance estimée est inférieure à ce seuil.</p>
-    <p style="color:var(--white-muted);font-size:.85rem;line-height:1.6;margin-bottom:1.8rem">Pour une course plus courte, nos services <strong style="color:var(--gold)">Transfert Aéroport</strong>, <strong style="color:var(--gold)">Voyage d'Affaires</strong> ou <strong style="color:var(--gold)">Van Premium</strong> sont faits pour vous.
-    Ou contactez-nous directement, nous trouverons la meilleure solution ensemble.</p>
+    <p style="color:var(--white-muted);font-size:.85rem;line-height:1.6;margin-bottom:1.8rem">Pour une course plus courte, choisissez le service adapté :</p>
+    <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem">
+      <button onclick="switchService('classique')" style="font-size:.72rem;padding:.7rem 1.2rem;background:var(--gold);color:#080808;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer">Course classique</button>
+      <button onclick="switchService('aeroport')" style="font-size:.72rem;padding:.7rem 1.2rem;background:transparent;border:1px solid var(--gold);color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;cursor:pointer">Transfert Aéroport</button>
+      <button onclick="switchService('affaires')" style="font-size:.72rem;padding:.7rem 1.2rem;background:transparent;border:1px solid var(--gold);color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;cursor:pointer">Voyage d'Affaires</button>
+      <button onclick="switchService('van')" style="font-size:.72rem;padding:.7rem 1.2rem;background:transparent;border:1px solid var(--gold);color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;cursor:pointer">Van Premium</button>
+    </div>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="mailto:contact@belviadrive.be" class="btn btn-gold" style="font-size:.72rem;padding:.7rem 1.5rem">✉️ Par email</a>
       <a href="https://wa.me/32496201112" target="_blank" style="font-size:.72rem;padding:.7rem 1.5rem;background:#25D366;color:#ffffff;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.857L.057 23.882l6.194-1.624A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 01-5.035-1.374l-.361-.214-3.738.98.999-3.648-.235-.374A9.86 9.86 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106c5.418 0 9.894 4.474 9.894 9.894 0 5.418-4.476 9.894-9.894 9.894z"/></svg>WhatsApp</a>
       <button onclick="document.getElementById('modal-120km').style.display='none'" style="font-size:.72rem;padding:.7rem 1.5rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--white-muted);border-radius:4px;cursor:pointer">Modifier mon trajet</button>
     </div>
@@ -852,8 +856,8 @@ function checkStep2() {
   state.arr = document.getElementById('addr-arr')?.value.trim() || '';
   // Pour aéroport : date/heure dans flight-fields, sinon dans date-heure-standard
   const isAero = state.svc === 'aeroport';
-  state.date = document.getElementById('trip-date')?.value || '';
-  state.heure = document.getElementById('trip-heure')?.value || ''
+  state.date = (isAero ? document.getElementById('trip-date') : document.getElementById('trip-date-std'))?.value || '';
+  state.heure = (isAero ? document.getElementById('trip-heure') : document.getElementById('trip-heure-std'))?.value || '';
   // Infos retour pour aller-retour
   if (state.tripType === 'aller-retour') {
     state.retourDate = document.getElementById('retour-date')?.value || '';
@@ -1125,8 +1129,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     if (!matched) document.getElementById('addr-arr').value = destVal;
   }
-  if (p.get('date')) document.getElementById('trip-date').value = p.get('date');
-  if (p.get('heure')) document.getElementById('trip-heure').value = p.get('heure');
+  const dateEl = state.svc === 'aeroport' ? 'trip-date' : 'trip-date-std';
+  const heureEl = state.svc === 'aeroport' ? 'trip-heure' : 'trip-heure-std';
+  if (p.get('date')) document.getElementById(dateEl).value = p.get('date');
+  if (p.get('heure')) document.getElementById(heureEl).value = p.get('heure');
   
   // Aller directement à l'étape 2 si le service est fourni (avec ou sans adresses)
   if (p.get('service')) {
@@ -1135,6 +1141,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     goStep(2);
   }
 });
+
+/* Switch service depuis le popup 120km */
+function switchService(svc) {
+  document.getElementById('modal-120km').style.display = 'none';
+  state.svc = svc;
+  resetStep2Fields();
+  checkStep2();
+}
 </script>
 </body>
 </html>
