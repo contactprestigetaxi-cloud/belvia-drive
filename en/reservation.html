@@ -682,7 +682,7 @@ const state = {
   dep: '', arr: '', date: '', heure: '',
   pax: 1, bags: 0, flightNum: '', terminal: '',
   dist: 18, duree: 28,
-  veh: null, prix: 0, vehLast name: '',
+  veh: null, prix: 0, vehName: '',
   pay: null,
   prenom: '', nom: '', gsm: '', email: '', notes: ''
 };
@@ -1073,7 +1073,7 @@ function _renderVehicles() {
       card.addEventListener('click', () => {
         document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        state.veh = key; state.prix = prix; state.vehLast name = t.nom;
+        state.veh = key; state.prix = prix; state.vehName = t.nom;
         document.getElementById('btn3n').disabled = false;
         // Popup aller-retour si trajet simple (sauf soirée)
         if (state.tripType === 'aller' && state.svc !== 'soiree') {
@@ -1110,7 +1110,7 @@ function buildRecap() {
     document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} at ${state.heure}` : '—';
   }
   
-  document.getElementById('rec-veh').textContent = state.vehLast name || '—';
+  document.getElementById('rec-veh').textContent = state.vehName || '—';
   document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 }
 
@@ -1148,7 +1148,7 @@ async function submitBooking() {
     passengers: state.pax,
     bags: state.bags,
     num_vol: state.flightNum || null,
-    vehicule: state.vehLast name,
+    vehicule: state.vehName,
     vehicule_key: state.veh,
     prix_estime: state.prix,
     paiement: state.pay,
@@ -1176,7 +1176,7 @@ async function submitBooking() {
   document.getElementById('cs-arr').textContent = state.arr || '—';
   document.getElementById('cs-date').textContent = `${state.date} at ${state.heure}`;
   document.getElementById('cs-pax').textContent = `${state.pax} passenger(s)`;
-  document.getElementById('cs-veh').textContent = state.vehLast name || '—';
+  document.getElementById('cs-veh').textContent = state.vehName || '—';
   document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (card)' : 'On board';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
