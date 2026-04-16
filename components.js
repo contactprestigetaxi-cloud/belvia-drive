@@ -228,9 +228,12 @@ function calculerPrix(vehiculeKey, distanceKm, options = {}) {
   if (options.isAeroport && BD_CONFIG.supplements?.aeroport_accueil?.actif) {
     prix += BD_CONFIG.supplements.aeroport_accueil.montant_fixe;
   }
-  if (options.allerRetour) prix *= 2;
+  if (options.allerRetour) {
+    prix *= 2;
+    prix = Math.floor(prix * 0.85);
+  }
 
-  return Math.round(prix * 100) / 100;
+  return Math.floor(prix);
 }
 
 function isNuitActuelle() {

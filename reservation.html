@@ -999,8 +999,8 @@ function _renderVehicles() {
           ${t.bagages_max} bagages
         </span>
       </div>
-      <div class="vehicle-price">€ ${prix.toFixed(2)}</div>
-      <div class="vehicle-price-note">TVA incluse · Prix ${state.tripType === 'aller-retour' ? 'aller-retour' : 'estimé'}</div>
+      <div class="vehicle-price">${state.tripType === 'aller-retour' ? '<span style=\'text-decoration:line-through;color:var(--white-muted);font-size:.8rem;margin-right:.5rem\'>€ ' + Math.floor(calculerPrix(key, km, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) * 2) + '</span><span style=\'color:var(--gold)\'>€ ' + prix + '</span>' : '€ ' + prix}</div>
+      <div class="vehicle-price-note">TVA incluse · ${state.tripType === 'aller-retour' ? 'Aller-retour -15% appliqué' : 'Prix estimé'}</div>
       ${!avail ? '<p style="font-size:.65rem;color:#E24B4A;margin-top:.5rem">Non disponible pour votre sélection</p>' : ''}
     `;
     if (avail) {
@@ -1036,7 +1036,7 @@ function buildRecap() {
   }
   
   document.getElementById('rec-veh').textContent = state.vehNom || '—';
-  document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix.toFixed(2)}` : '—';
+  document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 }
 
 function selPay(type, el) {
@@ -1103,7 +1103,7 @@ async function submitBooking() {
   document.getElementById('cs-pax').textContent = `${state.pax} passager(s)`;
   document.getElementById('cs-veh').textContent = state.vehNom || '—';
   document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'En ligne (carte)' : 'À bord';
-  document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix.toFixed(2)}` : '—';
+  document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation
   document.getElementById('prog-bar').style.display = 'none';
