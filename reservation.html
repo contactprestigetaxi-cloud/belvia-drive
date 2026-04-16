@@ -935,14 +935,19 @@ function checkAddressNumber(inputId, hintId) {
 function buildVehicles() {
   if (!BD_CONFIG) return;
 
+  // Toujours reset avant de recalculer
+  state.dist = 0; state.distRetour = 0; state.duree = 0;
+  state.veh = null; state.prix = 0;
+  const grid = document.getElementById('veh-grid');
+  if (grid) grid.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--white-muted);font-size:.85rem">Calcul en cours...</div>';
+  document.getElementById('btn3n').disabled = true;
+
+  // Re-lire les adresses depuis les champs au cas où
+  checkStep2();
+
   const origins = [state.dep];
   const destinations = [state.arr];
-  // Pour aller-retour aéroport : calculer aussi la distance retour si adresse retour différente
   if (state.tripType === 'aller-retour' && state.svc === 'aeroport' && state.retourAdresse && state.retourAdresse.length > 2) {
-    origins.push(state.retourAdresse);
-    destinations.push(state.dep); // retour : adresse retour -> aéroport (inversé par rapport à l'aller)
-    // En fait aller = dep->arr (adresse->aéroport), retour = aéroport->retourAdresse
-    // On calcule : aéroport -> retourAdresse
     origins.push(state.arr);
     destinations.push(state.retourAdresse);
   }
@@ -955,17 +960,21 @@ function buildVehicles() {
         if (status === 'OK' && res.rows[0].elements[0].status === 'OK') {
           state.dist = Math.round(res.rows[0].elements[0].distance.value / 1000);
           state.duree = Math.round(res.rows[0].elements[0].duration.value / 60);
-        }
-        // Distance retour séparée si aller-retour
-        if (state.tripType === 'aller-retour' && res.rows.length >= 3 && res.rows[2].elements.length >= 2 && res.rows[2].elements[1].status === 'OK') {
-          state.distRetour = Math.round(res.rows[2].elements[1].distance.value / 1000);
         } else {
-          state.distRetour = state.dist; // fallback : même distance
+          state.dist = 0;
         }
-        /* Validation 120km pour longue distance */
+        if (state.tripType === 'aller-retour' && res.rows.length >= 2 && res.rows[1].elements.length >= 1 && res.rows[1].elements[0].status === 'OK') {
+          state.distRetour = Math.round(res.rows[1].elements[0].distance.value / 1000);
+        } else {
+          state.distRetour = state.dist;
+        }
         if (state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
           document.getElementById('modal-120km').style.display = 'flex';
           goStep(2);
+          return;
+        }
+        if (state.dist === 0) {
+          if (grid) grid.innerHTML = '<div style="text-align:center;padding:2rem;color:#E24B4A;font-size:.85rem">Impossible de calculer la distance. Vérifiez les adresses.</div>';
           return;
         }
         _renderVehicles();
