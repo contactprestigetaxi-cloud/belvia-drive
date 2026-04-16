@@ -87,7 +87,7 @@ const I18N = {
     navCta: 'Tarif immédiat',
     homeLabel: 'Accueil',
     footerTagline: 'Chauffeur privé premium à Bruxelles et en Belgique. Transferts aéroport, voyages d\'affaires, soirées et longue distance. Disponible 24h/24, 7j/7.',
-    footerCert: '✓ Taxi agréé Région Bruxelles-Capitale',
+    footerCert: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold);display:inline;vertical-align:middle"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Taxi agréé Région Bruxelles-Capitale',
     footerServices: 'Services',
     footerServicesList: [
       { key: 'aeroport', label: 'Transfert aéroport' },
@@ -129,7 +129,7 @@ const I18N = {
     navCta: 'Get a Quote',
     homeLabel: 'Home',
     footerTagline: 'Premium private driver in Brussels and Belgium. Airport transfers, business travel, events and long distance. Available 24/7.',
-    footerCert: '✓ Licensed Taxi — Brussels-Capital Region',
+    footerCert: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold);display:inline;vertical-align:middle"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Licensed Taxi — Brussels-Capital Region',
     footerServices: 'Services',
     footerServicesList: [
       { key: 'aeroport', label: 'Airport transfer' },
@@ -171,7 +171,7 @@ const I18N = {
     navCta: 'Offerte',
     homeLabel: 'Home',
     footerTagline: 'Premium particuliere chauffeur in Brussel en België. Luchthaventransfers, zakelijk vervoer, evenementen en lange afstand. 24/7 beschikbaar.',
-    footerCert: '✓ Erkende taxi — Gewest Brussel-Hoofdstad',
+    footerCert: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold);display:inline;vertical-align:middle"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Erkende taxi — Gewest Brussel-Hoofdstad',
     footerServices: 'Diensten',
     footerServicesList: [
       { key: 'aeroport', label: 'Luchthaventransfer' },
@@ -404,7 +404,7 @@ function initFaq() {
 /* ─── WEBHOOK SENDER ─── */
 async function sendToWebhook(data) {
   if (!BD_CONFIG?.webhook?.actif || !BD_CONFIG?.webhook?.url) {
-    console.log('📦 Webhook non configuré. Données de réservation:', data);
+    console.log(' Webhook non configuré. Données de réservation:', data);
     return { success: false, reason: 'webhook_not_configured' };
   }
   try {

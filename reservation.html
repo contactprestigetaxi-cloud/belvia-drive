@@ -223,12 +223,12 @@
         <div class="svc-desc">Mercedes V-Klasse ou équivalent jusqu'à 8 passagers.<br>Groupes, familles, délégations.</div>
       </div>
       <div class="svc-card" onclick="selectService('soiree',this)" tabindex="0" role="button" aria-pressed="false">
-        <div class="svc-ico">🥂</div>
+        <div class="svc-ico"></div>
         <div class="svc-name">Soirée & Événement</div>
         <div class="svc-desc">Gala, mariage, vernissage.<br>Chauffeur dédié toute la nuit.<br>Formulaire sur mesure.</div>
       </div>
       <div class="svc-card" onclick="selectService('longue',this)" tabindex="0" role="button" aria-pressed="false">
-        <div class="svc-ico">🗺</div>
+        <div class="svc-ico"></div>
         <div class="svc-name">Longue Distance</div>
         <div class="svc-desc">Paris, Amsterdam, Luxembourg, Cologne, Lille.<br>Tarif garanti, péages inclus.</div>
       </div>
@@ -429,7 +429,7 @@
     <!-- Event redirect -->
     <div id="s2-event" style="display:none">
       <div class="event-redirect-box">
-        <div style="font-size:2.8rem;margin-bottom:1.2rem">🥂</div>
+        <div style="font-size:2.8rem;margin-bottom:1.2rem"></div>
         <h3>Soirée &amp; Événement sur-mesure</h3>
         <p>Pour vos soirées, mariages et événements privés, nous proposons une prestation personnalisée. Ce formulaire vous permet de détailler vos besoins : nombre de rotations, horaires, demandes particulières.</p>
         <a href="/soirees-evenements" class="btn btn-gold" style="display:inline-flex">Configurer ma soirée →</a>
@@ -492,12 +492,12 @@
       <label>Mode de paiement *</label>
       <div class="pay-grid">
         <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
-          <div style="font-size:1.6rem;margin-bottom:.5rem">💳</div>
+          <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
           <div class="pay-name">En ligne</div>
           <div class="pay-desc">Carte bancaire sécurisée via Stripe ou Mollie.<br><em style="font-size:.65rem;color:rgba(201,165,90,.5)">Configuration à venir</em></div>
         </div>
         <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
-          <div style="font-size:1.6rem;margin-bottom:.5rem">💶</div>
+          <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
           <div class="pay-name">À bord</div>
           <div class="pay-desc">Cash ou carte bancaire directement au chauffeur à l'arrivée.</div>
         </div>
@@ -640,7 +640,7 @@ function initGoogleMaps() {
   };
   new google.maps.places.Autocomplete(depInput, opts);
   new google.maps.places.Autocomplete(arrInput, opts);
-  console.log('✅ Google Maps Places activé — focus Bruxelles');
+  console.log(' Google Maps Places activé — focus Bruxelles');
 }
 </script>
 <script>
@@ -974,7 +974,7 @@ function _renderVehicles() {
 
   const grid = document.getElementById('veh-grid');
   grid.innerHTML = '';
-  const icons = { berline: '', break: '🚙', van: '', electrique: '' };
+  const icons = { berline: '', break: '', van: '', electrique: '' };
   const isPopular = { berline: false, break: true, van: false, electrique: false };
 
   Object.entries(BD_CONFIG.tarifs).forEach(([key, t]) => {
