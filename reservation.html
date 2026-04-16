@@ -628,7 +628,6 @@ function initGoogleMaps() {
   const arrInput = document.getElementById('addr-arr');
   if (!depInput || !arrInput) return;
 
-  // Bruxelles comme point central (Grand-Place)
   const bruxellesCenter = new google.maps.LatLng(50.8465, 4.3517);
   const biasBounds = new google.maps.Circle({ center: bruxellesCenter, radius: 50000 }).getBounds();
 
@@ -640,7 +639,10 @@ function initGoogleMaps() {
   };
   new google.maps.places.Autocomplete(depInput, opts);
   new google.maps.places.Autocomplete(arrInput, opts);
-  console.log(' Google Maps Places activé — focus Bruxelles');
+
+  // Autocomplete pour le champ adresse retour (aller-retour aéroport)
+  const retourInput = document.getElementById('retour-adresse');
+  if (retourInput) new google.maps.places.Autocomplete(retourInput, opts);
 }
 </script>
 <script>
