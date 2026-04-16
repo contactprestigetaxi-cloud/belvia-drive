@@ -1,0 +1,102 @@
+{
+  "marque": {
+    "nom": "Belvia Drive",
+    "telephone": "+32 496 20 11 12",
+    "email": "contact@belviadrive.be",
+    "tva": "TVA BE 0XXX.XXX.XXX"
+  },
+  "tarifs": {
+    "berline": {
+      "nom": "Berline Premium",
+      "modele": "Mercedes Classe E",
+      "pax_max": 3,
+      "bagages_max": 3,
+      "base": 8,
+      "perKm": 1,
+      "min": 30
+    },
+    "break": {
+      "nom": "Break Confort",
+      "modele": "Mercedes Classe E Break",
+      "pax_max": 4,
+      "bagages_max": 5,
+      "base": 8,
+      "perKm": 2,
+      "min": 30
+    },
+    "van": {
+      "nom": "Van Prestige",
+      "modele": "Mercedes V-Klasse",
+      "pax_max": 8,
+      "bagages_max": 8,
+      "base": 10,
+      "perKm": 2.6,
+      "min": 49
+    },
+    "electrique": {
+      "nom": "Électrique",
+      "modele": "Tesla Model S",
+      "pax_max": 3,
+      "bagages_max": 3,
+      "base": 9,
+      "perKm": 2.3,
+      "min": 39
+    }
+  },
+  "supplements": {
+    "nuit": {
+      "actif": true,
+      "multiplicateur": 1,
+      "heure_debut": 22,
+      "heure_fin": 6
+    },
+    "weekend": {
+      "actif": true,
+      "multiplicateur": 1.1
+    },
+    "aeroport_accueil": {
+      "actif": true,
+      "montant_fixe": 5
+    }
+  },
+  "forfaits_aeroport": {
+    "bru": {
+      "berline": 55,
+      "break": 49,
+      "van": 69,
+      "electrique": 59
+    },
+    "crl": {
+      "berline": 120,
+      "break": 110,
+      "van": 130,
+      "electrique": 125
+    }
+  },
+  "forfaits_longue_distance": {
+    "paris": {
+      "berline": 595,
+      "multiplicateur_autres": 1.1
+    },
+    "amsterdam": {
+      "berline": 395,
+      "multiplicateur_autres": 1.1
+    },
+    "luxembourg": {
+      "berline": 440,
+      "multiplicateur_autres": 1.1
+    }
+  },
+  "webhook": {
+    "url": "https://admin.belviadrive.be/api/webhook/reservations",
+    "actif": true
+  },
+  "google_maps": {
+    "api_key": "AIzaSyDawONagvvPE97l9kxtQr6PKdBFiuEYr6Y",
+    "actif": true
+  },
+  "concurrents": {
+    "taxi_classique": {},
+    "vtc": {}
+  }
+}

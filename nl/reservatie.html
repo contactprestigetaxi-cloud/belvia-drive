@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chauffeur Reserveren — Premium Taxi Brussel | Belvia Drive</title>
+<meta name="description" content="Reserveer uw priv&eacute;chauffeur in Brussel online. Directe tarief: Berline, Break, Van of Elektrisch. Luchthaventransfer, zakelijk, evenementen, lange afstand. Belvia Drive, 24/24.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.belviadrive.be/nl/reservatie">
+<link rel="alternate" hreflang="fr-BE" href="https://www.belviadrive.be/reservation">
+<link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/reservation">
+<link rel="alternate" hreflang="nl-BE" href="https://www.belviadrive.be/nl/reservatie">
+<link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/reservation">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ReservationPage","name":"Reservering Belvia Drive","provider":{"@type":"TaxiService","name":"Belvia Drive","url":"https://www.belviadrive.be"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap"></noscript>
+<link rel="stylesheet" href="/style.css">
+<style>
+.booking-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 5vw 5rem; }
+
+.step-panel { display: none; animation: stepIn .4s ease; }
+.step-panel.active { display: block; }
+@keyframes stepIn { from{opacity:0;transform:translateX(18px)} to{opacity:1;transform:translateX(0)} }
+
+.step-h { font-family: var(--serif); font-size: 1.65rem; font-weight: 300; color: var(--white); margin-bottom: .35rem; }
+.step-h em { color: var(--gold); font-style: italic; }
+.step-subtitle { font-size: .78rem; color: var(--white-muted); margin-bottom: 2rem; }
+
+/* Service select */
+.svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: .9rem; margin-bottom: 2rem; }
+.svc-card {
+  background: var(--black-3); border: 2px solid rgba(201,165,90,.12);
+  padding: 1.6rem; cursor: pointer; transition: border-color .3s, background .3s;
+  position: relative;
+}
+.svc-card:hover { border-color: rgba(201,165,90,.4); background: var(--black-4); }
+.svc-card.selected { border-color: var(--gold); background: var(--black-4); }
+.svc-card.selected::after { content: ''; position: absolute; top: .7rem; right: .9rem; color: var(--gold); }
+.svc-ico { font-size: 1.5rem; margin-bottom: .75rem; }
+.svc-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--white); margin-bottom: .3rem; }
+.svc-desc { font-size: .74rem; color: var(--white-muted); line-height: 1.75; }
+
+/* Address step */
+.trip-types { display: flex; gap: .6rem; margin-bottom: 1.4rem; }
+.trip-type-btn {
+  flex: 1; padding: .6rem; background: var(--black-3);
+  border: 1px solid rgba(201,165,90,.15); color: var(--white-muted);
+  font-family: var(--sans); font-size: .65rem; letter-spacing: .14em;
+  text-transform: uppercase; cursor: pointer; transition: all .3s;
+}
+.trip-type-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,165,90,.07); }
+
+.input-icon-wrap { position: relative; }
+.input-inner-icon {
+  position: absolute; left: .9rem; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 14px; stroke: var(--gold); fill: none; pointer-events: none;
+}
+.input-padded { padding-left: 2.6rem !important; }
+.info-note {
+  background: rgba(201,165,90,.05); border: 1px solid rgba(201,165,90,.14);
+  padding: .85rem 1rem; font-size: .72rem; color: var(--white-muted);
+  display: flex; align-items: flex-start; gap: .7rem; margin-top: .4rem;
+}
+.info-note::before { content: 'i'; color: var(--gold); font-weight: 700; flex-shrink: 0; font-style: italic; }
+
+/* Event redirect */
+.event-redirect-box {
+  background: var(--black-3); border: 1px solid rgba(201,165,90,.18);
+  padding: 3rem; text-align: center;
+}
+.event-redirect-box h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: .8rem; }
+.event-redirect-box p { font-size: .82rem; color: var(--white-muted); line-height: 1.9; margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+/* Route summary */
+.route-summary {
+  background: var(--black-3); border: 1px solid rgba(201,165,90,.15);
+  padding: .9rem 1.4rem; display: flex; gap: 1.5rem; align-items: center;
+  margin-bottom: .8rem; flex-wrap: wrap;
+}
+.rs-pill { font-size: .78rem; color: var(--white-muted); }
+.rs-pill strong { color: var(--white); }
+.rs-sep { color: rgba(201,165,90,.4); font-size: 1rem; }
+.rs-badge {
+  background: rgba(201,165,90,.1); border: 1px solid rgba(201,165,90,.22);
+  padding: .2rem .6rem; font-size: .65rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold);
+}
+.api-note { font-size: .68rem; color: rgba(200,194,180,.4); font-style: italic; margin-bottom: 1.2rem; }
+
+/* Veh grid */
+.veh-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: .9rem; margin-bottom: 2rem; }
+.veh-unavail { opacity: .4; cursor: not-allowed !important; }
+
+/* Recap */
+.booking-recap {
+  background: var(--black-3); border: 1px solid rgba(201,165,90,.14);
+  padding: 1.1rem 1.4rem; margin-bottom: 1.4rem;
+}
+.recap-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .38rem 0; border-bottom: 1px solid rgba(201,165,90,.07);
+  font-size: .8rem;
+}
+.recap-row:last-child { border-bottom: none; font-weight: 500; color: var(--gold); }
+.recap-lbl { color: var(--white-muted); }
+
+/* Payment */
+.pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-top: .5rem; }
+
+/* Terms */
+.terms-row {
+  display: flex; align-items: flex-start; gap: .8rem;
+  font-size: .72rem; color: var(--white-muted);
+  margin: 1.2rem 0 1.5rem;
+}
+.terms-row input[type=checkbox] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+.terms-row a { color: var(--gold); }
+
+/* Step nav */
+.step-nav { display: flex; gap: 1rem; margin-top: 2rem; align-items: center; }
+.btn-prev {
+  background: transparent; border: 1px solid rgba(201,165,90,.25);
+  color: var(--white-muted); font-family: var(--sans);
+  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: .85rem 1.8rem; cursor: pointer; transition: all .3s;
+}
+.btn-prev:hover { border-color: var(--gold); color: var(--gold); }
+.btn-next {
+  background: var(--gold); color: var(--black);
+  font-family: var(--sans); font-size: .65rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  padding: .9rem 2.4rem; border: none; cursor: pointer; transition: background .3s;
+}
+.btn-next:hover { background: var(--gold-light); }
+.btn-next:disabled { background: rgba(201,165,90,.3); cursor: not-allowed; }
+
+@media(max-width:600px){
+  .svc-grid,.veh-grid,.pay-grid{grid-template-columns:1fr}
+  .trip-types{flex-wrap:wrap}
+  .booking-wrap{padding:2rem 5vw 4rem}
+  .conf-box{padding:2rem 1.5rem}
+  .step-nav{flex-direction:column;gap:.7rem}
+  .btn-prev,.btn-next{width:100%;text-align:center}
+}
+</style>
+</head>
+<body data-page="reservation">
+<nav id="nav"></nav>
+
+<!-- Page hero -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav aria-label="Breadcrumb" style="margin-bottom:1rem">
+      <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="index.html" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+        <span class="sep">›</span>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Reservatie</span><meta itemprop="position" content="2"></li>
+      </ol>
+    </nav>
+    <div class="section-eyebrow">Online reserveren — 2 minuten</div>
+    <h1>Uw exacte tarief, <em>nu</em></h1>
+    <p>Geen verrassingen.<br>Geen teller.<br>De weergegeven prijs is de prijs die u betaalt, bevestigd voor u zelfs reserveert.<br>Beveiligde online betaling beschikbaar.</p>
+
+    <!-- Reassurance strip before form -->
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem" role="list" aria-label="Garanties Belvia Drive">
+      <div style="display:flex;align-items:center;gap:.55rem;background:rgba(201,165,90,.07);border:1px solid rgba(201,165,90,.2);padding:.55rem 1rem;font-size:.68rem;color:var(--white-muted)" role="listitem">
+        <span style="color:var(--gold);font-size:.9rem"></span> <strong style="color:var(--white)">Vaste prijs gegarandeerd</strong> — Weergegeven voor betaling
+      </div>
+      <div style="display:flex;align-items:center;gap:.55rem;background:rgba(201,165,90,.07);border:1px solid rgba(201,165,90,.2);padding:.55rem 1rem;font-size:.68rem;color:var(--white-muted)" role="listitem">
+        <span style="color:var(--gold);font-size:.9rem"></span> <strong style="color:var(--white)">Gratis annulering</strong> — Tot 2u vooraf
+      </div>
+      <div style="display:flex;align-items:center;gap:.55rem;background:rgba(201,165,90,.07);border:1px solid rgba(201,165,90,.2);padding:.55rem 1rem;font-size:.68rem;color:var(--white-muted)" role="listitem">
+        <span style="color:var(--gold);font-size:.9rem"></span> <strong style="color:var(--white)"> Erkende taxi</strong> — Brussel-Hoofdstad
+      </div>
+      <div style="display:flex;align-items:center;gap:.55rem;background:rgba(201,165,90,.07);border:1px solid rgba(201,165,90,.2);padding:.55rem 1rem;font-size:.68rem;color:var(--white-muted)" role="listitem">
+        <!-- Avis masqués temporairement
+        <span style="color:var(--gold);font-size:.9rem"></span> <strong style="color:var(--white)">4.9/5</strong> sur 450 avis Google
+        -->
+      </div>
+      <div style="display:flex;align-items:center;gap:.55rem;background:rgba(201,165,90,.07);border:1px solid rgba(201,165,90,.2);padding:.55rem 1rem;font-size:.68rem;color:var(--white-muted)" role="listitem">
+        <span style="color:var(--gold);font-size:.9rem"></span> Hulp nodig? <a href="tel:+32496201112" style="color:var(--gold);text-decoration:underline;text-underline-offset:2px">+32 496 20 11 12</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="booking-progress" id="prog-bar">
+  <div class="booking-progress-inner">
+    <div class="prog-step active" id="ps1"><div class="prog-dot">1</div><span>Dienst</span></div>
+    <div class="prog-line" id="pl1"></div>
+    <div class="prog-step" id="ps2"><div class="prog-dot">2</div><span>Rit</span></div>
+    <div class="prog-line" id="pl2"></div>
+    <div class="prog-step" id="ps3"><div class="prog-dot">3</div><span>Voertuig</span></div>
+    <div class="prog-line" id="pl3"></div>
+    <div class="prog-step" id="ps4"><div class="prog-dot">4</div><span>Gegevens</span></div>
+  </div>
+</div>
+
+<main class="booking-wrap">
+
+  <!-- ━━ STEP 1 ━━ -->
+  <div class="step-panel active" id="step1">
+    <h2 class="step-h">Welk type <em>dienst</em> ?</h2>
+    <p class="step-subtitle">Selecteer de dienst die bij uw rit past.</p>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="selectService('classique',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico"></div>
+        <div class="svc-name">Standaardrit</div>
+        <div class="svc-desc">Rit naar elke bestemming in België.<br>Tarief per kilometer, direct berekend.</div>
+      </div>
+      <div class="svc-card" onclick="selectService('aeroport',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico"></div>
+        <div class="svc-name">Luchthaventransfer</div>
+        <div class="svc-desc">BRU Zaventem & CRL Charleroi.<br>Heen, retour of heen en terug.<br>Vluchttracking inbegrepen.<br>20 minuten wachttijd na landing inbegrepen.</div>
+      </div>
+      <div class="svc-card" onclick="selectService('affaires',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico"></div>
+        <div class="svc-name">Zakelijk vervoer</div>
+        <div class="svc-desc">Europese instellingen, NAVO, CBD, conferenties.<br>WiFi aan boord.</div>
+      </div>
+      <div class="svc-card" onclick="selectService('van',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico"></div>
+        <div class="svc-name">Premium Van</div>
+        <div class="svc-desc">Mercedes V-Klasse of equivalent tot 8 passagiers.<br>Groepen, families, delegaties.</div>
+      </div>
+      <div class="svc-card" onclick="selectService('soiree',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico">🥂</div>
+        <div class="svc-name">Avond & Evenement</div>
+        <div class="svc-desc">Gala, bruiloft, vernissage.<br>Toegewijde chauffeur de hele nacht.<br>Op maat formulier.</div>
+      </div>
+      <div class="svc-card" onclick="selectService('longue',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="svc-ico">🗺</div>
+        <div class="svc-name">Lange afstand</div>
+        <div class="svc-desc">Parijs, Amsterdam, Luxemburg, Keulen, Rijsel.<br>Gegarandeerd tarief, tollen inbegrepen.</div>
+      </div>
+    </div>
+    <div class="step-nav"><button class="btn-next" id="btn1n" disabled onclick="goStep(2)">Volgende →</button></div>
+  </div>
+
+  <!-- ━━ STEP 2 ━━ -->
+  <div class="step-panel" id="step2">
+    <!-- Address form (default: non-event) -->
+    <div id="s2-address">
+      <h2 class="step-h">Details van <em>uw rit</em></h2>
+      <p class="step-subtitle" id="s2-sub">Vul uw ophaal- en bestemmingsadres in.</p>
+
+      <div id="trip-types-row" class="trip-types" style="display:none">
+        <button class="trip-type-btn active" onclick="setTripType('aller',this)">Enkele reis</button>
+        <button class="trip-type-btn" onclick="setTripType('retour',this)">Luchthaven retour</button>
+        <button class="trip-type-btn" onclick="setTripType('aller-retour',this)">Heen en terug &mdash; <span style="color:var(--gold)">-15%</span></button>
+      </div>
+
+      <!-- Prise en charge : menu aéroport (retour) ou adresse libre (aller) -->
+      <div class="form-group" id="dep-field-aeroport" style="display:none">
+        <label for="addr-dep-select">Vertrekluchthaven</label>
+        <select id="addr-dep-select" class="input-padded" onchange="onAirportDepSelect(this.value)" style="width:100%;background:var(--black-3);border:1px solid rgba(201,165,90,.18);color:var(--white);padding:.8rem 1rem;font-size:.82rem;border-radius:4px">
+          <option value="">-- Selecteer een luchthaven --</option>
+          <optgroup label="België">
+            <option value="Brussels Airport (BRU) — Zaventem">Brussels Airport (BRU) — Zaventem</option>
+            <option value="Brussels South Charleroi Airport (CRL) — Gosselies">Brussels South Charleroi (CRL) — Gosselies</option>
+            <option value="Liège Airport (LGG) — Bièrset">Liège Airport (LGG) — Bièrset</option>
+            <option value="Antwerp International Airport (ANR) — Deurne">Antwerp Airport (ANR) — Deurne</option>
+            <option value="Ostend-Bruges Airport (OST)">Ostend-Bruges Airport (OST)</option>
+          </optgroup>
+          <optgroup label="Nederland">
+            <option value="Amsterdam Airport Schiphol (AMS)">Amsterdam Schiphol (AMS)</option>
+            <option value="Rotterdam The Hague Airport (RTM)">Rotterdam The Hague (RTM)</option>
+            <option value="Eindhoven Airport (EIN)">Eindhoven Airport (EIN)</option>
+          </optgroup>
+          <optgroup label="Frankrijk">
+            <option value="Paris Charles de Gaulle Airport (CDG)">Paris CDG (CDG)</option>
+            <option value="Paris Orly Airport (ORY)">Paris Orly (ORY)</option>
+            <option value="Lille Airport (LIL)">Lille Airport (LIL)</option>
+          </optgroup>
+          <optgroup label="Europa">
+            <option value="Luxembourg Findel Airport (LUX)">Luxembourg (LUX)</option>
+            <option value="Düsseldorf Airport (DUS)">Düsseldorf (DUS)</option>
+            <option value="Cologne Bonn Airport (CGN)">Cologne Bonn (CGN)</option>
+            <option value="Frankfurt Airport (FRA)">Frankfurt (FRA)</option>
+            <option value="London Heathrow Airport (LHR)">London Heathrow (LHR)</option>
+            <option value="London Gatwick Airport (LGW)">London Gatwick (LGW)</option>
+          </optgroup>
+          <optgroup label="Andere">
+            <option value="__autre_dep__">Andere luchthaven (vrije invoer)</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group" id="dep-field-libre">
+        <label for="addr-dep">Ophaaladres</label>
+        <div class="input-icon-wrap">
+          <svg class="input-inner-icon" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.25 8 13 8 13s8-7.75 8-13a8 8 0 00-8-8z"/></svg>
+          <input type="text" id="addr-dep" class="input-padded" placeholder="Bijv. Wetstraat 16, 1000 Brussel" oninput="checkStep2()" autocomplete="off">
+          <button type="button" onclick="geolocateAddr('addr-dep')" title="Mijn locatie gebruiken" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;color:#C9A55A;z-index:2;display:flex;align-items:center" aria-label="Mijn locatie gebruiken"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.25 8 13 8 13s8-7.75 8-13a8 8 0 00-8-8z"/></svg></button>
+        </div>
+      </div>
+      <div class="form-group" id="arr-field-aeroport" style="display:none">
+        <label for="addr-arr-select">Bestemmingsluchthaven</label>
+        <select id="addr-arr-select" class="input-padded" onchange="onAirportSelect(this.value)" style="width:100%;background:var(--black-3);border:1px solid rgba(201,165,90,.18);color:var(--white);padding:.8rem 1rem;font-size:.82rem;border-radius:4px">
+          <option value="">-- Selecteer een luchthaven --</option>
+          <optgroup label="België">
+            <option value="Brussels Airport (BRU) — Zaventem">Brussels Airport (BRU) — Zaventem</option>
+            <option value="Brussels South Charleroi Airport (CRL) — Gosselies">Brussels South Charleroi (CRL) — Gosselies</option>
+            <option value="Liège Airport (LGG) — Bièrset">Liège Airport (LGG) — Bièrset</option>
+            <option value="Antwerp International Airport (ANR) — Deurne">Antwerp Airport (ANR) — Deurne</option>
+            <option value="Ostend-Bruges Airport (OST)">Ostend-Bruges Airport (OST)</option>
+          </optgroup>
+          <optgroup label="Nederland">
+            <option value="Amsterdam Airport Schiphol (AMS)">Amsterdam Schiphol (AMS)</option>
+            <option value="Rotterdam The Hague Airport (RTM)">Rotterdam The Hague (RTM)</option>
+            <option value="Eindhoven Airport (EIN)">Eindhoven Airport (EIN)</option>
+          </optgroup>
+          <optgroup label="Frankrijk">
+            <option value="Paris Charles de Gaulle Airport (CDG)">Paris CDG (CDG)</option>
+            <option value="Paris Orly Airport (ORY)">Paris Orly (ORY)</option>
+            <option value="Lille Airport (LIL)">Lille Airport (LIL)</option>
+            <option value="Strasbourg Airport (SXB)">Strasbourg Airport (SXB)</option>
+          </optgroup>
+          <optgroup label="Europa">
+            <option value="Luxembourg Findel Airport (LUX)">Luxembourg (LUX)</option>
+            <option value="Düsseldorf Airport (DUS)">Düsseldorf (DUS)</option>
+            <option value="Cologne Bonn Airport (CGN)">Cologne Bonn (CGN)</option>
+            <option value="Frankfurt Airport (FRA)">Frankfurt (FRA)</option>
+            <option value="London Heathrow Airport (LHR)">London Heathrow (LHR)</option>
+            <option value="London Gatwick Airport (LGW)">London Gatwick (LGW)</option>
+          </optgroup>
+          <optgroup label="Andere">
+            <option value="__autre__">Andere luchthaven (vrije invoer)</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group" id="arr-field-libre">
+        <label for="addr-arr">Bestemming</label>
+        <div class="input-icon-wrap">
+          <svg class="input-inner-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <input type="text" id="addr-arr" class="input-padded" placeholder="Bijv. Brussels Airport, Zaventem" oninput="checkStep2()" autocomplete="off">
+          <button type="button" onclick="geolocateAddr('addr-arr')" title="Mijn locatie gebruiken" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;color:#C9A55A;z-index:2;display:flex;align-items:center" aria-label="Mijn locatie gebruiken"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.25 8 13 8 13s8-7.75 8-13a8 8 0 00-8-8z"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Vluchtinformatie heen -->
+      <div id="flight-fields" style="display:none">
+        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;padding-top:.4rem" id="flight-aller-label">Heenrit</div>
+        <div class="form-row-2">
+          <div class="form-group"><label for="trip-date">Reisdatum</label><input type="date" id="trip-date" min="" oninput="checkStep2()" onchange="checkStep2()"></div>
+          <div class="form-group"><label for="trip-heure">Ophaaltijd</label><input type="time" id="trip-heure" oninput="checkStep2()" onchange="checkStep2()"></div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label for="flight-num">Vluchtnummer</label><input type="text" id="flight-num" placeholder="Bijv. SN 3702"></div>
+          <div class="form-group"><label for="trip-bags">Aantal bagage</label>
+            <select id="trip-bags">
+              <option value="0">Geen bagage</option>
+              <option value="1">1 koffer</option>
+              <option value="2">2 koffers</option>
+              <option value="3">3 koffers</option>
+              <option value="4">4 koffers of meer</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Vluchtinformatie terug (enkel heen-en-terug) -->
+        <div id="flight-retour-block" style="display:none;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,165,90,.15)">
+          <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Retourrit</div>
+          <div class="form-row-2">
+            <div class="form-group"><label for="retour-date">Retourdatum</label><input type="date" id="retour-date" min=""></div>
+            <div class="form-group"><label for="retour-heure">Gewenste afzettijd</label><input type="time" id="retour-heure"></div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group"><label for="retour-aeroport">Ophaalluchthaven</label>
+              <select id="retour-aeroport" style="width:100%;background:var(--black-3);border:1px solid rgba(201,165,90,.18);color:var(--white);padding:.8rem 1rem;font-size:.82rem;border-radius:4px">
+                <option value="">-- Selecteer een luchthaven --</option>
+                <optgroup label="België">
+                  <option value="Brussels Airport (BRU) &mdash; Zaventem">Brussels Airport (BRU) — Zaventem</option>
+                  <option value="Brussels South Charleroi (CRL) &mdash; Gosselies">Brussels South Charleroi (CRL) — Gosselies</option>
+                  <option value="Liège Airport (LGG)">Liège Airport (LGG)</option>
+                  <option value="Antwerp Airport (ANR)">Antwerp Airport (ANR)</option>
+                </optgroup>
+                <optgroup label="Nederland">
+                  <option value="Amsterdam Schiphol (AMS)">Amsterdam Schiphol (AMS)</option>
+                  <option value="Rotterdam The Hague (RTM)">Rotterdam The Hague (RTM)</option>
+                </optgroup>
+                <optgroup label="Frankrijk">
+                  <option value="Paris CDG">Paris CDG</option>
+                  <option value="Paris Orly">Paris Orly</option>
+                  <option value="Lille Airport (LIL)">Lille Airport (LIL)</option>
+                </optgroup>
+                <optgroup label="Europa">
+                  <option value="Luxembourg (LUX)">Luxembourg (LUX)</option>
+                  <option value="Düsseldorf (DUS)">Düsseldorf (DUS)</option>
+                  <option value="Cologne Bonn (CGN)">Cologne Bonn (CGN)</option>
+                  <option value="Frankfurt (FRA)">Frankfurt (FRA)</option>
+                  <option value="London Heathrow (LHR)">London Heathrow (LHR)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group"><label for="retour-vol">Retourvluchtnummer</label><input type="text" id="retour-vol" placeholder="Bijv. SN 3703"></div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group"><label for="retour-adresse">Afzetadres</label><div class="input-icon-wrap"><svg class="input-inner-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><input type="text" id="retour-adresse" class="input-padded" placeholder="Afzetadres bij retour…" autocomplete="off"></div></div>
+            <div class="form-group" style="display:flex;align-items:flex-end"><div style="font-size:.7rem;color:var(--white-muted);line-height:1.6;padding:.5rem 0">Uw chauffeur zal u bij uw retour op dit adres afzetten.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standaard datum/tijd (niet-luchthaven) -->
+      <div class="form-row-2" id="date-heure-standard">
+        <div class="form-group"><label for="trip-date">Reisdatum</label><input type="date" id="trip-date" min="" oninput="checkStep2()" onchange="checkStep2()"></div>
+        <div class="form-group"><label for="trip-heure">Ophaaltijd</label><input type="time" id="trip-heure" oninput="checkStep2()" onchange="checkStep2()"></div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group"><label for="trip-pax">Passagiers</label>
+          <select id="trip-pax">
+            <option value="1">1 passagier</option><option value="2">2 passagiers</option>
+            <option value="3">3 passagiers</option><option value="4">4 passagiers</option>
+            <option value="5">5 passagiers</option><option value="6">6 passagiers</option>
+            <option value="7">7 passagiers</option>
+            <option value="8">8 passagiers</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="trip-bags">Bagage</label>
+          <select id="trip-bags">
+            <option value="0">Geen bagage</option><option value="1">1 koffer</option>
+            <option value="2">2 koffers</option><option value="3">3 koffers</option>
+            <option value="4">4 koffers of meer</option>
+          </select>
+        </div>
+      </div>
+      <div class="info-note">De weergegeven prijs wordt berekend op basis van de werkelijke afstand van uw rit.</div>
+    </div>
+
+    <!-- Event redirect -->
+    <div id="s2-event" style="display:none">
+      <div class="event-redirect-box">
+        <div style="font-size:2.8rem;margin-bottom:1.2rem">🥂</div>
+        <h3>Avond &amp; Evenement op maat</h3>
+        <p>Voor uw avonden, bruiloften en privéevenementen bieden wij een persoonlijke dienst. Dit formulier laat u toe uw behoeften te specificeren: aantal ritten, tijden, speciale verzoeken.</p>
+        <a href="/avond-evenementen" class="btn btn-gold" style="display:inline-flex">Mijn avond configureren →</a>
+        <p style="font-size:.7rem;color:rgba(200,194,180,.4);margin-top:1.2rem">Of bel ons: <a href="tel:+32496201112" style="color:var(--gold)">+32 496 20 11 12</a></p>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-prev" onclick="goStep(1)">← Terug</button>
+      <button class="btn-next" id="btn2n" disabled onclick="goStep(3)">Prijzen bekijken →</button>
+    </div>
+  </div>
+
+  <!-- ━━ STEP 3 ━━ -->
+  <div class="step-panel" id="step3">
+    <h2 class="step-h">Kies uw <em>voertuig</em></h2>
+    <p class="step-subtitle">Tarieven berekend op basis van uw rit. BTW 21% inbegrepen. Vaste prijs gegarandeerd.</p>
+    <div class="route-summary" id="rs">
+      <div class="rs-pill"><strong id="rs-dep">—</strong></div>
+      <div class="rs-sep">→</div>
+      <div class="rs-pill"><strong id="rs-arr">—</strong></div>
+      <div style="margin-left:auto;display:flex;gap:.6rem">
+        <span class="rs-badge" id="rs-km">~15 km</span>
+        <span class="rs-badge" id="rs-dur">~25 min</span>
+        <span class="rs-badge" id="rs-suppl" style="display:none"></span>
+      </div>
+    </div>
+    <p class="api-note" id="api-note" style="display:none"></p>
+    <div class="veh-grid" id="veh-grid"></div>
+    <div class="step-nav">
+      <button class="btn-prev" onclick="goStep(2)">← Terug</button>
+      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)">Doorgaan →</button>
+    </div>
+  </div>
+
+  <!-- ━━ STEP 4 ━━ -->
+  <div class="step-panel" id="step4">
+    <h2 class="step-h">Uw <em>gegevens</em></h2>
+    <p class="step-subtitle">Laatste stap — contactgegevens en betaalmethode.</p>
+    <div class="booking-recap" id="recap">
+      <div class="recap-row"><span class="recap-lbl">Dienst</span><span id="rec-svc">—</span></div>
+      <div class="recap-row"><span class="recap-lbl">Rit</span><span id="rec-traj">—</span></div>
+      <div class="recap-row"><span class="recap-lbl">Datum &amp; tijd</span><span id="rec-date">—</span></div>
+      <div class="recap-row"><span class="recap-lbl">Voertuig</span><span id="rec-veh">—</span></div>
+      <div class="recap-row"><span class="recap-lbl">Geschatte totaal</span><span id="rec-prix" style="color:var(--gold)">—</span></div>
+    </div>
+    <div class="form-row-2">
+      <div class="form-group"><label for="c-prenom">Voornaam *</label><input type="text" id="c-prenom" placeholder="Jan" oninput="chkStep4()"></div>
+      <div class="form-group"><label for="c-nom">Achternaam *</label><input type="text" id="c-nom" placeholder="Peeters" oninput="chkStep4()"></div>
+    </div>
+    <div class="form-row-2">
+      <div class="form-group"><label for="c-gsm">GSM *</label><input type="tel" id="c-gsm" placeholder="+32 4XX XX XX XX" oninput="chkStep4()"></div>
+      <div class="form-group"><label for="c-email">Email *</label><input type="email" id="c-email" placeholder="jan@voorbeeld.com" oninput="chkStep4()"></div>
+    </div>
+    <div class="form-group">
+      <label for="c-notes">Speciale verzoeken (optioneel)</label>
+      <textarea id="c-notes" placeholder="Kinderzitje, waterfles, naambordje, speciale instructies…"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Betaalmethode *</label>
+      <div class="pay-grid">
+        <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
+          <div style="font-size:1.6rem;margin-bottom:.5rem">💳</div>
+          <div class="pay-name">Online</div>
+          <div class="pay-desc">Beveiligde bankkaart via Stripe of Mollie.<br><em style="font-size:.65rem;color:rgba(201,165,90,.5)">Binnenkort beschikbaar</em></div>
+        </div>
+        <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
+          <div style="font-size:1.6rem;margin-bottom:.5rem">💶</div>
+          <div class="pay-name">Aan boord</div>
+          <div class="pay-desc">Cash of bankkaart direct bij de chauffeur bij aankomst.</div>
+        </div>
+      </div>
+    </div>
+    <div class="terms-row">
+      <input type="checkbox" id="terms" onchange="chkStep4()" aria-required="true">
+      <label for="terms">Ik accepteer de <a href="#">algemene vervoersvoorwaarden</a> en het <a href="#">privacybeleid</a> van Belvia Drive.</label>
+    </div>
+    <div class="step-nav">
+      <button class="btn-prev" onclick="goStep(3)">← Terug</button>
+      <button class="btn-next" id="btn4n" disabled onclick="submitBooking()">Reservering bevestigen →</button>
+    </div>
+  </div>
+
+  <!-- ━━ STEP 5 — BEVESTIGING ━━ -->
+  <div class="step-panel" id="step5">
+    <div class="conf-box">
+      <div class="conf-check" aria-label="Reservering bevestigd"></div>
+      <div class="conf-ref-label">Reserveringsreferentie</div>
+      <div class="conf-ref-num" id="conf-ref">BD-XXXXXX</div>
+      <p class="conf-msg">
+        Bedankt <strong id="conf-prenom"></strong>! Uw aanvraag is goed ontvangen.<br>
+        Een bevestigingsmail wordt verzonden naar <strong id="conf-email"></strong> binnen enkele minuten.
+        <br><br>
+        Voor vragen kunt u ons bereiken op <a href="tel:+32496201112" style="color:var(--gold)">+32 496 20 11 12</a>.
+      </p>
+      <div class="conf-summary" id="conf-summary">
+        <div class="conf-row"><span class="conf-label">Dienst</span><span class="conf-val" id="cs-svc">—</span></div>
+        <div class="conf-row"><span class="conf-label">Vertrek</span><span class="conf-val" id="cs-dep">—</span></div>
+        <div class="conf-row"><span class="conf-label">Bestemming</span><span class="conf-val" id="cs-arr">—</span></div>
+        <div class="conf-row"><span class="conf-label">Datum &amp; tijd</span><span class="conf-val" id="cs-date">—</span></div>
+        <div class="conf-row"><span class="conf-label">Passagiers</span><span class="conf-val" id="cs-pax">—</span></div>
+        <div class="conf-row"><span class="conf-label">Voertuig</span><span class="conf-val" id="cs-veh">—</span></div>
+        <div class="conf-row"><span class="conf-label">Betaling</span><span class="conf-val" id="cs-pay">—</span></div>
+        <div class="conf-row conf-total"><span class="conf-label">Geschatte totaal</span><span class="conf-val" id="cs-prix">—</span></div>
+      </div>
+      <a href="index.html" class="btn btn-outline">← Terug naar home</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- Modal 120km minimum -->
+<div id="modal-120km" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:var(--black-2);border:1px solid rgba(201,165,90,.3);border-radius:12px;padding:2.5rem;max-width:480px;width:100%;text-align:center;position:relative">
+    <button onclick="document.getElementById('modal-120km').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white-muted);font-size:1.4rem;cursor:pointer">&times;</button>
+    <div style="font-size:2.5rem;margin-bottom:1rem"></div>
+    <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:.8rem">Lange afstand dienst</h3>
+    <p style="color:var(--white-muted);font-size:.88rem;line-height:1.7;margin-bottom:1.5rem">Onze Lange afstand dienst is ontworpen voor ritten van <strong style="color:var(--gold)">minimaal 120 km</strong>.
+    Voor uw rit is de geschatte afstand lager dan deze drempel.</p>
+    <p style="color:var(--white-muted);font-size:.85rem;line-height:1.6;margin-bottom:1.8rem">Voor een kortere rit zijn onze diensten <strong style="color:var(--gold)">Luchthaventransfer</strong>, <strong style="color:var(--gold)">Zakelijk vervoer</strong> of <strong style="color:var(--gold)">Premium Van</strong> ideaal voor u.
+    Of neem rechtstreeks contact met ons op, wij vinden samen de beste oplossing.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:contact@belviadrive.be" class="btn btn-gold" style="font-size:.72rem;padding:.7rem 1.5rem">✉️ Per email</a>
+      <a href="https://wa.me/32496201112" target="_blank" style="font-size:.72rem;padding:.7rem 1.5rem;background:#25D366;color:#ffffff;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.857L.057 23.882l6.194-1.624A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 01-5.035-1.374l-.361-.214-3.738.98.999-3.648-.235-.374A9.86 9.86 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106c5.418 0 9.894 4.474 9.894 9.894 0 5.418-4.476 9.894-9.894 9.894z"/></svg>WhatsApp</a>
+      <button onclick="document.getElementById('modal-120km').style.display='none'" style="font-size:.72rem;padding:.7rem 1.5rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--white-muted);border-radius:4px;cursor:pointer">Mijn rit wijzigen</button>
+    </div>
+  </div>
+</div>
+<footer></footer>
+
+<script src="/components.js"></script>
+<script>
+// Laad Google Maps dynamisch vanuit config.json
+(async () => {
+  try {
+    const cfg = await fetch('/config.json?v=' + Date.now()).then(r => r.json());
+    if (cfg?.google_maps?.actif && cfg?.google_maps?.api_key) {
+      const s = document.createElement('script');
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${cfg.google_maps.api_key}&libraries=places&callback=initGoogleMaps`;
+      s.async = true; s.defer = true;
+      document.head.appendChild(s);
+    }
+  } catch(e) { console.warn('Config Google Maps niet geladen'); }
+})();
+
+function onAirportSelect(value) {
+  if (value === '__autre__') {
+    document.getElementById('arr-field-aeroport').style.display = 'none';
+    document.getElementById('arr-field-libre').style.display = 'block';
+    document.getElementById('addr-arr').value = '';
+    document.getElementById('addr-arr').focus();
+  } else {
+    document.getElementById('addr-arr').value = value;
+  }
+  checkStep2();
+}
+
+function geolocateAddr(inputId) {
+  if (!navigator.geolocation) { alert('Geolocatie niet beschikbaar op uw apparaat.'); return; }
+  const input = document.getElementById(inputId);
+  const originalPlaceholder = input.placeholder;
+  input.placeholder = 'Locatie wordt bepaald...';
+  input.value = '';
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      if (window.google?.maps) {
+        new google.maps.Geocoder().geocode(
+          { location: { lat: pos.coords.latitude, lng: pos.coords.longitude } },
+          (results, status) => {
+            input.placeholder = originalPlaceholder;
+            if (status === 'OK' && results[0]) {
+              input.value = results[0].formatted_address;
+            } else {
+              input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
+            }
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+        );
+      } else {
+        input.placeholder = originalPlaceholder;
+        input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    },
+    () => { input.placeholder = originalPlaceholder; alert('Kan uw locatie niet bepalen. Controleer uw locatie-instellingen.'); }
+  );
+}
+
+function initGoogleMaps() {
+  const depInput = document.getElementById('addr-dep');
+  const arrInput = document.getElementById('addr-arr');
+  if (!depInput || !arrInput) return;
+
+  const bruxellesCenter = new google.maps.LatLng(50.8465, 4.3517);
+  const biasBounds = new google.maps.Circle({ center: bruxellesCenter, radius: 50000 }).getBounds();
+
+  const opts = {
+    bounds: biasBounds,
+    strictBounds: false,
+    componentRestrictions: { country: ['be','fr','nl','lu','de'] },
+    fields: ['formatted_address','geometry']
+  };
+  new google.maps.places.Autocomplete(depInput, opts);
+  new google.maps.places.Autocomplete(arrInput, opts);
+  console.log('✅ Google Maps Places geactiveerd — focus Brussel');
+}
+</script>
+<script>
+/* ════════════════════════════════════════════
+   BELVIA DRIVE — Booking Engine
+   Config-driven · Webhook-ready · Google Maps-ready
+   ════════════════════════════════════════════
+*/
+
+const SVC_LABELS = {
+  classique: 'Standaardrit', aeroport: 'Luchthaventransfer', affaires: 'Zakelijk vervoer',
+  van: 'Premium Van', soiree: 'Avond & Evenement', longue: 'Lange afstand'
+};
+
+const state = {
+  svc: null, tripType: 'aller',
+  dep: '', arr: '', date: '', heure: '',
+  pax: 1, bags: 0, flightNum: '', terminal: '',
+  dist: 18, duree: 28,
+  veh: null, prix: 0, vehNom: '',
+  pay: null,
+  prenom: '', nom: '', gsm: '', email: '', notes: ''
+};
+
+let curStep = 1;
+
+/* ── NAV ── */
+function goStep(n) {
+  document.querySelectorAll('input[autocomplete="off"]').forEach(el => el.blur());
+  document.activeElement?.blur();
+  document.querySelectorAll('.pac-container').forEach(el => { el.style.display = 'none'; });
+
+  if (n === 1) {
+    state.dep = ''; state.arr = ''; state.dist = 0; state.duree = 0;
+    state.veh = null; state.prix = 0; state.tripType = 'aller';
+    document.getElementById('addr-dep').value = '';
+    document.getElementById('addr-arr').value = '';
+    document.getElementById('addr-dep-select').value = '';
+    document.getElementById('addr-arr-select').value = '';
+  }
+
+  if (n === 2) {
+    state.dist = 0; state.duree = 0;
+    state.veh = null; state.prix = 0;
+    document.getElementById('veh-grid').innerHTML = '';
+    document.getElementById('btn2n').disabled = true;
+    checkStep2();
+  }
+
+  if (n === 3 && state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
+    document.getElementById('modal-120km').style.display = 'flex';
+    return;
+  }
+  if (n === 3) buildVehicles();
+  if (n === 4) buildRecap();
+  document.getElementById('step'+curStep).classList.remove('active');
+  document.getElementById('step'+n).classList.add('active');
+  for (let i = 1; i <= 4; i++) {
+    const ps = document.getElementById('ps'+i);
+    ps.classList.remove('active','done');
+    if (i < n) ps.classList.add('done');
+    else if (i === n) ps.classList.add('active');
+    if (i < 4) document.getElementById('pl'+i).classList.toggle('done', i < n);
+  }
+  curStep = n;
+  const targetStep = document.getElementById('step' + n);
+  if (targetStep) {
+    const offset = targetStep.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: Math.max(0, offset), behavior: 'smooth' });
+  }
+}
+
+/* ── STEP 1 ── */
+function selectService(svc, el) {
+  document.querySelectorAll('.svc-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed','false'); });
+  el.classList.add('selected'); el.setAttribute('aria-pressed','true');
+  state.svc = svc;
+  document.getElementById('btn1n').disabled = false;
+}
+
+/* ── STEP 2 ── */
+function showStep2() {
+  const isEvent = state.svc === 'soiree';
+  const s2addr = document.getElementById('s2-address');
+  if (s2addr) s2addr.style.display = isEvent ? 'none' : 'block';
+  resetStep2Fields();
+}
+
+function setTripType(type, el) {
+  document.querySelectorAll('.trip-type-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active'); state.tripType = type;
+
+  state.dep = ''; state.arr = ''; state.dist = 0; state.duree = 0;
+  document.getElementById('addr-dep').value = '';
+  document.getElementById('addr-arr').value = '';
+  document.getElementById('addr-dep-select').value = '';
+  document.getElementById('addr-arr-select').value = '';
+  document.getElementById('btn2n').disabled = true;
+
+  const isRetour = type === 'retour';
+  const isAllerRetour = type === 'aller-retour';
+  const isAero = state.svc === 'aeroport';
+  
+  if (isAero) {
+    document.getElementById('dep-field-aeroport').style.display = isRetour ? 'block' : 'none';
+    document.getElementById('dep-field-libre').style.display = isRetour ? 'none' : 'block';
+    document.getElementById('arr-field-aeroport').style.display = isRetour ? 'none' : 'block';
+    document.getElementById('arr-field-libre').style.display = isRetour ? 'block' : 'none';
+    const allerLabel = document.getElementById('flight-aller-label');
+    if (allerLabel) allerLabel.textContent = isRetour ? 'Retourrit (vanuit luchthaven)' : (isAllerRetour ? 'Heenrit (naar luchthaven)' : 'Ritdetails');
+    const retourBlock = document.getElementById('flight-retour-block');
+    if (retourBlock) retourBlock.style.display = isAllerRetour ? 'block' : 'none';
+    if (isAllerRetour) {
+      const retourDate = document.getElementById('retour-date');
+      if (retourDate) retourDate.min = new Date().toISOString().split('T')[0];
+    }
+  }
+}
+
+function resetStep2Fields() {
+  const svc = state.svc;
+  const isAero = svc === 'aeroport';
+  const isEvent = svc === 'soiree';
+
+  document.getElementById('addr-dep').value = '';
+  document.getElementById('addr-arr').value = '';
+  document.getElementById('addr-dep-select').value = '';
+  document.getElementById('addr-arr-select').value = '';
+  state.tripType = 'aller';
+  document.querySelectorAll('.trip-type-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+
+  document.getElementById('trip-types-row').style.display = isAero ? 'flex' : 'none';
+  document.getElementById('flight-fields').style.display = isAero ? 'block' : 'none';
+  const dateStd = document.getElementById('date-heure-standard');
+  if (dateStd) dateStd.style.display = isAero ? 'none' : 'block';
+  const retourBlock = document.getElementById('flight-retour-block');
+  if (retourBlock) retourBlock.style.display = 'none';
+  document.getElementById('s2-event').style.display = isEvent ? 'block' : 'none';
+  document.getElementById('btn2n').style.display = isEvent ? 'none' : '';
+
+  document.getElementById('dep-field-aeroport').style.display = 'none';
+  document.getElementById('dep-field-libre').style.display = isAero ? 'block' : 'block';
+  document.getElementById('arr-field-aeroport').style.display = isAero ? 'block' : 'none';
+  document.getElementById('arr-field-libre').style.display = isAero ? 'none' : 'block';
+
+  const depInput = document.getElementById('addr-dep');
+  const depLabel = depInput?.closest('.form-group')?.querySelector('label');
+  const arrInput = document.getElementById('addr-arr');
+  if (svc === 'aeroport') {
+    if (depLabel) depLabel.textContent = 'Ophaaladres';
+    if (depInput) depInput.placeholder = 'Bijv. Wetstraat 16, Brussel';
+    if (arrInput) arrInput.placeholder = 'Bestemming';
+  } else if (svc === 'longue') {
+    if (depLabel) depLabel.textContent = 'Vertrekstad';
+    if (depInput) depInput.placeholder = 'Bijv. Brussel';
+    if (arrInput) arrInput.placeholder = 'Bijv. Parijs, Amsterdam...';
+  } else {
+    if (depLabel) depLabel.textContent = 'Ophaaladres';
+    if (depInput) depInput.placeholder = 'Bijv. Adres of stad…';
+    if (arrInput) arrInput.placeholder = 'Bijv. Adres of stad…';
+  }
+
+  const subs = {
+    classique: 'Geef uw vertrekadres en bestemming op.',
+    aeroport: 'Vul uw adres in en selecteer uw luchthaven.',
+    affaires: 'Ophaalplaats en zakelijke bestemming.',
+    van: 'Vertrekadres en bestemming voor uw groep.',
+    longue: 'Vertrekstad en bestemming in Europa (minimaal 120 km).'
+  };
+  const sub = document.getElementById('s2-sub');
+  if (sub) sub.textContent = subs[svc] || 'Vul uw adressen in.';
+
+  document.getElementById('btn2n').disabled = true;
+}
+
+function onAirportDepSelect(value) {
+  if (value === '__autre_dep__') {
+    document.getElementById('dep-field-aeroport').style.display = 'none';
+    document.getElementById('dep-field-libre').style.display = 'block';
+    document.getElementById('addr-dep').value = '';
+    document.getElementById('addr-dep').focus();
+  } else {
+    document.getElementById('addr-dep').value = value;
+  }
+  checkStep2();
+}
+
+function checkStep2() {
+  state.dep = document.getElementById('addr-dep')?.value.trim() || '';
+  state.arr = document.getElementById('addr-arr')?.value.trim() || '';
+
+  const isAero = state.svc === 'aeroport';
+  state.date = document.getElementById('trip-date')?.value || '';
+  state.heure = document.getElementById('trip-heure')?.value || ''
+  if (state.tripType === 'aller-retour') {
+    state.retourDate = document.getElementById('retour-date')?.value || '';
+    state.retourHeure = document.getElementById('retour-heure')?.value || '';
+    state.retourAdresse = document.getElementById('retour-adresse')?.value.trim() || '';
+    state.retourVol = document.getElementById('retour-vol')?.value.trim() || '';
+  }
+  
+  if (state.date && state.heure) {
+    const bookingTime = new Date(state.date + 'T' + state.heure);
+    const now = new Date();
+    const diffMs = bookingTime - now;
+    const oneHourMs = 60 * 60 * 1000;
+    if (diffMs < oneHourMs) {
+      alert('Om u beter van dienst te zijn, moeten reserveringen minimaal 1 uur vooraf worden gemaakt.');
+      document.getElementById('btn2n').disabled = true;
+      return;
+    }
+  }
+  
+  const ok = state.dep.length > 2 && state.arr.length > 2 && state.date && state.heure;
+  document.getElementById('btn2n').disabled = !ok;
+  
+  checkAddressNumber('addr-dep', 'addr-dep-hint');
+  checkAddressNumber('addr-arr', 'addr-arr-hint');
+}
+
+function isEstablishment(addr) {
+  const lower = addr.toLowerCase();
+  const keywords = ['hotel', 'ibis', 'marriott', 'hilton', 'sofitel', 'radisson', 'novotel', 'luchthaven', 'airport', 'station', 'restaurant', 'café', 'bar ', 'parlement', 'commissie', 'navo', 'nato', 'ambassade', 'embassy', 'parking', 'centrum', 'kliniek', 'ziekenhuis', 'universiteit', 'university', 'theater', 'museum', 'stadion', 'arena', 'paleis', 'palace', 'plein', 'grand-place', 'atomium', 'bozar', 'conrad', 'metropole', 'amigo', 'stanhope', 'eurostar', 'thalys', 'zaventem', 'charleroi', 'bru ', 'crl '];
+  return keywords.some(k => lower.includes(k));
+}
+
+function checkAddressNumber(inputId, hintId) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  let hint = document.getElementById(hintId);
+  if (!hint) {
+    hint = document.createElement('div');
+    hint.id = hintId;
+    hint.style.cssText = 'font-size:.68rem;color:#C9A55A;margin-top:.4rem;padding:.5rem .7rem;background:rgba(201,165,90,.08);border-left:2px solid #C9A55A;border-radius:2px;display:none;line-height:1.5';
+    input.closest('.form-group')?.appendChild(hint);
+  }
+  const val = input.value.trim();
+  if (val.length < 5) { hint.style.display = 'none'; return; }
+  const hasNumber = /\d/.test(val);
+  if (!hasNumber && !isEstablishment(val)) {
+    hint.innerHTML = 'Voor een vlotte ophaling, kunt u het huisnummer vermelden?';
+    hint.style.display = 'block';
+  } else {
+    hint.style.display = 'none';
+  }
+}
+
+/* ── STEP 3 — VEHICLES ── */
+function buildVehicles() {
+  if (!BD_CONFIG) return;
+
+  if (typeof google !== 'undefined' && google.maps && state.dep && state.arr) {
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      { origins: [state.dep], destinations: [state.arr], travelMode: 'DRIVING', region: 'BE' },
+      (res, status) => {
+        if (status === 'OK' && res.rows[0].elements[0].status === 'OK') {
+          state.dist = Math.round(res.rows[0].elements[0].distance.value / 1000);
+          state.duree = Math.round(res.rows[0].elements[0].duration.value / 60);
+        }
+        if (state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
+          document.getElementById('modal-120km').style.display = 'flex';
+          return;
+        }
+        _renderVehicles();
+      }
+    );
+  } else {
+    state.dist = 18; state.duree = 28;
+    _renderVehicles();
+  }
+}
+
+function _renderVehicles() {
+  const mult = state.tripType === 'aller-retour' ? 2 : 1;
+  const km = state.dist * mult;
+  const pax = parseInt(document.getElementById('trip-pax')?.value || 1);
+  state.pax = pax;
+  state.bags = parseInt(document.getElementById('trip-bags')?.value || 0);
+
+  document.getElementById('rs-dep').textContent = state.dep || '—';
+  document.getElementById('rs-arr').textContent = state.arr || '—';
+  document.getElementById('rs-km').textContent = `~${km} km`;
+  document.getElementById('rs-dur').textContent = `~${state.duree} min`;
+
+  const isNuit = isNuitActuelle();
+  const isWE = isWeekendActuel();
+  const suppl = document.getElementById('rs-suppl');
+  if (suppl) suppl.style.display = 'none';
+
+  const grid = document.getElementById('veh-grid');
+  grid.innerHTML = '';
+  const icons = { berline: '', break: '🚙', van: '', electrique: '' };
+  const isPopular = { berline: false, break: true, van: false, electrique: false };
+
+  Object.entries(BD_CONFIG.tarifs).forEach(([key, t]) => {
+    const prix = calculerPrix(key, km, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: state.tripType === 'aller-retour', destination: state.arr, depart: state.dep });
+    const paxOk = pax <= t.pax_max;
+    const bagOk = state.bags <= (t.bagages_max || 99);
+    const avail = paxOk && bagOk;
+
+    const card = document.createElement('div');
+    card.className = 'vehicle-card' + (isPopular[key] ? ' popular' : '') + (!avail ? ' veh-unavail' : '');
+    card.innerHTML = `
+      <div class="vehicle-tag">${icons[key]} ${key.charAt(0).toUpperCase()+key.slice(1)}</div>
+      <div class="vehicle-name">${t.nom}</div>
+      <div class="vehicle-sub">${t.modele}</div>
+      <div class="vehicle-specs">
+        <span class="vehicle-spec">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A55A" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          ${t.pax_max} pax max
+        </span>
+        <span class="vehicle-spec">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A55A" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          ${t.bagages_max} bagage
+        </span>
+      </div>
+      <div class="vehicle-price">€ ${prix.toFixed(2)}</div>
+      <div class="vehicle-price-note">BTW inbegrepen · Prijs ${state.tripType === 'aller-retour' ? 'heen-en-terug' : 'geschat'}</div>
+      ${!avail ? '<p style="font-size:.65rem;color:#E24B4A;margin-top:.5rem">Niet beschikbaar voor uw selectie</p>' : ''}
+    `;
+    if (avail) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        state.veh = key; state.prix = prix; state.vehNom = t.nom;
+        document.getElementById('btn3n').disabled = false;
+      });
+    }
+    grid.appendChild(card);
+  });
+}
+
+/* ── STEP 4 ── */
+function buildRecap() {
+  document.getElementById('rec-svc').textContent = SVC_LABELS[state.svc] || '—';
+  
+  if (state.tripType === 'aller-retour' && state.svc === 'aeroport') {
+    document.getElementById('rec-traj').textContent = `Heen: ${state.dep} → ${state.arr}`;
+    const recDate = document.getElementById('rec-date');
+    const retourInfo = state.retourDate ? ` | Retour op ${state.retourDate}${state.retourHeure ? ' om ' + state.retourHeure : ''}` : '';
+    recDate.textContent = (state.date && state.heure ? `${state.date} om ${state.heure}` : '—') + retourInfo;
+    if (state.retourAdresse) {
+      document.getElementById('rec-traj').textContent += ` | Afzetten: ${state.retourAdresse}`;
+    }
+  } else {
+    document.getElementById('rec-traj').textContent = `${state.dep} → ${state.arr}`;
+    document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} om ${state.heure}` : '—';
+  }
+  
+  document.getElementById('rec-veh').textContent = state.vehNom || '—';
+  document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix.toFixed(2)}` : '—';
+}
+
+function selPay(type, el) {
+  document.querySelectorAll('.pay-option').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-pressed','false'); });
+  el.classList.add('selected'); el.setAttribute('aria-pressed','true');
+  state.pay = type; chkStep4();
+}
+
+function chkStep4() {
+  const p = document.getElementById('c-prenom').value.trim();
+  const n = document.getElementById('c-nom').value.trim();
+  const g = document.getElementById('c-gsm').value.trim();
+  const e = document.getElementById('c-email').value.trim();
+  const t = document.getElementById('terms').checked;
+  state.prenom = p; state.nom = n; state.gsm = g; state.email = e;
+  state.notes = document.getElementById('c-notes').value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  document.getElementById('btn4n').disabled = !(p && n && g.length > 7 && emailOk && t && state.pay);
+}
+
+/* ── SUBMIT ── */
+async function submitBooking() {
+  const ref = 'BD-' + Date.now().toString(36).toUpperCase().slice(-6);
+  state.ref = ref;
+
+  const bookingData = {
+    ref,
+    service: SVC_LABELS[state.svc],
+    trip_type: state.tripType,
+    depart: state.dep,
+    arrivee: state.arr,
+    date: state.date,
+    heure: state.heure,
+    passagers: state.pax,
+    bagages: state.bags,
+    num_vol: state.flightNum || null,
+    vehicule: state.vehNom,
+    vehicule_key: state.veh,
+    prix_estime: state.prix,
+    paiement: state.pay,
+    client: { prenom: state.prenom, nom: state.nom, gsm: state.gsm, email: state.email, notes: state.notes },
+    timestamp: new Date().toISOString()
+  };
+
+  await sendToWebhook(bookingData);
+
+  document.getElementById('conf-ref').textContent = ref;
+  document.getElementById('conf-prenom').textContent = state.prenom;
+  document.getElementById('conf-email').textContent = state.email;
+  document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
+  document.getElementById('cs-dep').textContent = state.dep || '—';
+  document.getElementById('cs-arr').textContent = state.arr || '—';
+  document.getElementById('cs-date').textContent = `${state.date} om ${state.heure}`;
+  document.getElementById('cs-pax').textContent = `${state.pax} passagier(s)`;
+  document.getElementById('cs-veh').textContent = state.vehNom || '—';
+  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Aan boord';
+  document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix.toFixed(2)}` : '—';
+
+  document.getElementById('prog-bar').style.display = 'none';
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('step5').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', async () => {
+  if (!BD_CONFIG) await loadConfig();
+
+  document.getElementById('btn1n').addEventListener('click', showStep2, { once: false });
+
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('service')) {
+    const svcMap = { classique: 0, aeroport: 1, affaires: 2, van: 3, soiree: 4, longue: 5 };
+    const idx = svcMap[p.get('service')];
+    const cards = document.querySelectorAll('.svc-card');
+    if (cards[idx] !== undefined) { cards[idx].classList.add('selected'); state.svc = p.get('service'); document.getElementById('btn1n').disabled = false; }
+  }
+  if (p.get('dep')) document.getElementById('addr-dep').value = decodeURIComponent(p.get('dep'));
+  if (p.get('dest')) {
+    const destVal = decodeURIComponent(p.get('dest'));
+    const arrSelect = document.getElementById('addr-arr-select');
+    let matched = false;
+    if (arrSelect) {
+      for (const opt of arrSelect.options) { if (opt.value === destVal) { arrSelect.value = destVal; matched = true; break; } }
+    }
+    if (!matched) document.getElementById('addr-arr').value = destVal;
+  }
+  if (p.get('date')) document.getElementById('trip-date').value = p.get('date');
+  if (p.get('heure')) document.getElementById('trip-heure').value = p.get('heure');
+  
+  if (p.get('service')) {
+    showStep2();
+    checkStep2();
+    goStep(2);
+  }
+});
+</script>
+</body>
+</html>
