@@ -542,6 +542,23 @@
 </main>
 
 <!-- Modal 120km minimum -->
+<div id="modal-aller-retour" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:var(--black-2);border:1px solid rgba(201,165,90,.35);border-radius:12px;padding:2.5rem 2rem;max-width:440px;width:100%;text-align:center;position:relative">
+    <button onclick="closeAllerRetourModal(false)" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white-muted);font-size:1.4rem;cursor:pointer">&times;</button>
+    <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Offre exclusive</div>
+    <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:1rem;line-height:1.4">Et si vous réserviez<br>le <span style="color:var(--gold)">retour</span> aussi ?</h3>
+    <p style="color:var(--white-muted);font-size:.85rem;line-height:1.7;margin-bottom:1.5rem">Réservez votre trajet retour en même temps et profitez de <strong style="color:#4CAF50">15% de réduction</strong> sur l'ensemble.</p>
+    <div style="background:rgba(201,165,90,.08);border:1px solid rgba(201,165,90,.2);border-radius:8px;padding:1.2rem;margin-bottom:1.5rem">
+      <div style="display:flex;justify-content:center;align-items:baseline;gap:1rem">
+        <span id="ar-prix-old" style="color:rgba(255,255,255,.35);font-size:1rem;text-decoration:line-through">€ --</span>
+        <span id="ar-prix-new" style="color:var(--gold);font-size:1.8rem;font-weight:600">€ --</span>
+      </div>
+      <div style="color:#4CAF50;font-size:.75rem;margin-top:.4rem">Vous économisez <strong id="ar-economie">€ --</strong></div>
+    </div>
+    <button onclick="closeAllerRetourModal(true)" style="width:100%;font-size:.82rem;padding:.9rem 1.5rem;background:var(--gold);color:#080808;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;margin-bottom:.8rem">Ajouter le retour &mdash; -15%</button>
+    <button onclick="closeAllerRetourModal(false)" style="font-size:.72rem;padding:.6rem 1rem;background:transparent;border:none;color:var(--white-muted);cursor:pointer;text-decoration:underline;text-underline-offset:2px">Non merci, aller simple</button>
+  </div>
+</div>
 <div id="modal-120km" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:1rem">
   <div style="background:var(--black-2);border:1px solid rgba(201,165,90,.3);border-radius:12px;padding:2.5rem;max-width:480px;width:100%;text-align:center;position:relative">
     <button onclick="document.getElementById('modal-120km').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white-muted);font-size:1.4rem;cursor:pointer">&times;</button>
@@ -1060,6 +1077,17 @@ function _renderVehicles() {
         card.classList.add('selected');
         state.veh = key; state.prix = prix; state.vehNom = t.nom;
         document.getElementById('btn3n').disabled = false;
+        // Popup aller-retour si trajet simple (sauf soirée)
+        if (state.tripType === 'aller' && state.svc !== 'soiree') {
+          const prixAllerSimple = prix;
+          const prixDouble = Math.floor(prixAllerSimple * 2);
+          const prixAR = Math.floor(prixDouble * 0.85);
+          const economie = prixDouble - prixAR;
+          document.getElementById('ar-prix-old').textContent = '\u20AC ' + prixDouble;
+          document.getElementById('ar-prix-new').textContent = '\u20AC ' + prixAR;
+          document.getElementById('ar-economie').textContent = '\u20AC ' + economie;
+          document.getElementById('modal-aller-retour').style.display = 'flex';
+        }
       });
     }
     grid.appendChild(card);
@@ -1210,6 +1238,23 @@ function switchService(svc) {
   /* Afficher le bon formulaire et aller directement à l'étape 2 */
   showStep2();
   goStep(2);
+}
+
+function closeAllerRetourModal(accept) {
+  document.getElementById('modal-aller-retour').style.display = 'none';
+  if (accept) {
+    state.tripType = 'aller-retour';
+    const arBtn = document.querySelectorAll('.trip-type-btn')[2];
+    if (arBtn) {
+      document.querySelectorAll('.trip-type-btn').forEach(b => b.classList.remove('active'));
+      arBtn.classList.add('active');
+    }
+    const retourBlock = document.getElementById('flight-retour-block');
+    if (retourBlock) retourBlock.style.display = state.svc === 'aeroport' ? 'block' : 'none';
+    state.dist = 0; state.distRetour = 0; state.duree = 0;
+    state.veh = null; state.prix = 0;
+    buildVehicles();
+  }
 }
 </script>
 </body>
