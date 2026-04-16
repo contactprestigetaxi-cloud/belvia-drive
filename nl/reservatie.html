@@ -1078,7 +1078,7 @@ function _renderVehicles() {
         state.veh = key; state.prix = prix; state.vehName = t.nom;
         document.getElementById('btn3n').disabled = false;
         // Popup aller-retour si trajet simple (sauf soirée)
-        if (state.tripType === 'aller' && state.svc !== 'soiree') {
+        if (state.tripType === 'aller' && state.svc === 'aeroport') {
           const prixAR = calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: true, kmRetour: kmAller, destination: state.arr, depart: state.dep });
           const prixDouble = Math.floor(prix + prix);
           const economie = prixDouble - prixAR;
