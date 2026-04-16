@@ -936,21 +936,21 @@ function buildVehicles() {
           state.dist = Math.round(res.rows[0].elements[0].distance.value / 1000);
           state.duree = Math.round(res.rows[0].elements[0].duration.value / 60);
         }
-        // Validation 120km pour longue distance
+        /* Validation 120km pour longue distance */
         if (state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
           document.getElementById('modal-120km').style.display = 'flex';
+          /* Revenir à l'étape 2 derriere le popup */
+          goStep(2);
           return;
         }
         _renderVehicles();
       }
     );
   } else {
-    /* Fallback si Maps pas dispo */
+    /* Fallback si Maps pas dispo (ne devrait pas arriver en prod) */
     if (state.svc === 'longue') {
-      state.dist = 0; state.duree = 0;
-      /* Impossible de calculer sans Maps → afficher le popup 120km avec message adapté */
-      document.getElementById('modal-120km').style.display = 'flex';
-      return;
+      /* Sans Maps, on ne peut pas vérifier → on laisse passer avec estimation basique */
+      state.dist = 150; state.duree = 100;
     } else {
       state.dist = 18; state.duree = 28;
     }
@@ -1161,7 +1161,10 @@ function switchService(svc) {
   document.getElementById('modal-120km').style.display = 'none';
   state.svc = svc;
   resetStep2Fields();
-  checkStep2();
+  /* Afficher le bon formulaire et aller directement à l'étape 2 */
+  showStep2();
+  goStep(2);
+}
 }
 </script>
 </body>
