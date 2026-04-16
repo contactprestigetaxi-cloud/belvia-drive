@@ -360,7 +360,7 @@
         <div id="flight-retour-block" style="display:none;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,165,90,.15)">
           <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Trajet retour</div>
           <div class="form-row-2">
-            <div class="form-group"><label for="retour-date">Date du retour</label><input type="date" id="retour-date" min=""></div>
+            <div class="form-group"><label for="retour-date">Date du retour</label><input type="date" id="retour-date" min="" onfocus="this.min=new Date().toISOString().split('T')[0]"></div>
             <div class="form-group"><label for="retour-heure">Heure de dépôt souhaitée</label><input type="time" id="retour-heure"></div>
           </div>
           <div class="form-row-2">
@@ -1079,9 +1079,8 @@ function _renderVehicles() {
         document.getElementById('btn3n').disabled = false;
         // Popup aller-retour si trajet simple (sauf soirée)
         if (state.tripType === 'aller' && state.svc !== 'soiree') {
-          const prixAllerSimple = prix;
-          const prixDouble = Math.floor(prixAllerSimple * 2);
-          const prixAR = Math.floor(prixDouble * 0.85);
+          const prixAR = calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: true, kmRetour: kmAller, destination: state.arr, depart: state.dep });
+          const prixDouble = Math.floor(prix + prix);
           const economie = prixDouble - prixAR;
           document.getElementById('ar-prix-old').textContent = '\u20AC ' + prixDouble;
           document.getElementById('ar-prix-new').textContent = '\u20AC ' + prixAR;
