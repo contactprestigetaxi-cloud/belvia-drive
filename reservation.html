@@ -1044,10 +1044,12 @@ function _renderVehicles() {
   const icons = { berline: '', break: '', van: '', electrique: '' };
   const isPopular = { berline: false, break: true, van: false, electrique: false };
 
-  // Van Premium → uniquement le van
+  // Filtrer véhicules selon le service
   const vanOnly = state.svc === 'van';
+  const businessOnly = state.svc === 'affaires';
   Object.entries(BD_CONFIG.tarifs).forEach(([key, t]) => {
     if (vanOnly && key !== 'van') return;
+    if (businessOnly && key !== 'berline' && key !== 'van') return;
     const prix = calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: isAllerRetour, kmRetour, destination: state.arr, depart: state.dep });
     const paxOk = pax <= t.pax_max;
     const bagOk = state.bags <= (t.bagages_max || 99);
