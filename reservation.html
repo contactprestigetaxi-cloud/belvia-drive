@@ -922,20 +922,36 @@ function checkAddressNumber(inputId, hintId) {
 function buildVehicles() {
   if (!BD_CONFIG) return;
 
-  // Distance réelle via Google Maps Distance Matrix
+  const origins = [state.dep];
+  const destinations = [state.arr];
+  // Pour aller-retour aéroport : calculer aussi la distance retour si adresse retour différente
+  if (state.tripType === 'aller-retour' && state.svc === 'aeroport' && state.retourAdresse && state.retourAdresse.length > 2) {
+    origins.push(state.retourAdresse);
+    destinations.push(state.dep); // retour : adresse retour -> aéroport (inversé par rapport à l'aller)
+    // En fait aller = dep->arr (adresse->aéroport), retour = aéroport->retourAdresse
+    // On calcule : aéroport -> retourAdresse
+    origins.push(state.arr);
+    destinations.push(state.retourAdresse);
+  }
+
   if (typeof google !== 'undefined' && google.maps && state.dep && state.arr) {
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
-      { origins: [state.dep], destinations: [state.arr], travelMode: 'DRIVING', region: 'BE' },
+      { origins, destinations, travelMode: 'DRIVING', region: 'BE' },
       (res, status) => {
         if (status === 'OK' && res.rows[0].elements[0].status === 'OK') {
           state.dist = Math.round(res.rows[0].elements[0].distance.value / 1000);
           state.duree = Math.round(res.rows[0].elements[0].duration.value / 60);
         }
+        // Distance retour séparée si aller-retour
+        if (state.tripType === 'aller-retour' && res.rows.length >= 3 && res.rows[2].elements.length >= 2 && res.rows[2].elements[1].status === 'OK') {
+          state.distRetour = Math.round(res.rows[2].elements[1].distance.value / 1000);
+        } else {
+          state.distRetour = state.dist; // fallback : même distance
+        }
         /* Validation 120km pour longue distance */
         if (state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
           document.getElementById('modal-120km').style.display = 'flex';
-          /* Revenir à l'étape 2 derriere le popup */
           goStep(2);
           return;
         }
@@ -943,20 +959,21 @@ function buildVehicles() {
       }
     );
   } else {
-    /* Fallback si Maps pas dispo (ne devrait pas arriver en prod) */
     if (state.svc === 'longue') {
-      /* Sans Maps, on ne peut pas vérifier → on laisse passer avec estimation basique */
       state.dist = 150; state.duree = 100;
     } else {
       state.dist = 18; state.duree = 28;
     }
+    state.distRetour = state.dist;
     _renderVehicles();
   }
 }
 
 function _renderVehicles() {
-  const mult = state.tripType === 'aller-retour' ? 2 : 1;
-  const km = state.dist * mult;
+  const isAllerRetour = state.tripType === 'aller-retour';
+  const kmAller = state.dist;
+  const kmRetour = state.distRetour || state.dist;
+  const km = isAllerRetour ? kmAller + kmRetour : kmAller;
   const pax = parseInt(document.getElementById('trip-pax')?.value || 1);
   state.pax = pax;
   state.bags = parseInt(document.getElementById('trip-bags')?.value || 0);
@@ -978,7 +995,7 @@ function _renderVehicles() {
   const isPopular = { berline: false, break: true, van: false, electrique: false };
 
   Object.entries(BD_CONFIG.tarifs).forEach(([key, t]) => {
-    const prix = calculerPrix(key, km, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: state.tripType === 'aller-retour', destination: state.arr, depart: state.dep });
+    const prix = calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: isAllerRetour, kmRetour, destination: state.arr, depart: state.dep });
     const paxOk = pax <= t.pax_max;
     const bagOk = state.bags <= (t.bagages_max || 99);
     const avail = paxOk && bagOk;
@@ -999,7 +1016,7 @@ function _renderVehicles() {
           ${t.bagages_max} bagages
         </span>
       </div>
-      <div class="vehicle-price">${state.tripType === 'aller-retour' ? '<span style=\'text-decoration:line-through;color:var(--white-muted);font-size:.8rem;margin-right:.5rem\'>€ ' + Math.floor(calculerPrix(key, km, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) * 2) + '</span><span style=\'color:var(--gold)\'>€ ' + prix + '</span>' : '€ ' + prix}</div>
+      <div class="vehicle-price">${isAllerRetour ? '<span style=\'text-decoration:line-through;color:var(--white-muted);font-size:.8rem;margin-right:.5rem\'>€ ' + (Math.floor(calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) + calculerPrix(key, kmRetour, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }))) + '</span><span style=\'color:var(--gold)\'>€ ' + prix + '</span>' : '€ ' + prix}</div>
       <div class="vehicle-price-note">TVA incluse · ${state.tripType === 'aller-retour' ? 'Aller-retour -15% appliqué' : 'Prix estimé'}</div>
       ${!avail ? '<p style="font-size:.65rem;color:#E24B4A;margin-top:.5rem">Non disponible pour votre sélection</p>' : ''}
     `;

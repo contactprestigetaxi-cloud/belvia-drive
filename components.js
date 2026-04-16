@@ -228,12 +228,21 @@ function calculerPrix(vehiculeKey, distanceKm, options = {}) {
   if (options.isAeroport && BD_CONFIG.supplements?.aeroport_accueil?.actif) {
     prix += BD_CONFIG.supplements.aeroport_accueil.montant_fixe;
   }
+
   if (options.allerRetour) {
-    prix *= 2;
-    prix = Math.floor(prix * 0.85);
+    // Calcul séparé : aller avec distance aller, retour avec distance retour
+    let prixRetour = t.base + (options.kmRetour * t.perKm);
+    prixRetour = Math.max(prixRetour, t.min);
+    if (options.isNuit && BD_CONFIG.supplements?.nuit?.actif) prixRetour *= BD_CONFIG.supplements.nuit.multiplicateur;
+    if (options.isWeekend && BD_CONFIG.supplements?.weekend?.actif) prixRetour *= BD_CONFIG.supplements.weekend.multiplicateur;
+    if (options.isAeroport && BD_CONFIG.supplements?.aeroport_accueil?.actif) prixRetour += BD_CONFIG.supplements.aeroport_accueil.montant_fixe;
+    prix = prix + prixRetour; // Aller + Retour
+    prix = Math.floor(prix * 0.85); // -15%
+  } else {
+    prix = Math.floor(prix);
   }
 
-  return Math.floor(prix);
+  return prix;
 }
 
 function isNuitActuelle() {
