@@ -693,10 +693,12 @@ function goStep(n) {
 
   // Si on revient à l'étape 2 depuis 3/4 → réinitialiser le calcul de prix
   if (n === 2) {
-    state.dist = 0; state.duree = 0;
+    state.dist = 0; state.distRetour = 0; state.duree = 0;
     state.veh = null; state.prix = 0;
     document.getElementById('veh-grid').innerHTML = '';
     document.getElementById('btn2n').disabled = true;
+    document.getElementById('btn3n').disabled = true;
+    document.getElementById('rec-prix').textContent = '—';
     // Si adresses toujours présentes, permettre de recalculer
     checkStep2();
   }
@@ -732,6 +734,7 @@ function selectService(svc, el) {
   document.querySelectorAll('.svc-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed','false'); });
   el.classList.add('selected'); el.setAttribute('aria-pressed','true');
   state.svc = svc;
+  state.dist = 0; state.distRetour = 0; state.duree = 0; state.veh = null; state.prix = 0;
   document.getElementById('btn1n').disabled = false;
 }
 
@@ -747,13 +750,21 @@ function setTripType(type, el) {
   document.querySelectorAll('.trip-type-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active'); state.tripType = type;
 
-  // Réinitialiser les adresses et le calcul au switch de type
-  state.dep = ''; state.arr = ''; state.dist = 0; state.duree = 0;
+  // Réinitialiser tout le calcul au switch de type
+  state.dep = ''; state.arr = ''; state.dist = 0; state.distRetour = 0; state.duree = 0;
+  state.veh = null; state.prix = 0;
   document.getElementById('addr-dep').value = '';
   document.getElementById('addr-arr').value = '';
   document.getElementById('addr-dep-select').value = '';
   document.getElementById('addr-arr-select').value = '';
+  document.getElementById('veh-grid').innerHTML = '';
   document.getElementById('btn2n').disabled = true;
+  document.getElementById('btn3n').disabled = true;
+  document.getElementById('rec-prix').textContent = '—';
+  // Reset retour adresse si aller-retour
+  const retourAddr = document.getElementById('retour-adresse');
+  if (retourAddr) retourAddr.value = '';
+  state.retourAdresse = '';
 
   const isRetour = type === 'retour';
   const isAllerRetour = type === 'aller-retour';
