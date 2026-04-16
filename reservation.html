@@ -1049,7 +1049,7 @@ function _renderVehicles() {
           ${t.bagages_max} bagages
         </span>
       </div>
-      <div class="vehicle-price">${isAllerRetour ? '<span style=\'text-decoration:line-through;color:var(--white-muted);font-size:.8rem;margin-right:.5rem\'>€ ' + (Math.floor(calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) + calculerPrix(key, kmRetour, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }))) + '</span><span style=\'color:var(--gold)\'>€ ' + prix + '</span>' : '€ ' + prix}</div>
+      <div class="vehicle-price">${isAllerRetour ? '<span style=\'color:rgba(255,255,255,.4);font-size:.85rem;text-decoration:line-through;margin-right:.8rem\'>€ ' + (Math.floor(calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) + calculerPrix(key, kmRetour, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }))) + '</span><span style=\'color:var(--gold);font-size:1.2em;font-weight:600\'>€ ' + prix + '</span><span style=\'color:#4CAF50;font-size:.7rem;margin-left:.6rem;background:rgba(76,175,80,.12);padding:.2rem .5rem;border-radius:3px\'>-15%</span>' : '€ ' + prix}</div>
       <div class="vehicle-price-note">TVA incluse · ${state.tripType === 'aller-retour' ? 'Aller-retour -15% appliqué' : 'Prix estimé'}</div>
       ${!avail ? '<p style="font-size:.65rem;color:#E24B4A;margin-top:.5rem">Non disponible pour votre sélection</p>' : ''}
     `;
