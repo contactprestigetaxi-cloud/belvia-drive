@@ -945,11 +945,22 @@ function buildVehicles() {
   // Re-lire les adresses depuis les champs au cas où
   checkStep2();
 
+  // Pour aller-retour : lire les infos retour
+  let retourAeroport = '';
+  let retourDepot = '';
+  if (state.tripType === 'aller-retour' && state.svc === 'aeroport') {
+    retourAeroport = document.getElementById('retour-aeroport')?.value || state.arr;
+    retourDepot = document.getElementById('retour-adresse')?.value.trim() || state.dep;
+    state.retourAeroport = retourAeroport;
+    state.retourDepot = retourDepot;
+  }
+
   const origins = [state.dep];
   const destinations = [state.arr];
-  if (state.tripType === 'aller-retour' && state.svc === 'aeroport' && state.retourAdresse && state.retourAdresse.length > 2) {
-    origins.push(state.arr);
-    destinations.push(state.retourAdresse);
+  // Retour : aéroport_retour → adresse_dépôt
+  if (state.tripType === 'aller-retour' && state.svc === 'aeroport') {
+    origins.push(retourAeroport || state.arr);
+    destinations.push(retourDepot || state.dep);
   }
 
   if (typeof google !== 'undefined' && google.maps && state.dep && state.arr) {
@@ -965,8 +976,8 @@ function buildVehicles() {
         }
         if (state.tripType === 'aller-retour' && res.rows.length >= 2 && res.rows[1].elements.length >= 1 && res.rows[1].elements[0].status === 'OK') {
           state.distRetour = Math.round(res.rows[1].elements[0].distance.value / 1000);
-        } else {
-          state.distRetour = state.dist;
+        } else if (state.tripType === 'aller-retour') {
+          state.distRetour = state.dist; // fallback : même distance aller
         }
         if (state.svc === 'longue' && state.dist > 0 && state.dist < 120) {
           document.getElementById('modal-120km').style.display = 'flex';
