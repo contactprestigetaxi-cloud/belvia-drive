@@ -429,6 +429,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   initReveal();
   initFaq();
   injectWhatsAppFloat();
+  // Charger la carte zone de service (index uniquement)
+  const zoneIframe = document.getElementById('zone-map-iframe');
+  if (zoneIframe && BD_CONFIG?.google_maps?.api_key) {
+    const key = BD_CONFIG.google_maps.api_key;
+    zoneIframe.src = 'https://www.google.com/maps/embed/v1/view?key=' + key + '&center=50.8503,4.3517&zoom=10&maptype=roadmap';
+    const ph = document.getElementById('zone-map-placeholder');
+    if (ph) zoneIframe.onload = function() { ph.style.display = 'none'; };
+  }
 });
 
 /* ── WHATSAPP FLOATING BUTTON ── */
