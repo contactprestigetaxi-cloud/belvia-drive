@@ -347,10 +347,10 @@
           <div class="form-group"><label for="flight-num">Flight number</label><input type="text" id="flight-num" placeholder="e.g. SN 3702"></div>
           <div class="form-group"><label for="trip-bags">Number of bags</label>
             <select id="trip-bags">
-              <option value="0">Aucun bag</option>
-              <option value="1">1 valise</option>
-              <option value="2">2 valises</option>
-              <option value="3">3 valises</option>
+              <option value="0">No bags</option>
+              <option value="1">1 suitcase</option>
+              <option value="2">2 suitcases</option>
+              <option value="3">3 suitcases</option>
               <option value="4">4+ suitcases</option>
             </select>
           </div>
@@ -417,8 +417,8 @@
         </div>
         <div class="form-group"><label for="trip-bags">Bags</label>
           <select id="trip-bags">
-            <option value="0">Aucun bag</option><option value="1">1 valise</option>
-            <option value="2">2 valises</option><option value="3">3 valises</option>
+            <option value="0">No bags</option><option value="1">1 suitcase</option>
+            <option value="2">2 suitcases</option><option value="3">3 suitcases</option>
             <option value="4">4+ suitcases</option>
           </select>
         </div>
@@ -438,7 +438,7 @@
     </div>
 
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(1)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(1)">← Back</button>
       <button class="btn-next" id="btn2n" disabled onclick="goStep(3)">See prices →</button>
     </div>
   </div>
@@ -460,7 +460,7 @@
     <p class="api-note" id="api-note" style="display:none"></p>
     <div class="veh-grid" id="veh-grid"></div>
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(2)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(2)">← Back</button>
       <button class="btn-next" id="btn3n" disabled onclick="goStep(4)">Continue →</button>
     </div>
   </div>
@@ -508,7 +508,7 @@
       <label for="terms">I accept the <a href="/en/terms">terms and conditions</a> and the <a href="/en/privacy">privacy policy</a> of Belvia Drive.</label>
     </div>
     <div class="step-nav">
-      <button class="btn-prev" onclick="goStep(3)">← Retour</button>
+      <button class="btn-prev" onclick="goStep(3)">← Back</button>
       <button class="btn-next" id="btn4n" disabled onclick="submitBooking()">Confirm booking →</button>
     </div>
   </div>
@@ -1267,4 +1267,3 @@ function closeAllerRetourModal(accept) {
 </script>
 </body>
 </html>
-Thu Apr 16 21:42:08 UTC 2026
