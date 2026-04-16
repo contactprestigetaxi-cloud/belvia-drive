@@ -1,166 +1,127 @@
-# Belvia Drive — Guide de déploiement & intégrations
+# 🚗 Belvia Drive — Site VTC Premium Bruxelles
 
-## 📁 Structure des fichiers
+Site vitrine multilingue (FR/EN/NL) pour Belvia Drive, service de chauffeur privé premium à Bruxelles.
+
+**URL :** https://belviadrive.be  
+**Repo :** https://github.com/contactprestigetaxi-cloud/belvia-drive
+
+---
+
+## 📁 Structure du projet
 
 ```
 belvia-drive/
-├── config.json             ← SEUL fichier à modifier pour changer les prix
-├── style.css               ← Design system complet (ne pas modifier)
-├── components.js           ← Nav, footer, webhook, calculs (ne pas modifier)
-├── index.html              ← Homepage
-├── reservation.html        ← Simulateur 5 étapes
-├── transfert-aeroport.html ← Page SEO aéroport
-├── van-premium.html        ← Page SEO Van
-├── voyage-affaires.html    ← Page SEO affaires + B2B
-├── soirees-evenements.html ← Page soirées + formulaire
-├── longue-distance.html    ← Page longue distance
-├── sitemap.xml             ← Soumettez à Google Search Console
-└── robots.txt              ← SEO crawling
+│
+├── 🏠 PAGES FRANÇAIS (racine = /)
+│   ├── index.html              → Page d'accueil
+│   ├── reservation.html        → Formulaire réservation 4 étapes
+│   ├── transfert-aeroport.html → Service transfert aéroport
+│   ├── longue-distance.html    → Service longue distance
+│   ├── soirees-evenements.html → Service soirées & événements
+│   ├── van-premium.html        → Service Van Premium
+│   ├── voyage-affaires.html    → Service voyage d'affaires
+│   ├── b2b.html                → Page Corporate / B2B
+│   ├── taxi-ixelles-aeroport.html → Landing page locale (SEO)
+│   ├── conditions.html         → Conditions générales
+│   ├── legal.html              → Mentions légales
+│   └── privacy.html            → Politique de confidentialité
+│
+├── 🇬🇧 PAGES ANGLAIS (/en/)
+│   ├── en/index.html           → Homepage EN
+│   ├── en/reservation.html     → Booking form EN (4 steps)
+│   ├── en/airport-transfer.html
+│   ├── en/long-distance.html
+│   ├── en/events-evenings.html
+│   ├── en/van-premium.html
+│   ├── en/business-travel.html
+│   ├── en/b2b.html             → Corporate EN
+│   ├── en/terms.html           → Terms & Conditions EN
+│   ├── en/legal.html           → Legal notice EN
+│   └── en/privacy.html         → Privacy policy EN
+│
+├── 🇳🇱 PAGES NÉERLANDAIS (/nl/)
+│   ├── nl/index.html           → Homepage NL
+│   ├── nl/reservatie.html      → Reservatie formulier NL (4 stappen)
+│   ├── nl/luchthaven-transfer.html
+│   ├── nl/long-distance.html
+│   ├── nl/avond-evenementen.html
+│   ├── nl/van-premium.html
+│   ├── nl/zakelijk-vervoer.html
+│   ├── nl/b2b.html             → Zakelijk NL
+│   ├── nl/voorwaarden.html     → Voorwaarden NL
+│   ├── nl/legal.html           → Juridische kennisgeving NL
+│   └── nl/privacy.html         → Privacybeleid NL
+│
+├── 📝 BLOG (/blog/)
+│   ├── blog/taxi-aeroport-bruxelles-guide-complet.html  → FR
+│   ├── blog/airport-taxi-brussels-private-transfer.html  → EN
+│   └── blog/taxi-luchthaven-brussel-vtc.html             → NL
+│
+├── 🎨 ASSETS (/assets/)
+│   ├── berline-1.jpg à 6.jpg  → Photos véhicules
+│   ├── hero-desk.mp4           → Vidéo hero desktop
+│   ├── hero-video-9x16-hq.mp4 → Vidéo hero mobile
+│   └── og.jpg                  → Image Open Graph (partage social)
+│
+├── ⚙️ FICHIERS TECHNIQUES
+│   ├── style.css               → Styles globaux (design premium)
+│   ├── components.js           → Header, footer, lang switcher, nav
+│   ├── config.json             → Config site (prix, véhicules, zones)
+│   ├── 404.html                → Page erreur personnalisée
+│   ├── robots.txt              → Instructions crawlers SEO
+│   ├── sitemap.xml             → Plan du site (33 URLs)
+│   └── netlify.toml            → Config Netlify (legacy, plus utilisé)
+│
+└── 🛠️ SERVEUR (hors repo)
+    └── ../serve-site.js         → Serveur Node.js (port interne + Cloudflare Tunnel)
 ```
 
 ---
 
-## 🚀 Mise en ligne en 5 minutes (Netlify)
+## 🔄 Workflow Git
 
-1. Allez sur **netlify.com** → "Add new site" → "Deploy manually"
-2. Glissez-déposez le dossier `belvia-drive/` dans la zone de drop
-3. Votre site est en ligne sur une URL netlify.app en 30 secondes
-4. Allez dans "Domain settings" → ajoutez `belviadrive.be`
-5. Suivez les instructions DNS (pointez vers Netlify sur dns.be)
+| Branche | Usage | URL |
+|---------|-------|-----|
+| `main` | **Production** — ce qui est en live | belviadrive.be |
+| `dev` | **Développement** — modifs et tests en cours | test.belviadrive.be *(à configurer)* |
 
----
-
-## 💶 Modifier vos tarifs (UNIQUEMENT `config.json`)
-
-Ouvrez `config.json` avec n'importe quel éditeur de texte (Notepad, VS Code).
-
-### Changer le tarif kilométrique d'une berline :
-```json
-"berline": {
-  "base": 8.00,      ← Prise en charge (€)
-  "perKm": 2.50,     ← Prix par km (€) — MODIFIEZ ICI
-  "min": 28.00       ← Course minimum (€)
-}
-```
-
-### Changer un forfait aéroport :
-```json
-"forfaits_aeroport": {
-  "bru": {
-    "berline": 65,   ← MODIFIEZ CE CHIFFRE
-    "van": 92
-  }
-}
-```
-
-**Important** : Sauvegardez → Ré-uploadez le fichier sur Netlify → Les prix se mettent à jour instantanément.
-
-Sur Netlify, vous pouvez aussi éditer `config.json` directement depuis leur interface web.
+**Règle :** Jamais de modif directe sur `main`. Toujours travailler sur `dev`, tester, puis merge.
 
 ---
 
-## 📬 Activer les emails de confirmation (Make.com — GRATUIT)
+## 🌐 Mapping pages FR → EN → NL
 
-### Étape 1 — Créer le webhook Make.com
-1. Allez sur **make.com** → Créer un scénario
-2. Cliquez "+" → Cherchez **"Webhooks"** → "Custom webhook"
-3. Cliquez "Add" → nommez-le "Belvia Drive réservations"
-4. **Copiez l'URL générée** (format : `https://hook.eu1.make.com/XXXXXXXX`)
-
-### Étape 2 — Coller l'URL dans config.json
-```json
-"webhook": {
-  "url": "https://hook.eu1.make.com/VOTRE_ID_ICI",
-  "actif": true
-}
-```
-
-### Étape 3 — Configurer l'email de confirmation dans Make.com
-Après le module Webhook, ajoutez :
-- **Gmail** → Send Email → À : `{{bookingData.client.email}}`
-- Objet : `Confirmation réservation Belvia Drive {{bookingData.ref}}`
-- Corps : utilisez les variables `{{bookingData.client.prenom}}`, `{{bookingData.depart}}`, `{{bookingData.arrivee}}`, `{{bookingData.date}}`, `{{bookingData.prix_estime}}`
-
-### Bonus : Notification à vous-même
-Ajoutez un 2ème module Gmail → Envoyez-vous un email avec tous les détails à chaque réservation.
-
-### Variables disponibles dans le webhook :
-```
-bookingData.ref            → Numéro de réservation (ex: BD-A3X7K2)
-bookingData.service        → Type de service
-bookingData.depart         → Adresse de départ
-bookingData.arrivee        → Adresse d'arrivée
-bookingData.date           → Date du trajet
-bookingData.heure          → Heure de prise en charge
-bookingData.passagers      → Nombre de passagers
-bookingData.vehicule       → Nom du véhicule
-bookingData.prix_estime    → Tarif estimé (€)
-bookingData.paiement       → "enligne" ou "abord"
-bookingData.client.prenom  → Prénom du client
-bookingData.client.nom     → Nom du client
-bookingData.client.gsm     → Téléphone
-bookingData.client.email   → Email
-bookingData.client.notes   → Demandes particulières
-bookingData.timestamp      → Horodatage ISO
-```
+| Page | FR (racine) | EN (/en/) | NL (/nl/) |
+|------|-------------|-----------|-----------|
+| Accueil | `/` | `/en/` | `/nl/` |
+| Réservation | `/reservation` | `/en/reservation` | `/nl/reservatie` |
+| Aéroport | `/transfert-aeroport` | `/en/airport-transfer` | `/nl/luchthaven-transfer` |
+| Longue distance | `/longue-distance` | `/en/long-distance` | `/nl/long-distance` |
+| Soirées | `/soirees-evenements` | `/en/events-evenings` | `/nl/avond-evenementen` |
+| Van Premium | `/van-premium` | `/en/van-premium` | `/nl/van-premium` |
+| Affaires | `/voyage-affaires` | `/en/business-travel` | `/nl/zakelijk-vervoer` |
+| Corporate | `/b2b` | `/en/b2b` | `/nl/b2b` |
+| CGV | `/conditions` | `/en/terms` | `/nl/voorwaarden` |
+| Légal | `/legal` | `/en/legal` | `/nl/legal` |
+| Privacy | `/privacy` | `/en/privacy` | `/nl/privacy` |
+| Blog aéroport | `/blog/taxi-aeroport-bruxelles-guide-complet` | `/blog/airport-taxi-brussels-private-transfer` | `/blog/taxi-luchthaven-brussel-vtc` |
+| Landing Ixelles | `/taxi-ixelles-aeroport` | — | — |
 
 ---
 
-## 🗺 Activer Google Maps (adresses + calcul de distance)
+## 🔧 Stack technique
 
-1. Allez sur **console.cloud.google.com**
-2. Créez un projet → Activez **"Places API"** + **"Distance Matrix API"**
-3. Créez une clé API → Collez-la dans `config.json` :
-```json
-"google_maps": {
-  "api_key": "AIzaSy_VOTRE_CLE_ICI",
-  "actif": true
-}
-```
-4. Dans `reservation.html`, recherchez les commentaires `/* GM: */` et décommentez les blocs indiqués.
+- **Frontend :** HTML/CSS/JS statique (pas de framework)
+- **Serveur :** Node.js (`serve-site.js`) avec clean URLs
+- **DNS :** OVH → Cloudflare
+- **HTTPS :** Cloudflare Tunnel
+- **SEO :** hreflang (fr-BE, en, nl-BE, x-default), sitemap.xml, robots.txt
 
 ---
 
-## 💳 Activer le paiement en ligne (Mollie — recommandé Belgique)
+## ⚠️ Points d'attention
 
-1. Créez un compte sur **mollie.com** (certifié Belgique, KBC, BNP, Belfius)
-2. Récupérez votre clé API Mollie
-3. Dans Make.com, ajoutez un module Mollie pour créer un lien de paiement
-4. Envoyez le lien dans l'email de confirmation au client
-
----
-
-## 📊 Google Search Console (SEO)
-
-1. Allez sur **search.google.com/search-console**
-2. Ajoutez `belviadrive.be` → Vérification via DNS
-3. Soumettez `https://www.belviadrive.be/sitemap.xml`
-4. Attendez 48-72h pour l'indexation
-
----
-
-## 📅 Google My Business (indispensable)
-
-1. Allez sur **business.google.com**
-2. Catégorie : **"Service de limousine"**
-3. Zone de service : rayon 25km autour de Bruxelles
-4. Ajoutez vos photos de véhicules
-5. Répondez aux premiers avis → boost SEO local immédiat
-
----
-
-## ✅ Checklist de lancement
-
-- [ ] Enregistrer `belviadrive.be` sur dns.be (~€10/an)
-- [ ] Déployer sur Netlify (glisser-déposer)
-- [ ] Connecter le domaine
-- [ ] Remplir vos vrais numéros dans `config.json` (téléphone, email, TVA)
-- [ ] Remplir vos vrais tarifs dans `config.json`
-- [ ] Créer compte Make.com → configurer webhook emails
-- [ ] Soumettre sitemap.xml à Google Search Console
-- [ ] Créer Google My Business
-- [ ] Déposer marque BELVIA DRIVE Classe 39 sur boip.eu (~€244)
-
----
-
-*Belvia Drive — L'excellence à votre bord*
+- **`config.json`** contient les prix et configs véhicules — ne pas modifier sans demande explicite de Batiyo
+- **`components.js`** gère le header/footer/nav — toute nouvelle page doit être ajoutée dans `PAGE_MAP` ET `navLinks`
+- Les chemins dans EN/NL doivent être **absolus** (`/style.css`, `/components.js`) pas relatifs
+- Les vidéos hero doivent être encodées H.264 Baseline pour iOS Safari
