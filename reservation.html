@@ -1200,6 +1200,13 @@ async function submitBooking() {
   document.getElementById('prog-bar').style.display = 'none';
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('step5').classList.add('active');
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'reservation_complete', {
+      event_category: 'conversion',
+      event_label: state.svc || 'unknown',
+      value: state.prix || 0
+    });
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
