@@ -230,7 +230,7 @@ footer {
 .btn-outline:hover { background: var(--gold); color: var(--black); }
 .btn-ghost { background: transparent; border: none; color: var(--white-muted); padding: .95rem .5rem; }
 .btn-ghost:hover { color: var(--gold); transform: none; }
-.btn-full { width: 100%; justify-content: center; }
+.btn-full { width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.4; }
 .btn-arrow::after { content: '→'; transition: transform .3s; }
 .btn:hover .btn-arrow::after,
 .btn-arrow:hover::after { transform: translateX(4px); }

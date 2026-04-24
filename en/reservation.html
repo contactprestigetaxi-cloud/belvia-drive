@@ -233,7 +233,7 @@
         <div class="svc-desc">Paris, Amsterdam, Luxembourg, Cologne, Lille.<br>Guaranteed fare, tolls included.</div>
       </div>
     </div>
-    <div class="step-nav"><button class="btn-next" id="btn1n" disabled onclick="goStep(2)">Next →</button></div>
+    <div class="step-nav" style="display:none"><button class="btn-next" id="btn1n" disabled onclick="goStep(2)">Next →</button></div>
   </div>
 
   <!-- ━━ STEP 2 ━━ -->
@@ -461,7 +461,7 @@
     <div class="veh-grid" id="veh-grid"></div>
     <div class="step-nav">
       <button class="btn-prev" onclick="goStep(2)">← Back</button>
-      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)">Continue →</button>
+      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)" style="display:none">Continue →</button>
     </div>
   </div>
 
@@ -751,6 +751,7 @@ function selectService(svc, el) {
   state.svc = svc;
   state.dist = 0; state.distRetour = 0; state.duree = 0; state.veh = null; state.prix = 0;
   document.getElementById('btn1n').disabled = false;
+  showStep2(); checkStep2(); goStep(2);
 }
 
 /* ── STEP 2 ── */
@@ -1089,6 +1090,8 @@ function _renderVehicles() {
           document.getElementById('ar-prix-new').textContent = '\u20AC ' + prixAR;
           document.getElementById('ar-economie').textContent = '\u20AC ' + economie;
           document.getElementById('modal-aller-retour').style.display = 'flex';
+        } else {
+          goStep(4);
         }
       });
     }
@@ -1244,6 +1247,7 @@ function switchService(svc) {
 
 function closeAllerRetourModal(accept) {
   document.getElementById('modal-aller-retour').style.display = 'none';
+  if (!accept) { goStep(4); return; }
   if (accept) {
     state.tripType = 'aller-retour';
     const arBtn = document.querySelectorAll('.trip-type-btn')[2];

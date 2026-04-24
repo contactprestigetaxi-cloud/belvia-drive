@@ -415,15 +415,32 @@ function initFaq() {
 
 /* ─── WEBHOOK SENDER ─── */
 async function sendToWebhook(data) {
-  if (!BD_CONFIG?.webhook?.actif || !BD_CONFIG?.webhook?.url) {
-    console.log(' Webhook non configuré. Données de réservation:', data);
+  if (!BD_CONFIG?.webhook?.actif) {
+    console.log('Webhook non configuré. Données:', data);
     return { success: false, reason: 'webhook_not_configured' };
   }
+
+  // Route to the right n8n workflow based on data type
+  const urls = BD_CONFIG.webhook.urls || {};
+  let url = BD_CONFIG.webhook.url;
+  let lang = document.documentElement.lang?.slice(0,2) || 'fr';
+  
+  if (data.type === 'soiree_event_form') {
+    url = urls.soiree || url;
+  } else if (data.type === 'corporate_request') {
+    url = urls.corporate || url;
+  } else if (data.type === 'corporate_b2b') {
+    url = urls.b2b || url;
+  }
+  // Reservation form (classic, aeroport, etc.) uses default url
+
+  const payload = { ...data, lang, source: 'belviadrive.be', timestamp: new Date().toISOString() };
+
   try {
-    await fetch(BD_CONFIG.webhook.url, {
+    const resp = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...data, source: 'belviadrive.be', timestamp: new Date().toISOString() })
+      body: JSON.stringify(payload)
     });
     return { success: true };
   } catch(e) {

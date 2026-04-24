@@ -186,7 +186,7 @@
 <!-- Progress bar -->
 <div class="booking-progress" id="prog-bar">
   <div class="booking-progress-inner">
-    <div class="prog-step active" id="ps1"><div class="prog-dot">1</div><span>Service</span></div>
+    <div class="prog-step active" id="ps1"><div class="prog-dot">1</div><span>Dienst</span></div>
     <div class="prog-line" id="pl1"></div>
     <div class="prog-step" id="ps2"><div class="prog-dot">2</div><span>Rit</span></div>
     <div class="prog-line" id="pl2"></div>
@@ -234,7 +234,7 @@
         <div class="svc-desc">Parijs, Amsterdam, Luxemburg, Keulen, Rijsel.<br>Gegarandeerde prijs, tol inbegrepen.</div>
       </div>
     </div>
-    <div class="step-nav"><button class="btn-next" id="btn1n" disabled onclick="goStep(2)">Volgende →</button></div>
+    <div class="step-nav" style="display:none"><button class="btn-next" id="btn1n" disabled onclick="goStep(2)">Volgende →</button></div>
   </div>
 
   <!-- ━━ STEP 2 ━━ -->
@@ -339,7 +339,7 @@
 
       <!-- Infos vol aller -->
       <div id="flight-fields" style="display:none">
-        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;padding-top:.4rem" id="flight-aller-label">Rit aller</div>
+        <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;padding-top:.4rem" id="flight-aller-label">Heenreis</div>
         <div class="form-row-2">
           <div class="form-group"><label for="trip-date">Datum</label><input type="date" id="trip-date" min="" oninput="checkStep2()" onchange="checkStep2()"></div>
           <div class="form-group"><label for="trip-heure">Ophaaltijd</label><input type="time" id="trip-heure" oninput="checkStep2()" onchange="checkStep2()"></div>
@@ -359,7 +359,7 @@
 
         <!-- Infos vol retour (aller-retour uniquement) -->
         <div id="flight-retour-block" style="display:none;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,165,90,.15)">
-          <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Rit retour</div>
+          <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Retourrit</div>
           <div class="form-row-2">
             <div class="form-group"><label for="retour-date">Retourdatum</label><input type="date" id="retour-date" min="" onfocus="this.min=new Date().toISOString().split('T')[0]"></div>
             <div class="form-group"><label for="retour-heure">Gewenste afzettijd</label><input type="time" id="retour-heure"></div>
@@ -407,7 +407,7 @@
         <div class="form-group"><label for="trip-heure-std">Ophaaltijd</label><input type="time" id="trip-heure-std" oninput="checkStep2()" onchange="checkStep2()"></div>
       </div>
       <div class="form-row-2">
-        <div class="form-group"><label for="trip-pax">Passagers</label>
+        <div class="form-group"><label for="trip-pax">Passagiers</label>
           <select id="trip-pax">
             <option value="1">1 passagier</option><option value="2">2 passagiers</option>
             <option value="3">3 passagiers</option><option value="4">4 passagiers</option>
@@ -462,7 +462,7 @@
     <div class="veh-grid" id="veh-grid"></div>
     <div class="step-nav">
       <button class="btn-prev" onclick="goStep(2)">← Terug</button>
-      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)">Doorgaan →</button>
+      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)" style="display:none">Doorgaan →</button>
     </div>
   </div>
 
@@ -471,7 +471,7 @@
     <h2 class="step-h">Uw <em>gegevens</em></h2>
     <p class="step-subtitle">Laatste stap — contactgegevens en betaalmethode.</p>
     <div class="booking-recap" id="recap">
-      <div class="recap-row"><span class="recap-lbl">Service</span><span id="rec-svc">—</span></div>
+      <div class="recap-row"><span class="recap-lbl">Dienst</span><span id="rec-svc">—</span></div>
       <div class="recap-row"><span class="recap-lbl">Rit</span><span id="rec-traj">—</span></div>
       <div class="recap-row"><span class="recap-lbl">Datum &amp; tijd</span><span id="rec-date">—</span></div>
       <div class="recap-row"><span class="recap-lbl">Voertuig</span><span id="rec-veh">—</span></div>
@@ -580,8 +580,8 @@
 </div>
 <footer></footer>
 
-<script src="/components.js"></script>
-<script>
+<script data-cfasync="false" src="/components.js"></script>
+<script data-cfasync="false">
 // Charge Google Maps dynamiquement depuis /config.json
 (async () => {
   try {
@@ -661,7 +661,7 @@ function initGoogleMaps() {
   if (retourInput) new google.maps.places.Autocomplete(retourInput, opts);
 }
 </script>
-<script>
+<script data-cfasync="false">
 /* ════════════════════════════════════════════
    BELVIA DRIVE — Booking Engine
    Config-driven · Webhook-ready · Google Maps-ready
@@ -752,6 +752,7 @@ function selectService(svc, el) {
   state.svc = svc;
   state.dist = 0; state.distRetour = 0; state.duree = 0; state.veh = null; state.prix = 0;
   document.getElementById('btn1n').disabled = false;
+  showStep2(); checkStep2(); goStep(2);
 }
 
 /* ── STEP 2 ── */
@@ -865,8 +866,8 @@ function resetStep2Fields() {
     van: 'Ophaaladres en bestemming voor uw groep.',
     longue: 'Vertrekstad en bestemming in Europa (minimaal 120 km).'
   };
+  const sub = document.getElementById('s2-sub');
   if (sub) sub.textContent = subs[svc] || 'Vul uw adressen in.';
-  if (sub) sub.textContent = subs[svc] || 'Renseignez vos adresses.';
 
   document.getElementById('btn2n').disabled = true;
 }
@@ -1067,11 +1068,11 @@ function _renderVehicles() {
         </span>
         <span class="vehicle-spec">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A55A" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-          ${t.bagages_max} bagages
+          ${t.bagages_max} bagage
         </span>
       </div>
       <div class="vehicle-price">${isAllerRetour ? '<span style=\'color:rgba(255,255,255,.4);font-size:.85rem;text-decoration:line-through;margin-right:.8rem\'>€ ' + (Math.floor(calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }) + calculerPrix(key, kmRetour, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: false, destination: state.arr, depart: state.dep }))) + '</span><span style=\'color:var(--gold);font-size:1.2em;font-weight:600\'>€ ' + prix + '</span><span style=\'color:#4CAF50;font-size:.7rem;margin-left:.6rem;background:rgba(76,175,80,.12);padding:.2rem .5rem;border-radius:3px\'>-15%</span>' : '€ ' + prix}</div>
-      <div class="vehicle-price-note">Incl. btw · ${state.tripType === 'aller-retour' ? 'Retourreis -15% appliqué' : 'Geschatte prijs'}</div>
+      <div class="vehicle-price-note">Incl. btw · ${state.tripType === 'aller-retour' ? 'Retourreis -15% toegepast' : 'Geschatte prijs'}</div>
       ${!avail ? '<p style="font-size:.65rem;color:#E24B4A;margin-top:.5rem">Niet beschikbaar voor uw selectie</p>' : ''}
     `;
     if (avail) {
@@ -1090,6 +1091,8 @@ function _renderVehicles() {
           document.getElementById('ar-prix-new').textContent = '\u20AC ' + prixAR;
           document.getElementById('ar-economie').textContent = '\u20AC ' + economie;
           document.getElementById('modal-aller-retour').style.display = 'flex';
+        } else {
+          goStep(4);
         }
       });
     }
@@ -1105,15 +1108,15 @@ function buildRecap() {
     document.getElementById('rec-traj').textContent = `Heenreis: ${state.dep} → ${state.arr}`;
     // Afficher les infos retour si présentes
     const recDate = document.getElementById('rec-date');
-    const retourInfo = state.retourDate ? ` | Retour le ${state.retourDate}${state.retourHeure ? ' à ' + state.retourHeure : ''}` : '';
-    recDate.textContent = (state.date && state.heure ? `${state.date} à ${state.heure}` : '—') + retourInfo;
+    const retourInfo = state.retourDate ? ` | Terug op ${state.retourDate}${state.retourHeure ? ' om ' + state.retourHeure : ''}` : '';
+    recDate.textContent = (state.date && state.heure ? `${state.date} om ${state.heure}` : '—') + retourInfo;
     // Note retour adresse
     if (state.retourAdresse) {
       document.getElementById('rec-traj').textContent += ` | Afzetten: ${state.retourAdresse}`;
     }
   } else {
     document.getElementById('rec-traj').textContent = `${state.dep} → ${state.arr}`;
-    document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} à ${state.heure}` : '—';
+    document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} om ${state.heure}` : '—';
   }
   
   document.getElementById('rec-veh').textContent = state.vehName || '—';
@@ -1180,10 +1183,10 @@ async function submitBooking() {
   document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
   document.getElementById('cs-dep').textContent = state.dep || '—';
   document.getElementById('cs-arr').textContent = state.arr || '—';
-  document.getElementById('cs-date').textContent = `${state.date} à ${state.heure}`;
+  document.getElementById('cs-date').textContent = `${state.date} om ${state.heure}`;
   document.getElementById('cs-pax').textContent = `${state.pax} passagier(s)`;
   document.getElementById('cs-veh').textContent = state.vehName || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (carte)' : 'Aan boord';
+  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Aan boord';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation
@@ -1245,6 +1248,7 @@ function switchService(svc) {
 
 function closeAllerRetourModal(accept) {
   document.getElementById('modal-aller-retour').style.display = 'none';
+  if (!accept) { goStep(4); return; }
   if (accept) {
     state.tripType = 'aller-retour';
     const arBtn = document.querySelectorAll('.trip-type-btn')[2];

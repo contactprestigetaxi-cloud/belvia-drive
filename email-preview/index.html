@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Templates — Belvia Drive</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0f0f0f;color:#eee;margin:0;padding:2rem}
+h1{color:#C9A55A;font-size:1.2rem;letter-spacing:.15em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1.5rem}
+a{display:block;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:1.2rem;text-decoration:none;color:#eee;transition:all .2s}
+a:hover{border-color:#C9A55A;background:#222}
+a span{display:block;font-size:.7rem;color:#888;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+a strong{color:#C9A55A;font-size:.9rem}
+.badge{display:inline-block;font-size:.6rem;padding:.2rem .5rem;border-radius:3px;margin-left:.5rem;font-weight:600}
+.fr{background:#002395;color:#fff}
+.en{background:#cf142b;color:#fff}
+.nl{background:#ff8c00;color:#000}
+p{color:#666;font-size:.8rem;margin-top:2rem}
+</style></head><body>
+<h1>📧 Email Templates — Belvia Drive</h1>
+<div class="grid">
+<a href="fr-aeroport.html"><span>Template</span><strong>Transfert Aéroport</strong> <span class="badge fr">FR</span></a>
+<a href="fr-classique.html"><span>Template</span><strong>Course Classique</strong> <span class="badge fr">FR</span></a>
+<a href="fr-affaires.html"><span>Template</span><strong>Transport Professionnel</strong> <span class="badge fr">FR</span></a>
+<a href="fr-van.html"><span>Template</span><strong>Van Premium</strong> <span class="badge fr">FR</span></a>
+<a href="fr-soiree.html"><span>Template</span><strong>Soirée & Événement</strong> <span class="badge fr">FR</span></a>
+<a href="fr-longue.html"><span>Template</span><strong>Longue Distance</strong> <span class="badge fr">FR</span></a>
+<a href="en-aeroport.html"><span>Template</span><strong>Airport Transfer</strong> <span class="badge en">EN</span></a>
+<a href="en-classique.html"><span>Template</span><strong>Standard Ride</strong> <span class="badge en">EN</span></a>
+<a href="nl-aeroport.html"><span>Template</span><strong>Luchthaventransfer</strong> <span class="badge nl">NL</span></a>
+<a href="nl-classique.html"><span>Template</span><strong>Rit</strong> <span class="badge nl">NL</span></a>
+</div>
+<p>⚠️ Les variables n8n ({{ $json.xxx }}) s'affichent en texte brut ici — elles seront remplies dynamiquement en production.</p>
+</body></html>

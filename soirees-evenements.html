@@ -90,7 +90,7 @@
 </select>
 </div>      <div class="form-row-2">        <div class="form-group">
 <label>Date de l'événement *</label>
-<input type="date" id="ev-date">
+<input type="date" id="ev-date" min="">
 </div>        <div class="form-group">
 <label>Heure de début estimée</label>
 <input type="time" id="ev-heure">
@@ -99,27 +99,27 @@
 <input type="text" id="ev-lieu" placeholder="Ex: Palais des Beaux-Arts, Rue Ravenstein 23, Bruxelles">
 </div>      <div class="form-row-2">        <div class="form-group">
 <label>Nombre de passagers</label>
-<select>
-<option>1 à 3</option>
-<option>4 à 7</option>
-<option>8 et +</option>
+<select id="ev-passagers">
+<option value="1-3">1 à 3</option>
+<option value="4-7">4 à 7</option>
+<option value="8+">8 et +</option>
 </select>
 </div>        <div class="form-group">
 <label>Durée estimée</label>
-<select>
-<option>Moins de 3h</option>
-<option>3h à 6h</option>
-<option>Soirée complète</option>
-<option>Toute la nuit</option>
+<select id="ev-duree">
+<option value="<3h">Moins de 3h</option>
+<option value="3-6h">3h à 6h</option>
+<option value="soiree">Soirée complète</option>
+<option value="nuit">Toute la nuit</option>
 </select>
 </div>      </div>      <div class="form-group">
 <label>Véhicule souhaité</label>
-<select>
+<select id="ev-vehicule">
 <option value="">Sans préférence</option>
-<option>Berline Premium (3 pax)</option>
-<option>Break Confort (4 pax)</option>
-<option>Van Prestige (8 pax)</option>
-<option>Électrique (3 pax)</option>
+<option value="berline">Berline Premium (3 pax)</option>
+<option value="break">Break Confort (4 pax)</option>
+<option value="van">Van Prestige (8 pax)</option>
+<option value="electrique">Électrique (3 pax)</option>
 </select>
 </div>      <div class="form-row-2">        <div class="form-group">
 <label>Prénom & Nom *</label>
@@ -146,6 +146,7 @@
 </footer>
 <script src="components.js?v=20260412d">
 </script>
-<script>async function submitEventForm(btn) {  // Validation côté client  const evType = document.getElementById('ev-type').value;  const evDate = document.getElementById('ev-date').value;  const evLieu = document.getElementById('ev-lieu').value.trim();  const evNom = document.getElementById('ev-nom').value.trim();  const evGsm = document.getElementById('ev-gsm').value.trim();  const evEmail = document.getElementById('ev-email').value.trim();  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(evEmail);  const errors = [];  if (!evType) errors.push('le type d\'événement');  if (!evDate) errors.push('la date');  if (!evLieu) errors.push('le lieu');  if (!evNom) errors.push('votre nom');  if (!evGsm || evGsm.length < 8) errors.push('votre GSM');  if (!emailOk) errors.push('un email valide');  if (errors.length > 0) {    alert('Merci de renseigner : ' + errors.join(', ') + '.');    return;  }  btn.disabled = true;  btn.textContent = 'Envoi en cours…';  const data = {    type: 'soiree_event_form',    event_type: evType,    date: evDate,    heure: document.getElementById('ev-heure').value,    lieu: evLieu,    nom: evNom,    gsm: evGsm,    email: evEmail,    notes: document.getElementById('ev-notes').value,    timestamp: new Date().toISOString()  };  await sendToWebhook(data);  btn.textContent = 'Demande envoyée — réponse dans 4h';  btn.style.background = '#2E7D50'; btn.style.color = '#fff';  btn.disabled = false;}</script>
+<script>document.addEventListener('DOMContentLoaded',function(){var d=document.getElementById('ev-date');if(d){var today=new Date().toISOString().split('T')[0];d.setAttribute('min',today);}});</script>
+<script>async function submitEventForm(btn){const evType=document.getElementById('ev-type').value;const evDate=document.getElementById('ev-date').value;const evLieu=document.getElementById('ev-lieu').value.trim();const evNom=document.getElementById('ev-nom').value.trim();const evGsm=document.getElementById('ev-gsm').value.trim();const evEmail=document.getElementById('ev-email').value.trim();const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(evEmail);const errors=[];if(!evType)errors.push('le type d\'événement');if(!evDate)errors.push('la date');if(!evLieu)errors.push('le lieu');if(!evNom)errors.push('votre nom');if(!evGsm||evGsm.length<8)errors.push('votre GSM');if(!emailOk)errors.push('un email valide');if(errors.length>0){alert('Merci de renseigner : '+errors.join(', ')+'.');return;}btn.disabled=true;btn.textContent='Envoi en cours…';const data={type:'soiree_event_form',service:'soiree',evenement:evType,date:evDate,heure:document.getElementById('ev-heure').value,lieu:evLieu,passagers:document.getElementById('ev-passagers')?.value||'',duree:document.getElementById('ev-duree')?.value||'',vehicule:document.getElementById('ev-vehicule')?.value||'',client:{prenom:evNom,gsm:evGsm,email:evEmail},notes:document.getElementById('ev-notes').value,timestamp:new Date().toISOString()};await sendToWebhook(data);btn.textContent='Demande envoyée — réponse dans 4h';btn.style.background='#2E7D50';btn.style.color='#fff';btn.disabled=false;}</script>
 </body>
 </html>

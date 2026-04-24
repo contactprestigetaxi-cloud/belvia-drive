@@ -88,8 +88,14 @@
     }
   },
   "webhook": {
-    "url": "https://admin.belviadrive.be/api/webhook/reservations",
-    "actif": true
+    "url": "https://belviadrive.be/api/webhook/belvia-reservation",
+    "actif": true,
+    "urls": {
+      "reservation": "https://belviadrive.be/api/webhook/belvia-reservation",
+      "soiree": "https://belviadrive.be/api/webhook/belvia-soiree",
+      "corporate": "https://belviadrive.be/api/webhook/belvia-corporate",
+      "b2b": "https://belviadrive.be/api/webhook/belvia-b2b"
+    }
   },
   "google_maps": {
     "api_key": "AIzaSyDawONagvvPE97l9kxtQr6PKdBFiuEYr6Y",
