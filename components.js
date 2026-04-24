@@ -445,6 +445,35 @@ async function sendToWebhook(data) {
     return { success: true };
   } catch(e) {
     console.error('Erreur webhook:', e);
+    
+    // Fallback 1 : email de secours
+    const subject = encodeURIComponent(
+      'RÉSERVATION MANQUÉE — ' + (data.ref || 'REF?') + 
+      ' — ' + (data.client?.prenom || '') + ' ' + (data.client?.nom || '') +
+      ' — ' + (data.service || '') + 
+      ' — ' + (data.date || '') + ' ' + (data.heure || '')
+    );
+    const body = encodeURIComponent(
+      'Référence: ' + (data.ref || '?') + '\n' +
+      'Client: ' + (data.client?.prenom || '') + ' ' + (data.client?.nom || '') + '\n' +
+      'Email: ' + (data.client?.email || '?') + '\n' +
+      'GSM: ' + (data.client?.gsm || '?') + '\n' +
+      'Service: ' + (data.service || '?') + '\n' +
+      'Départ: ' + (data.depart || '?') + '\n' +
+      'Arrivée: ' + (data.arrivee || '?') + '\n' +
+      'Date: ' + (data.date || '?') + ' à ' + (data.heure || '?') + '\n' +
+      'Véhicule: ' + (data.vehicule || '?') + '\n' +
+      'Prix estimé: ' + (data.prix_estime || '?') + '€'
+    );
+    window.open('mailto:contact@belviadrive.be?subject=' + subject + '&body=' + body);
+    
+    // Fallback 2 : message visible à l'utilisateur
+    const errMsg = document.createElement('div');
+    errMsg.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;padding:1rem 1.5rem;margin:1rem 0;font-size:.85rem;line-height:1.7;';
+    errMsg.innerHTML = '<strong>⚠️ Votre réservation a été enregistrée côté client</strong><br>En raison d\'un problème technique temporaire, veuillez nous confirmer votre réservation par téléphone au <a href="tel:+32496201112" style="color:#C9A55A;font-weight:600">+32 496 20 11 12</a> ou par WhatsApp avec votre référence <strong>' + (data.ref || '') + '</strong>. Merci.';
+    const confSection = document.getElementById('step5') || document.querySelector('.conf-block');
+    if (confSection) confSection.prepend(errMsg);
+    
     return { success: false, reason: 'network_error' };
   }
 }

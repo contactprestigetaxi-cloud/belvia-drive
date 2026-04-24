@@ -161,7 +161,7 @@
     </nav>
     <div class="section-eyebrow">Réservation en ligne — 2 minutes</div>
     <h1>Votre tarif exact, <em>maintenant</em></h1>
-    <p>Pas de surprise.<br>Pas de compteur.<br>Le prix affiché est le prix payé, confirmé avant même de réserver.<br>Paiement en ligne sécurisé disponible.</p>
+    <p>Pas de surprise.<br>Pas de compteur.<br>Le prix affiché est le prix payé, confirmé avant même de réserver.<br>Paiement à bord ou par virement bancaire.</p>
 
     <!-- Reassurance strip before form -->
     <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem" role="list" aria-label="Garanties Belvia Drive">
@@ -494,7 +494,7 @@
         <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
           <div class="pay-name">En ligne</div>
-          <div class="pay-desc">Carte bancaire sécurisée via Stripe ou Mollie.<br><em style="font-size:.65rem;color:rgba(201,165,90,.5)">Configuration à venir</em></div>
+          <div class="pay-desc">Paiement à bord ou par virement bancaire.</div>
         </div>
         <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
@@ -517,8 +517,8 @@
   <div class="step-panel" id="step5">
     <div class="conf-box">
       <div class="conf-check" aria-label="Réservation confirmée"></div>
-      <div class="conf-ref-label">Référence de réservation</div>
-      <div class="conf-ref-num" id="conf-ref">BD-XXXXXX</div>
+      <div class="conf-ref-label" style="display:none">Référence de réservation</div>
+      <div class="conf-ref-num" id="conf-ref"></div>
       <p class="conf-msg">
         Merci <strong id="conf-prenom"></strong> ! Votre demande a bien été reçue.<br>
         Un email de confirmation sera envoyé à <strong id="conf-email"></strong> dans les prochaines minutes.
@@ -1178,16 +1178,21 @@ async function submitBooking() {
   await sendToWebhook(bookingData);
 
   // Fill confirmation page
-  document.getElementById('conf-ref').textContent = ref;
-  document.getElementById('conf-prenom').textContent = state.prenom;
+  const confRef = document.getElementById('conf-ref');
+  if (confRef) {
+    confRef.textContent = ref;
+    const label = confRef.previousElementSibling;
+    if (label && label.classList.contains('conf-ref-label')) label.style.display = '';
+  }
+  document.getElementById('conf-prenom').textContent = state.prenom || '—';
   document.getElementById('conf-email').textContent = state.email;
   document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
   document.getElementById('cs-dep').textContent = state.dep || '—';
   document.getElementById('cs-arr').textContent = state.arr || '—';
-  document.getElementById('cs-date').textContent = `${state.date} à ${state.heure}`;
-  document.getElementById('cs-pax').textContent = `${state.pax} passager(s)`;
+  document.getElementById('cs-date').textContent = (state.date && state.heure) ? `${state.date} à ${state.heure}` : '—';
+  document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passager(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehNom || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'En ligne (carte)' : 'À bord';
+  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'En ligne (carte)' : 'Paiement à bord ou par virement';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation

@@ -161,7 +161,7 @@
     </nav>
     <div class="section-eyebrow">Online booking — 2 minutes</div>
     <h1>Your exact fare, <em>now</em></h1>
-    <p>No surprises.<br>No meter.<br>The displayed price is what you pay, confirmed before you book.<br>Secure online payment available.</p>
+    <p>No surprises.<br>No meter.<br>The displayed price is what you pay, confirmed before you book.<br>Payment on board or by bank transfer.</p>
 
     <!-- Reassurance strip before form -->
     <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem" role="list" aria-label="Belvia Drive guarantees">
@@ -494,7 +494,7 @@
         <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
           <div class="pay-name">Online</div>
-          <div class="pay-desc">Secure card payment via Stripe or Mollie.<br><em style="font-size:.65rem;color:rgba(201,165,90,.5)">Coming soon</em></div>
+          <div class="pay-desc">Payment on board or by bank transfer.</div>
         </div>
         <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
@@ -517,8 +517,8 @@
   <div class="step-panel" id="step5">
     <div class="conf-box">
       <div class="conf-check" aria-label="Booking confirmée"></div>
-      <div class="conf-ref-label">Booking reference</div>
-      <div class="conf-ref-num" id="conf-ref">BD-XXXXXX</div>
+      <div class="conf-ref-label" style="display:none">Booking reference</div>
+      <div class="conf-ref-num" id="conf-ref"></div>
       <p class="conf-msg">
         Thank you <strong id="conf-prenom"></strong>! Your booking has been received.<br>
         A confirmation email will be sent to <strong id="conf-email"></strong> within the next few minutes.
@@ -1182,10 +1182,10 @@ async function submitBooking() {
   document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
   document.getElementById('cs-dep').textContent = state.dep || '—';
   document.getElementById('cs-arr').textContent = state.arr || '—';
-  document.getElementById('cs-date').textContent = `${state.date} at ${state.heure}`;
-  document.getElementById('cs-pax').textContent = `${state.pax} passenger(s)`;
+  document.getElementById('cs-date').textContent = (state.date && state.heure) ? `${state.date} at ${state.heure}` : '—';
+  document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passenger(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehName || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (card)' : 'On board';
+  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (card)' : 'Payment on board or by bank transfer';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation

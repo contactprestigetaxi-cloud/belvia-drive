@@ -495,7 +495,7 @@
         <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
           <div class="pay-name">Online</div>
-          <div class="pay-desc">Veilige betaling met kaart via Stripe of Mollie.<br><em style="font-size:.65rem;color:rgba(201,165,90,.5)">Binnenkort beschikbaar</em></div>
+          <div class="pay-desc">Betaling aan boord of via bankoverschrijving.</div>
         </div>
         <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
@@ -518,8 +518,8 @@
   <div class="step-panel" id="step5">
     <div class="conf-box">
       <div class="conf-check" aria-label="Reservering bevestigd"></div>
-      <div class="conf-ref-label">Referentienummer</div>
-      <div class="conf-ref-num" id="conf-ref">BD-XXXXXX</div>
+      <div class="conf-ref-label" style="display:none">Referentienummer</div>
+      <div class="conf-ref-num" id="conf-ref"></div>
       <p class="conf-msg">
         Bedankt <strong id="conf-prenom"></strong>! Uw aanvraag is goed ontvangen.<br>
         Een bevestigingsmail wordt verzonden naar <strong id="conf-email"></strong> binnen enkele minuten.
@@ -1183,10 +1183,10 @@ async function submitBooking() {
   document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
   document.getElementById('cs-dep').textContent = state.dep || '—';
   document.getElementById('cs-arr').textContent = state.arr || '—';
-  document.getElementById('cs-date').textContent = `${state.date} om ${state.heure}`;
-  document.getElementById('cs-pax').textContent = `${state.pax} passagier(s)`;
+  document.getElementById('cs-date').textContent = (state.date && state.heure) ? `${state.date} om ${state.heure}` : '—';
+  document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passagier(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehName || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Aan boord';
+  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Betaling aan boord of via bankoverschrijving';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation
