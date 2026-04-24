@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Particuliere Chauffeur Reserveren in Brussel | Belvia Drive — Directe Prijs</title>
@@ -1105,22 +1106,30 @@ function buildRecap() {
   document.getElementById('rec-svc').textContent = SVC_LABELS[state.svc] || '—';
   
   if (state.tripType === 'aller-retour' && state.svc === 'aeroport') {
-    document.getElementById('rec-traj').textContent = `Heenreis: ${state.dep} → ${state.arr}`;
-    // Afficher les infos retour si présentes
-    const recDate = document.getElementById('rec-date');
-    const retourInfo = state.retourDate ? ` | Terug op ${state.retourDate}${state.retourHeure ? ' om ' + state.retourHeure : ''}` : '';
-    recDate.textContent = (state.date && state.heure ? `${state.date} om ${state.heure}` : '—') + retourInfo;
-    // Note retour adresse
-    if (state.retourAdresse) {
-      document.getElementById('rec-traj').textContent += ` | Afzetten: ${state.retourAdresse}`;
+    document.getElementById('rec-traj').innerHTML = '<strong>Heenreis:</strong> ' + (state.dep || '—') + ' → ' + (state.arr || '—');
+    document.getElementById('rec-date').textContent = state.date && state.heure ? 'Heenreis: ' + state.date + ' om ' + state.heure : '—';
+    let existingRetour = document.getElementById('rec-retour-block');
+    if (!existingRetour) {
+      const recapEl = document.getElementById('recap');
+      const prixRow = document.getElementById('rec-prix').parentElement;
+      const retourBlock = document.createElement('div');
+      retourBlock.id = 'rec-retour-block';
+      retourBlock.style.cssText = 'margin-top:.5rem;padding-top:.5rem;border-top:1px dashed rgba(201,165,90,.2)';
+      recapEl.insertBefore(retourBlock, prixRow);
+      existingRetour = retourBlock;
     }
+    const retourAero = document.getElementById('retour-aeroport')?.value || state.arr || '—';
+    existingRetour.innerHTML = '<div class="recap-row"><span class="recap-lbl">Terugreis</span><span><strong>' + retourAero + '</strong> → ' + (state.retourAdresse || state.dep || '—') + '</span></div>'
+      + '<div class="recap-row"><span class="recap-lbl">Retourdatum</span><span>' + (state.retourDate && state.retourHeure ? state.retourDate + ' om ' + state.retourHeure : state.retourDate || '—') + '</span></div>';
   } else {
-    document.getElementById('rec-traj').textContent = `${state.dep} → ${state.arr}`;
-    document.getElementById('rec-date').textContent = state.date && state.heure ? `${state.date} om ${state.heure}` : '—';
+    document.getElementById('rec-traj').textContent = (state.dep || '—') + ' → ' + (state.arr || '—');
+    document.getElementById('rec-date').textContent = state.date && state.heure ? state.date + ' om ' + state.heure : '—';
+    const existingRetour = document.getElementById('rec-retour-block');
+    if (existingRetour) existingRetour.remove();
   }
   
   document.getElementById('rec-veh').textContent = state.vehName || '—';
-  document.getElementById('rec-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
+  document.getElementById('rec-prix').textContent = state.prix ? '€ ' + state.prix : '—';
 }
 
 function selPay(type, el) {
@@ -1154,9 +1163,14 @@ async function submitBooking() {
     arrivee: state.arr,
     date: state.date,
     heure: state.heure,
+    retour_date: state.retourDate || null,
+    retour_heure: state.retourHeure || null,
+    retour_aeroport: state.retourAeroport || null,
+    retour_adresse: state.retourAdresse || null,
     passagiers: state.pax,
     bagages: state.bags,
     num_vol: state.flightNum || null,
+    num_vol_retour: document.getElementById('retour-vol')?.value || null,
     vehicule: state.vehName,
     vehicule_key: state.veh,
     prix_estime: state.prix,
@@ -1181,9 +1195,15 @@ async function submitBooking() {
   document.getElementById('conf-prenom').textContent = state.prenom;
   document.getElementById('conf-email').textContent = state.email;
   document.getElementById('cs-svc').textContent = SVC_LABELS[state.svc] || '—';
-  document.getElementById('cs-dep').textContent = state.dep || '—';
-  document.getElementById('cs-arr').textContent = state.arr || '—';
-  document.getElementById('cs-date').textContent = (state.date && state.heure) ? `${state.date} om ${state.heure}` : '—';
+  if (state.tripType === 'aller-retour') {
+    document.getElementById('cs-dep').textContent = 'Heenreis: ' + (state.dep || '—') + ' → ' + (state.arr || '—');
+    document.getElementById('cs-arr').textContent = 'Terugreis: ' + (document.getElementById('retour-aeroport')?.value || state.arr || '—') + ' → ' + (state.retourAdresse || state.dep || '—');
+    document.getElementById('cs-date').textContent = 'Heenreis: ' + (state.date && state.heure ? state.date + ' om ' + state.heure : '—') + (state.retourDate ? ' | Terugreis: ' + state.retourDate + (state.retourHeure ? ' om ' + state.retourHeure : '') : '');
+  } else {
+    document.getElementById('cs-dep').textContent = state.dep || '—';
+    document.getElementById('cs-arr').textContent = state.arr || '—';
+    document.getElementById('cs-date').textContent = (state.date && state.heure) ? state.date + ' om ' + state.heure : '—';
+  }
   document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passagier(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehName || '—';
   document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Betaling aan boord of via bankoverschrijving';
