@@ -104,5 +104,9 @@
   "concurrents": {
     "taxi_classique": {},
     "vtc": {}
+  },
+  "analytics": {
+    "ga4_id": "G-KPBSHWYV9B",
+    "actif": true
   }
 }

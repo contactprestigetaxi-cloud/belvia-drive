@@ -481,6 +481,20 @@ async function sendToWebhook(data) {
 /* ─── INIT ─── */
 document.addEventListener('DOMContentLoaded', async () => {
   await loadConfig();
+
+  // GA4
+  if (BD_CONFIG?.analytics?.actif && BD_CONFIG?.analytics?.ga4_id) {
+    const s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + BD_CONFIG.analytics.ga4_id;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', BD_CONFIG.analytics.ga4_id);
+  }
+
   const page = document.body.dataset.page || '';
   buildNav(page);
   buildFooter();
