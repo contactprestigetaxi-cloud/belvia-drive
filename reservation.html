@@ -462,7 +462,6 @@
     <div class="veh-grid" id="veh-grid"></div>
     <div class="step-nav">
       <button class="btn-prev" onclick="goStep(2)">← Retour</button>
-      <button class="btn-next" id="btn3n" disabled onclick="goStep(4)" style="display:none">Continuer →</button>
     </div>
   </div>
 
@@ -512,7 +511,7 @@
   <!-- ━━ STEP 5 — CONFIRMATION ━━ -->
   <div class="step-panel" id="step5">
     <div class="conf-box">
-      <div class="conf-check" aria-label="Réservation confirmée"></div>
+      <div class="conf-check" aria-label="Réservation confirmée">✓</div>
       <div class="conf-ref-label" style="display:none">Référence de réservation</div>
       <div class="conf-ref-num" id="conf-ref"></div>
       <p class="conf-msg">
@@ -745,7 +744,8 @@ function goStep(n) {
     state.veh = null; state.prix = 0;
     document.getElementById('veh-grid').innerHTML = '';
     document.getElementById('btn2n').disabled = true;
-    document.getElementById('btn3n').disabled = true;
+    const btn3nStep2 = document.getElementById('btn3n');
+    if (btn3nStep2) btn3nStep2.disabled = true;
     document.getElementById('rec-prix').textContent = '—';
     // Si adresses toujours présentes, permettre de recalculer
     checkStep2();
@@ -808,7 +808,8 @@ function setTripType(type, el) {
   document.getElementById('addr-arr-select').value = '';
   document.getElementById('veh-grid').innerHTML = '';
   document.getElementById('btn2n').disabled = true;
-  document.getElementById('btn3n').disabled = true;
+  const btn3nTripType = document.getElementById('btn3n');
+  if (btn3nTripType) btn3nTripType.disabled = true;
   document.getElementById('rec-prix').textContent = '—';
   // Reset retour adresse si aller-retour
   const retourAddr = document.getElementById('retour-adresse');
@@ -902,6 +903,8 @@ function resetStep2Fields() {
   if (sub) sub.textContent = subs[svc] || 'Renseignez vos adresses.';
 
   document.getElementById('btn2n').disabled = true;
+  const btn3nReset = document.getElementById('btn3n');
+  if (btn3nReset) btn3nReset.disabled = true;
 }
 
 function onAirportDepSelect(value) {
@@ -989,7 +992,8 @@ function buildVehicles() {
   state.veh = null; state.prix = 0;
   const grid = document.getElementById('veh-grid');
   if (grid) grid.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--white-muted);font-size:.85rem">Calcul en cours...</div>';
-  document.getElementById('btn3n').disabled = true;
+  const btn3nBuild = document.getElementById('btn3n');
+  if (btn3nBuild) btn3nBuild.disabled = true;
 
   // Re-lire les adresses depuis les champs au cas où
   checkStep2();
@@ -1113,7 +1117,8 @@ function _renderVehicles() {
         document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         state.veh = key; state.prix = prix; state.vehNom = t.nom;
-        document.getElementById('btn3n').disabled = false;
+        const btn3nSelect = document.getElementById('btn3n');
+        if (btn3nSelect) btn3nSelect.disabled = false;
         // Popup aller-retour si trajet simple (sauf soirée)
         if (state.tripType === 'aller' && state.svc === 'aeroport') {
           const prixAR = calculerPrix(key, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: true, kmRetour: kmAller, destination: state.arr, depart: state.dep });
