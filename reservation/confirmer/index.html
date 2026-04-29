@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confirmation de réservation | Belvia Drive</title>
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/style.css?v=1777196146">
+<style>
+main{max-width:860px;margin:0 auto;padding:3rem 5vw 5rem}
+.card{background:rgba(10,10,10,.86);border:1px solid rgba(201,165,90,.22);border-radius:24px;padding:2rem;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.grid{display:grid;gap:.9rem;margin-top:1.5rem}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.label{color:rgba(255,255,255,.62)}
+.value{text-align:right}
+.actions{margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header></header>
+<main>
+  <div class="card">
+    <div class="eyebrow" id="eyebrow">Confirmation</div>
+    <h1 id="title">Réservation confirmée</h1>
+    <p id="intro">Merci. Votre demande a bien été reçue.</p>
+    <div class="grid">
+      <div class="row"><span class="label" id="label-ref">Référence</span><span class="value" id="ref">—</span></div>
+      <div class="row"><span class="label" id="label-service">Service</span><span class="value" id="service">—</span></div>
+      <div class="row"><span class="label" id="label-route">Trajet</span><span class="value" id="route">—</span></div>
+      <div class="row"><span class="label" id="label-date">Date</span><span class="value" id="date">—</span></div>
+      <div class="row"><span class="label" id="label-email">Email</span><span class="value" id="email">—</span></div>
+      <div class="row"><span class="label" id="label-price">Prix</span><span class="value" id="price">—</span></div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-gold" href="/">Belvia Drive</a>
+      <a class="btn btn-outline" href="/reservation">Nouvelle réservation</a>
+    </div>
+  </div>
+</main>
+<footer></footer>
+<script src="/components.js?v=1777196146"></script>
+<script>
+const I18N={
+  fr:{lang:'fr',eyebrow:'Confirmation',title:'Réservation confirmée',intro:'Merci. Votre demande a bien été reçue. Un email de confirmation sera envoyé dans les prochaines minutes.',ref:'Référence',service:'Service',route:'Trajet',date:'Date',email:'Email',price:'Prix',home:'Belvia Drive',again:'Nouvelle réservation'},
+  en:{lang:'en',eyebrow:'Confirmation',title:'Booking confirmed',intro:'Thank you. Your request has been received. A confirmation email will be sent in the next few minutes.',ref:'Reference',service:'Service',route:'Journey',date:'Date',email:'Email',price:'Price',home:'Belvia Drive',again:'New booking'},
+  nl:{lang:'nl',eyebrow:'Bevestiging',title:'Reservering bevestigd',intro:'Bedankt. Uw aanvraag is goed ontvangen. Een bevestigingsmail wordt binnen enkele minuten verzonden.',ref:'Referentie',service:'Service',route:'Rit',date:'Datum',email:'E-mail',price:'Prijs',home:'Belvia Drive',again:'Nieuwe reservatie'}
+};
+let data=null;
+try{data=JSON.parse(sessionStorage.getItem('belviaConfirmation')||'null')}catch(e){}
+const t=I18N[data?.lang]||I18N.fr;
+document.documentElement.lang=t.lang;
+document.getElementById('eyebrow').textContent=t.eyebrow;
+document.getElementById('title').textContent=t.title;
+document.getElementById('intro').textContent=t.intro;
+document.getElementById('label-ref').textContent=t.ref;
+document.getElementById('label-service').textContent=t.service;
+document.getElementById('label-route').textContent=t.route;
+document.getElementById('label-date').textContent=t.date;
+document.getElementById('label-email').textContent=t.email;
+document.getElementById('label-price').textContent=t.price;
+const actions=document.querySelectorAll('.actions a');
+actions[0].textContent=t.home; actions[1].textContent=t.again;
+if(data){
+  document.getElementById('ref').textContent=data.ref||'—';
+  document.getElementById('service').textContent=data.service||'—';
+  document.getElementById('route').textContent=data.route||'—';
+  document.getElementById('date').textContent=data.date||'—';
+  document.getElementById('email').textContent=data.email||'—';
+  document.getElementById('price').textContent=data.price||'—';
+}
+</script>
+</body>
+</html>

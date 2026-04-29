@@ -1236,6 +1236,17 @@ async function submitBooking() {
   document.getElementById('cs-pay').textContent = 'Betaling aan boord';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
+  const confirmationPayload = {
+    lang: state.lang || document.documentElement.lang || 'fr',
+    ref,
+    email: state.email || '',
+    service: SVC_LABELS[state.svc] || '—',
+    route: `${state.dep || '—'} → ${state.arr || '—'}`,
+    date: (state.date && state.heure) ? `${state.date} ${state.heure}` : (state.date || '—'),
+    price: state.prix ? `€ ${state.prix}` : '—'
+  };
+  try { sessionStorage.setItem('belviaConfirmation', JSON.stringify(confirmationPayload)); } catch (_) {}
+
   // Hide progress on confirmation
   document.getElementById('prog-bar').style.display = 'none';
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
@@ -1247,7 +1258,17 @@ async function submitBooking() {
       value: state.prix || 0
     });
   }
+  try { history.replaceState({}, '', '/reservation/confirmer'); } catch (_) {}
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+if (location.pathname === '/reservation/confirmer') {
+  const step5 = document.getElementById('step5');
+  if (step5) {
+    document.getElementById('prog-bar').style.display = 'none';
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    step5.classList.add('active');
+  }
 }
 
 /* ── INIT ── */
