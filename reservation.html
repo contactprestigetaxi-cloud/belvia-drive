@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=1777196146">
 <style>
 .booking-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 5vw 5rem; }
 
@@ -162,7 +162,7 @@
     </nav>
     <div class="section-eyebrow">Réservation en ligne — 2 minutes</div>
     <h1>Votre tarif exact, <em>maintenant</em></h1>
-    <p>Pas de surprise.<br>Pas de compteur.<br>Le prix affiché est le prix payé, confirmé avant même de réserver.<br>Paiement à bord ou par virement bancaire.</p>
+    <p>Pas de surprise.<br>Pas de compteur.<br>Le prix affiché est le prix payé, confirmé avant même de réserver.<br>Paiement à bord.</p>
 
     <!-- Reassurance strip before form -->
     <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem" role="list" aria-label="Garanties Belvia Drive">
@@ -490,17 +490,12 @@
       <textarea id="c-notes" placeholder="Siège enfant, bouteille d'eau, accueil pancarte, instructions spéciales…"></textarea>
     </div>
     <div class="form-group">
-      <label>Mode de paiement *</label>
+      <label>Mode de paiement</label>
       <div class="pay-grid">
-        <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="pay-option selected" aria-pressed="true">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">En ligne</div>
-          <div class="pay-desc">Paiement à bord ou par virement bancaire.</div>
-        </div>
-        <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
-          <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">À bord</div>
-          <div class="pay-desc">Cash ou carte bancaire directement au chauffeur à l'arrivée.</div>
+          <div class="pay-name">Paiement</div>
+          <div class="pay-desc">Paiement à bord.</div>
         </div>
       </div>
     </div>
@@ -583,7 +578,7 @@
 </div>
 <footer></footer>
 
-<script src="components.js"></script>
+<script src="components.js?v=1777196146"></script>
 <script>
 // Charge Google Maps dynamiquement depuis config.json
 (async () => {
@@ -612,33 +607,65 @@ function onAirportSelect(value) {
 }
 
 function geolocateAddr(inputId) {
-  if (!navigator.geolocation) { alert('Géolocalisation non disponible sur votre appareil.'); return; }
   const input = document.getElementById(inputId);
+  if (!input || input.dataset.geoBusy === '1') return;
+
   const originalPlaceholder = input.placeholder;
+  const previousValue = input.value;
+  input.dataset.geoBusy = '1';
+
+  const finish = () => { delete input.dataset.geoBusy; };
+  const coordsLabel = (pos) => `${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`;
+  const applyValue = (value) => {
+    input.placeholder = originalPlaceholder;
+    input.value = value;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    finish();
+  };
+  const restoreInput = () => {
+    input.placeholder = originalPlaceholder;
+    input.value = previousValue;
+    input.focus();
+    finish();
+  };
+
+  if (!navigator.geolocation) {
+    restoreInput();
+    return;
+  }
+
   input.placeholder = 'Localisation en cours...';
-  input.value = '';
+
   navigator.geolocation.getCurrentPosition(
     (pos) => {
-      if (window.google?.maps) {
+      const fallbackValue = coordsLabel(pos);
+      const geocoderReady = !!window.google?.maps?.Geocoder;
+
+      if (!geocoderReady) {
+        applyValue(fallbackValue);
+        return;
+      }
+
+      try {
         new google.maps.Geocoder().geocode(
           { location: { lat: pos.coords.latitude, lng: pos.coords.longitude } },
           (results, status) => {
-            input.placeholder = originalPlaceholder;
-            if (status === 'OK' && results[0]) {
-              input.value = results[0].formatted_address;
-            } else {
-              input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
+            if (status === 'OK' && Array.isArray(results) && results[0]?.formatted_address) {
+              applyValue(results[0].formatted_address);
+              return;
             }
-            input.dispatchEvent(new Event('input', { bubbles: true }));
+            console.warn('Reverse geocode failed, fallback to coordinates:', status);
+            applyValue(fallbackValue);
           }
         );
-      } else {
-        input.placeholder = originalPlaceholder;
-        input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
-        input.dispatchEvent(new Event('input', { bubbles: true }));
+      } catch (err) {
+        console.warn('Geocoder error, fallback to coordinates:', err);
+        applyValue(fallbackValue);
       }
     },
-    () => { input.placeholder = originalPlaceholder; alert('Impossible de vous localiser. Vérifiez vos paramètres de localisation.'); }
+    () => { restoreInput(); },
+    { timeout: 8000, maximumAge: 300000, enableHighAccuracy: false }
   );
 }
 
@@ -687,9 +714,11 @@ const state = {
   pax: 1, bags: 0, flightNum: '', terminal: '',
   dist: 18, duree: 28,
   veh: null, prix: 0, vehNom: '',
-  pay: null,
+  pay: 'abord',
   prenom: '', nom: '', gsm: '', email: '', notes: ''
 };
+
+window.state = state;
 
 let curStep = 1;
 
@@ -1214,7 +1243,7 @@ async function submitBooking() {
   }
   document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passager(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehNom || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'En ligne (carte)' : 'Paiement à bord ou par virement';
+  document.getElementById('cs-pay').textContent = 'Paiement à bord';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation

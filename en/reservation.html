@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=1777196146">
 <style>
 .booking-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 5vw 5rem; }
 
@@ -162,7 +162,7 @@
     </nav>
     <div class="section-eyebrow">Online booking — 2 minutes</div>
     <h1>Your exact fare, <em>now</em></h1>
-    <p>No surprises.<br>No meter.<br>The displayed price is what you pay, confirmed before you book.<br>Payment on board or by bank transfer.</p>
+    <p>No surprises.<br>No meter.<br>The displayed price is what you pay, confirmed before you book.<br>Payment on board.</p>
 
     <!-- Reassurance strip before form -->
     <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem" role="list" aria-label="Belvia Drive guarantees">
@@ -490,17 +490,12 @@
       <textarea id="c-notes" placeholder="Child seat, water bottle, sign pickup, special instructions…"></textarea>
     </div>
     <div class="form-group">
-      <label>Payment method *</label>
+      <label>Payment method</label>
       <div class="pay-grid">
-        <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="pay-option selected" aria-pressed="true">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">Online</div>
-          <div class="pay-desc">Payment on board or by bank transfer.</div>
-        </div>
-        <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
-          <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">On board</div>
-          <div class="pay-desc">Cash or card directly to the driver upon arrival.</div>
+          <div class="pay-name">Payment</div>
+          <div class="pay-desc">Payment on board.</div>
         </div>
       </div>
     </div>
@@ -580,7 +575,7 @@
 </div>
 <footer></footer>
 
-<script src="/components.js"></script>
+<script src="/components.js?v=1777196146"></script>
 <script>
 // Charge Google Maps dynamiquement depuis /config.json
 (async () => {
@@ -609,33 +604,65 @@ function onAirportSelect(value) {
 }
 
 function geolocateAddr(inputId) {
-  if (!navigator.geolocation) { alert('Geolocation not available on your device.'); return; }
   const input = document.getElementById(inputId);
+  if (!input || input.dataset.geoBusy === '1') return;
+
   const originalPlaceholder = input.placeholder;
+  const previousValue = input.value;
+  input.dataset.geoBusy = '1';
+
+  const finish = () => { delete input.dataset.geoBusy; };
+  const coordsLabel = (pos) => `${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`;
+  const applyValue = (value) => {
+    input.placeholder = originalPlaceholder;
+    input.value = value;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    finish();
+  };
+  const restoreInput = () => {
+    input.placeholder = originalPlaceholder;
+    input.value = previousValue;
+    input.focus();
+    finish();
+  };
+
+  if (!navigator.geolocation) {
+    restoreInput();
+    return;
+  }
+
   input.placeholder = 'Locating...';
-  input.value = '';
+
   navigator.geolocation.getCurrentPosition(
     (pos) => {
-      if (window.google?.maps) {
+      const fallbackValue = coordsLabel(pos);
+      const geocoderReady = !!window.google?.maps?.Geocoder;
+
+      if (!geocoderReady) {
+        applyValue(fallbackValue);
+        return;
+      }
+
+      try {
         new google.maps.Geocoder().geocode(
           { location: { lat: pos.coords.latitude, lng: pos.coords.longitude } },
           (results, status) => {
-            input.placeholder = originalPlaceholder;
-            if (status === 'OK' && results[0]) {
-              input.value = results[0].formatted_address;
-            } else {
-              input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
+            if (status === 'OK' && Array.isArray(results) && results[0]?.formatted_address) {
+              applyValue(results[0].formatted_address);
+              return;
             }
-            input.dispatchEvent(new Event('input', { bubbles: true }));
+            console.warn('Reverse geocode failed, fallback to coordinates:', status);
+            applyValue(fallbackValue);
           }
         );
-      } else {
-        input.placeholder = originalPlaceholder;
-        input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
-        input.dispatchEvent(new Event('input', { bubbles: true }));
+      } catch (err) {
+        console.warn('Geocoder error, fallback to coordinates:', err);
+        applyValue(fallbackValue);
       }
     },
-    () => { input.placeholder = originalPlaceholder; alert('Unable to locate you. Please check your location settings.'); }
+    () => { restoreInput(); },
+    { timeout: 8000, maximumAge: 300000, enableHighAccuracy: false }
   );
 }
 
@@ -1205,7 +1232,7 @@ async function submitBooking() {
   }
   document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passenger(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehName || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (card)' : 'Payment on board or by bank transfer';
+  document.getElementById('cs-pay').textContent = 'Payment on board';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation

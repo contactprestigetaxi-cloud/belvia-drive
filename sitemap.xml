@@ -1,311 +1,522 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.belviadrive.be/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/transfert-aeroport</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/voyage-affaires</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/van-premium</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/soirees-evenements</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/longue-distance</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/reservation</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/b2b</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/conditions</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/privacy</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/legal</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/en/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/airport-transfer</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/business-travel</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/van-premium</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/events-evenings</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/long-distance</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/reservation</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/b2b</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/terms</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/privacy</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/legal</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/nl/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/nl/luchthaven-transfer</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.belviadrive.be/reservation</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/reservatie"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/reservation"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/nl/zakelijk-vervoer</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/van-premium</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/avond-evenementen</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/long-distance</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://www.belviadrive.be/en/reservation</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/reservatie"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/reservation"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/nl/reservatie</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/reservation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/reservation"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/reservatie"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/reservation"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/transfert-aeroport</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/transfert-aeroport"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/airport-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/luchthaven-transfer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/transfert-aeroport"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/airport-transfer</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/transfert-aeroport"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/airport-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/luchthaven-transfer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/transfert-aeroport"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/luchthaven-transfer</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/transfert-aeroport"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/airport-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/luchthaven-transfer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/transfert-aeroport"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/longue-distance</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/longue-distance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/longue-distance"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/long-distance</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/longue-distance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/longue-distance"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/long-distance</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/longue-distance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/long-distance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/longue-distance"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/soirees-evenements</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/soirees-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/events-evenings"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/avond-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/soirees-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/events-evenings</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/soirees-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/events-evenings"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/avond-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/soirees-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/avond-evenementen</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/soirees-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/events-evenings"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/avond-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/soirees-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/van-premium</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/van-premium"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/van-premium</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/van-premium"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/van-premium</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/van-premium"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/van-premium"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/voyage-affaires</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/voyage-affaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/business-travel"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/zakelijk-vervoer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/voyage-affaires"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/business-travel</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/voyage-affaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/business-travel"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/zakelijk-vervoer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/voyage-affaires"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/zakelijk-vervoer</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/voyage-affaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/business-travel"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/zakelijk-vervoer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/voyage-affaires"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/b2b</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/b2b"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/b2b"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/b2b"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/b2b"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/b2b</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/b2b"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/b2b"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/b2b"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/b2b"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/nl/b2b</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/b2b"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/b2b"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/b2b"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/b2b"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/taxi-ixelles-aeroport</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/taxi-ixelles-aeroport"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/taxi-ixelles-aeroport"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/conditions</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/conditions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/conditions"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/terms</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/conditions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/conditions"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/nl/voorwaarden</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/conditions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/conditions"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/nl/privacy</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://www.belviadrive.be/legal</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/legal"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/legal"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/legal</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/legal"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/legal"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/nl/legal</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
-  <url>
-    <loc>https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/legal"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/legal"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/nl/blog/taxi-luchthaven-brussel-vtc</loc>
-    <lastmod>2026-04-24</lastmod>
+    <loc>https://www.belviadrive.be/privacy</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/privacy"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/en/blog/airport-taxi-brussels-transfer</loc>
-    <lastmod>2026-04-24</lastmod>
+    <loc>https://www.belviadrive.be/en/privacy</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/privacy"/>
   </url>
   <url>
-    <loc>https://www.belviadrive.be/blog/vtc-bruxelles-evenements</loc>
-    <lastmod>2026-04-24</lastmod>
+    <loc>https://www.belviadrive.be/nl/privacy</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/blog/vtc-brussel-evenementen</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/blog/private-car-service-brussels-events</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/blog/taxi-charleroi-bruxelles</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/blog/taxi-charleroi-brussel</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/blog/charleroi-airport-taxi</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/blog/vtc-nuit-bruxelles</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/blog/vtc-nacht-brussel</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/blog/night-vtc-brussels</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/blog/vtc-affaires-bruxelles</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/blog/vtc-zakelijk-brussel</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/en/blog/business-vtc-brussels</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/privacy"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/blog/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.belviadrive.be/nl/blog/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/"/>
   </url>
   <url>
     <loc>https://www.belviadrive.be/en/blog/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/airport-taxi-brussels-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-luchthaven-brussel-vtc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/blog/airport-taxi-brussels-transfer</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/airport-taxi-brussels-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-luchthaven-brussel-vtc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/taxi-luchthaven-brussel-vtc</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/airport-taxi-brussels-transfer"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-luchthaven-brussel-vtc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-aeroport-bruxelles-vtc"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/blog/vtc-affaires-bruxelles</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/business-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-zakelijk-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/blog/business-vtc-brussels</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/business-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-zakelijk-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/vtc-zakelijk-brussel</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/business-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-zakelijk-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-affaires-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/blog/vtc-bruxelles-evenements</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/private-car-service-brussels-events"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-brussel-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/blog/private-car-service-brussels-events</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/private-car-service-brussels-events"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-brussel-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/vtc-brussel-evenementen</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/private-car-service-brussels-events"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-brussel-evenementen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-bruxelles-evenements"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/blog/taxi-charleroi-bruxelles</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/charleroi-airport-taxi"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-charleroi-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/blog/charleroi-airport-taxi</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/charleroi-airport-taxi"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-charleroi-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/taxi-charleroi-brussel</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/charleroi-airport-taxi"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/taxi-charleroi-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/taxi-charleroi-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/blog/vtc-nuit-bruxelles</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/night-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-nacht-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/en/blog/night-vtc-brussels</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/night-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-nacht-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
+  </url>
+  <url>
+    <loc>https://www.belviadrive.be/nl/blog/vtc-nacht-brussel</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.belviadrive.be/en/blog/night-vtc-brussels"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.belviadrive.be/nl/blog/vtc-nacht-brussel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.belviadrive.be/blog/vtc-nuit-bruxelles"/>
   </url>
 </urlset>

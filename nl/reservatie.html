@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=1777196146">
 <style>
 .booking-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 5vw 5rem; }
 
@@ -434,7 +434,7 @@
         <div style="font-size:2.8rem;margin-bottom:1.2rem"></div>
         <h3>Avond &amp; Evenement op maat</h3>
         <p>Voor uw avonden, bruiloften en privé-evenementen bieden wij een op maat gemaakte dienst. Met dit formulier kunt u uw wensen specificeren: aantal ritten, tijden, bijzondere verzoeken.</p>
-        <a href="/nl/avonden-evenementen" class="btn btn-gold" style="display:inline-flex">Mijn avond configureren →</a>
+        <a href="/nl/avond-evenementen" class="btn btn-gold" style="display:inline-flex">Mijn avond configureren →</a>
         <p style="font-size:.7rem;color:rgba(200,194,180,.4);margin-top:1.2rem">Of bel ons: <a href="tel:+32496201112" style="color:var(--gold)">+32 496 20 11 12</a></p>
       </div>
     </div>
@@ -491,17 +491,12 @@
       <textarea id="c-notes" placeholder="Kinderzitje, waterfles, naambordje ophaling, bijzondere instructies…"></textarea>
     </div>
     <div class="form-group">
-      <label>Betaalmethode *</label>
+      <label>Betaalmethode</label>
       <div class="pay-grid">
-        <div class="pay-option" onclick="selPay('enligne',this)" tabindex="0" role="button" aria-pressed="false">
+        <div class="pay-option selected" aria-pressed="true">
           <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">Online</div>
-          <div class="pay-desc">Betaling aan boord of via bankoverschrijving.</div>
-        </div>
-        <div class="pay-option" onclick="selPay('abord',this)" tabindex="0" role="button" aria-pressed="false">
-          <div style="font-size:1.6rem;margin-bottom:.5rem"></div>
-          <div class="pay-name">Aan boord</div>
-          <div class="pay-desc">Contant of met kaart direct aan de chauffeur bij aankomst.</div>
+          <div class="pay-name">Betaling</div>
+          <div class="pay-desc">Betaling aan boord.</div>
         </div>
       </div>
     </div>
@@ -581,7 +576,7 @@
 </div>
 <footer></footer>
 
-<script data-cfasync="false" src="/components.js"></script>
+<script data-cfasync="false" src="/components.js?v=1777196146"></script>
 <script data-cfasync="false">
 // Charge Google Maps dynamiquement depuis /config.json
 (async () => {
@@ -610,33 +605,65 @@ function onAirportSelect(value) {
 }
 
 function geolocateAddr(inputId) {
-  if (!navigator.geolocation) { alert('Locatiefunctie niet beschikbaar op uw apparaat.'); return; }
   const input = document.getElementById(inputId);
+  if (!input || input.dataset.geoBusy === '1') return;
+
   const originalPlaceholder = input.placeholder;
+  const previousValue = input.value;
+  input.dataset.geoBusy = '1';
+
+  const finish = () => { delete input.dataset.geoBusy; };
+  const coordsLabel = (pos) => `${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`;
+  const applyValue = (value) => {
+    input.placeholder = originalPlaceholder;
+    input.value = value;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    finish();
+  };
+  const restoreInput = () => {
+    input.placeholder = originalPlaceholder;
+    input.value = previousValue;
+    input.focus();
+    finish();
+  };
+
+  if (!navigator.geolocation) {
+    restoreInput();
+    return;
+  }
+
   input.placeholder = 'Locatie zoeken...';
-  input.value = '';
+
   navigator.geolocation.getCurrentPosition(
     (pos) => {
-      if (window.google?.maps) {
+      const fallbackValue = coordsLabel(pos);
+      const geocoderReady = !!window.google?.maps?.Geocoder;
+
+      if (!geocoderReady) {
+        applyValue(fallbackValue);
+        return;
+      }
+
+      try {
         new google.maps.Geocoder().geocode(
           { location: { lat: pos.coords.latitude, lng: pos.coords.longitude } },
           (results, status) => {
-            input.placeholder = originalPlaceholder;
-            if (status === 'OK' && results[0]) {
-              input.value = results[0].formatted_address;
-            } else {
-              input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
+            if (status === 'OK' && Array.isArray(results) && results[0]?.formatted_address) {
+              applyValue(results[0].formatted_address);
+              return;
             }
-            input.dispatchEvent(new Event('input', { bubbles: true }));
+            console.warn('Reverse geocode failed, fallback to coordinates:', status);
+            applyValue(fallbackValue);
           }
         );
-      } else {
-        input.placeholder = originalPlaceholder;
-        input.value = pos.coords.latitude.toFixed(5) + ', ' + pos.coords.longitude.toFixed(5);
-        input.dispatchEvent(new Event('input', { bubbles: true }));
+      } catch (err) {
+        console.warn('Geocoder error, fallback to coordinates:', err);
+        applyValue(fallbackValue);
       }
     },
-    () => { input.placeholder = originalPlaceholder; alert('Kan u niet lokaliseren. Controleer uw locatie-instellingen.'); }
+    () => { restoreInput(); },
+    { timeout: 8000, maximumAge: 300000, enableHighAccuracy: false }
   );
 }
 
@@ -1206,7 +1233,7 @@ async function submitBooking() {
   }
   document.getElementById('cs-pax').textContent = state.pax ? `${state.pax} passagier(s)` : '—';
   document.getElementById('cs-veh').textContent = state.vehName || '—';
-  document.getElementById('cs-pay').textContent = state.pay === 'enligne' ? 'Online (kaart)' : 'Betaling aan boord of via bankoverschrijving';
+  document.getElementById('cs-pay').textContent = 'Betaling aan boord';
   document.getElementById('cs-prix').textContent = state.prix ? `€ ${state.prix}` : '—';
 
   // Hide progress on confirmation
