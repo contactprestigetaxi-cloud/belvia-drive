@@ -1269,7 +1269,12 @@ async function submitBooking() {
     });
   }
   try { history.replaceState({}, '', '/reservation/confirmer'); } catch (_) {}
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const confirmationPanel = document.getElementById('step5');
+  if (confirmationPanel) {
+    requestAnimationFrame(() => confirmationPanel.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 if (location.pathname === '/reservation/confirmer') {
@@ -1278,6 +1283,7 @@ if (location.pathname === '/reservation/confirmer') {
     document.getElementById('prog-bar').style.display = 'none';
     document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
     step5.classList.add('active');
+    requestAnimationFrame(() => step5.scrollIntoView({ behavior: 'auto', block: 'start' }));
   }
 }
 
