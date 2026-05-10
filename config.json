@@ -3,12 +3,12 @@
     "nom": "Belvia Drive",
     "telephone": "+32 496 20 11 12",
     "email": "contact@belviadrive.be",
-    "tva": "TVA BE 0XXX.XXX.XXX"
+    "tva": "TVA BE 0806.416.626"
   },
   "tarifs": {
     "berline": {
       "nom": "Berline Premium",
-      "modele": "Mercedes Classe E",
+      "modele": "Mercedes Classe E ou équivalent",
       "pax_max": 3,
       "bagages_max": 3,
       "base": 8,
@@ -17,7 +17,7 @@
     },
     "break": {
       "nom": "Break Confort",
-      "modele": "Mercedes Classe E Break",
+      "modele": "Mercedes Classe E Break ou équivalent",
       "pax_max": 4,
       "bagages_max": 5,
       "base": 8,
@@ -26,7 +26,7 @@
     },
     "van": {
       "nom": "Van Prestige",
-      "modele": "Mercedes V-Klasse",
+      "modele": "Mercedes V-Klasse ou équivalent",
       "pax_max": 8,
       "bagages_max": 8,
       "base": 10,
@@ -35,7 +35,7 @@
     },
     "electrique": {
       "nom": "Électrique",
-      "modele": "Tesla Model S",
+      "modele": "Tesla Model S ou équivalent",
       "pax_max": 3,
       "bagages_max": 3,
       "base": 9,
@@ -64,12 +64,12 @@
       "berline": 59,
       "break": 49,
       "van": 69,
-      "electrique": 59
+      "electrique": 55
     },
     "crl": {
-      "berline": 120,
-      "break": 110,
-      "van": 130,
+      "berline": 129,
+      "break": 119,
+      "van": 139,
       "electrique": 125
     }
   },
@@ -108,5 +108,85 @@
   "analytics": {
     "ga4_id": "G-KPBSHWYV9B",
     "actif": true
+  },
+  "services_modifiers": {
+    "affaires_mult": 1,
+    "affaires_min": 35,
+    "soiree_mult": 1.2,
+    "soiree_min": 80
+  },
+  "distanceTiers": {
+    "berline": [
+      {
+        "km": 100,
+        "perKm": 2.2
+      },
+      {
+        "km": 150,
+        "perKm": 1.5
+      },
+      {
+        "km": 250,
+        "perKm": 1.3
+      },
+      {
+        "km": 99999,
+        "perKm": 1.2
+      }
+    ],
+    "break": [
+      {
+        "km": 100,
+        "perKm": 2
+      },
+      {
+        "km": 150,
+        "perKm": 1.4
+      },
+      {
+        "km": 250,
+        "perKm": 1.2
+      },
+      {
+        "km": 99999,
+        "perKm": 1.1
+      }
+    ],
+    "van": [
+      {
+        "km": 100,
+        "perKm": 2.5
+      },
+      {
+        "km": 150,
+        "perKm": 1.9
+      },
+      {
+        "km": 250,
+        "perKm": 1.7
+      },
+      {
+        "km": 99999,
+        "perKm": 1.5
+      }
+    ],
+    "electrique": [
+      {
+        "km": 100,
+        "perKm": 2.3
+      },
+      {
+        "km": 150,
+        "perKm": 1.7
+      },
+      {
+        "km": 250,
+        "perKm": 1.5
+      },
+      {
+        "km": 99999,
+        "perKm": 1.3
+      }
+    ]
   }
 }
