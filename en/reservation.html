@@ -1063,7 +1063,7 @@ function selectBerlineAndGo() {
   });
   const t = BD_CONFIG.tarifs[vehKey];
   state.veh = vehKey; state.prix = prix;
-  state.vehNom = t ? t.nom : vehKey;
+  state.vehName = t ? t.nom : vehKey;
   state.bags = 0; state.flightNum = '';
   buildRecap(); goStep(4);
 }
