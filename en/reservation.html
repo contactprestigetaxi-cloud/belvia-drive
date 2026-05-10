@@ -1065,7 +1065,6 @@ function selectBerlineAndGo() {
   state.veh = vehKey; state.prix = prix;
   state.vehName = t ? t.nom : vehKey;
   state.bags = 0; state.flightNum = '';
-  buildRecap(); goStep(4);
 }
 
 function isEstablishment(addr) {
@@ -1295,7 +1294,7 @@ function advanceSelectedVehicle() {
   }
 
   if (state.tripType === 'aller' && state.svc === 'aeroport') {
-    const prixAR = calculerPrix(state.veh, kmAller, { isNuit, isWeekend: isWE, isAeroport: state.svc === 'aeroport', allerRetour: true, kmRetour: kmAller, destination: state.arr, depart: state.dep, destinationRetour: state.dep, departRetour: state.arr });
+    const prixAR = calculerPrix(state.veh, state.dist, { isNuit: isNuitActuelle(), isWeekend: isWeekendActuel(), isAeroport: state.svc === 'aeroport', allerRetour: true, kmRetour: state.dist, destination: state.arr, depart: state.dep, destinationRetour: state.dep, departRetour: state.arr });
     const prixDouble = Math.floor(state.prix + state.prix);
     const economie = prixDouble - prixAR;
     document.getElementById('ar-prix-old').textContent = '€ ' + prixDouble;
@@ -1533,7 +1532,6 @@ function switchService(svc) {
 
 function closeAllerRetourModal(accept) {
   document.getElementById('modal-aller-retour').style.display = 'none';
-  if (!accept) { goStep(4); return; }
   if (accept) {
     state.tripType = 'aller-retour';
     const arBtn = document.querySelectorAll('.trip-type-btn')[2];
