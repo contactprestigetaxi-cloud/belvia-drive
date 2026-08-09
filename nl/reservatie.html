@@ -62,6 +62,19 @@
   width: 14px; height: 14px; stroke: var(--gold); fill: none; pointer-events: none;
 }
 .input-padded { padding-left: 2.6rem !important; }
+.input-icon-wrap .input-padded { padding-right: 7.4rem !important; }
+.geo-btn {
+  position: absolute; right: .55rem; top: 50%; transform: translateY(-50%);
+  height: 26px; padding: 0 .58rem; border: 1px solid rgba(201,165,90,.26);
+  background: rgba(201,165,90,.06); color: var(--gold); font-size: .52rem;
+  font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
+  line-height: 1; white-space: nowrap;
+}
+.geo-btn:hover, .geo-btn:focus-visible { border-color: rgba(201,165,90,.55); background: rgba(201,165,90,.12); outline: 0; }
+@media(max-width:560px) {
+  .input-icon-wrap .input-padded { padding-right: 6.6rem !important; }
+  .geo-btn { right: .45rem; height: 24px; padding: 0 .46rem; font-size: .48rem; letter-spacing: .08em; }
+}
 .info-note {
   background: rgba(201,165,90,.05); border: 1px solid rgba(201,165,90,.14);
   padding: .85rem 1rem; font-size: .72rem; color: var(--white-muted);
