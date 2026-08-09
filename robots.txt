@@ -1,6 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://www.belviadrive.be/sitemap.xml
-
-# Block admin paths
-Disallow: /admin
+Disallow: /

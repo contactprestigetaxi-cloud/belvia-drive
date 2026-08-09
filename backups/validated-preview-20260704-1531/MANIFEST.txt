@@ -1,0 +1,9 @@
+Belvia Drive validated preview backup 20260704-1531 UTC
+Source: /home/openclaw/projects/belvia-site/belvia-drive
+Preview: http://100.72.64.74:8101/index.html
+
+1d848faf8748d24e8d3570a95162415b7b1d153765bc05f46638bd6e7b04f2a2  backups/validated-preview-20260704-1531/index.html
+2d033d8d076a3f0ac2b4d6b6edc586b37721862e0ab4a5457694bea03fc37bbe  backups/validated-preview-20260704-1531/en-index.html
+c715f2d6598a71d15e968719cfe6765c0a3cca5143778a319a754c816e5d8d56  backups/validated-preview-20260704-1531/nl-index.html
+7aebf9f25f7b4781f70d8e98cc2a4b108bdd952ed60f79f40808443f0033f546  backups/validated-preview-20260704-1531/style.css
+9c1e8891a22a1469b6bfb944573c69a74d86e84e002d6b48f9dd4a00c8b2ef93  backups/validated-preview-20260704-1531/belvia-drive-preview-20260704-1531.tar.gz
