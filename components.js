@@ -55,6 +55,17 @@ function initSimpleHeroBookingForms(){
       }
       .hero-booking .hero-booking-field { min-width: min(100%, 210px); }
       @media(max-width:768px) {
+        #hero .hero-booking.hero-booking-simple,
+        #hero .hero-booking.hero-booking-simple.is-floating {
+          grid-template-columns: minmax(0, 1fr) !important;
+        }
+        #hero .hero-booking.hero-booking-simple .hero-booking-field,
+        #hero .hero-booking.hero-booking-simple .hero-booking-submit {
+          grid-column: 1 / -1 !important;
+          width: 100% !important;
+          min-width: 0 !important;
+          max-width: 100% !important;
+        }
         #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type input {
           padding-right: 2.8rem !important;
         }
