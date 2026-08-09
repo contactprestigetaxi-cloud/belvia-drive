@@ -9,13 +9,116 @@ function initSimpleHeroBookingForms(){
     style.textContent = `
       .hero-booking .hero-booking-field:has(select[name="service"]) { display: none !important; }
       #hero .hero-booking.hero-booking-simple {
-        grid-template-columns: minmax(180px,1fr) minmax(180px,1fr) auto !important;
+        grid-template-columns: minmax(210px,1fr) minmax(230px,1fr) minmax(150px,auto) !important;
+      }
+      #hero {
+        min-height: clamp(680px, 92vh, 860px) !important;
+        align-items: center !important;
+        padding-top: calc(var(--nav-h) + 2.5rem) !important;
+        padding-bottom: 3.5rem !important;
+      }
+      #hero .hero-video-bg {
+        opacity: .74 !important;
+        filter: saturate(.86) contrast(1.08) !important;
+      }
+      #hero .hero-video-overlay {
+        background:
+          linear-gradient(90deg, rgba(8,8,8,.88) 0%, rgba(8,8,8,.66) 35%, rgba(8,8,8,.28) 68%, rgba(8,8,8,.12) 100%),
+          radial-gradient(circle at 22% 45%, rgba(201,165,90,.10), transparent 34%) !important;
+      }
+      #hero .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        width: min(820px, 100%) !important;
+        max-width: min(820px, 100%) !important;
+        padding-top: 0 !important;
+      }
+      #hero .hero-tag {
+        order: 1 !important;
+        margin-bottom: 1rem !important;
+        font-size: .55rem !important;
+        letter-spacing: .28em !important;
+        color: rgba(226,192,122,.94) !important;
+      }
+      #hero h1.hero-h1 {
+        order: 2 !important;
+        max-width: 780px !important;
+        margin-bottom: 1rem !important;
+        font-size: 4.9rem !important;
+        line-height: 1.04 !important;
+      }
+      #hero .hero-sub {
+        order: 3 !important;
+        max-width: 540px !important;
+        margin-bottom: 1.35rem !important;
+        font-size: .88rem !important;
+        line-height: 1.75 !important;
+      }
+      #hero .hero-booking.hero-booking-simple {
+        order: 4 !important;
+        width: min(820px, 100%) !important;
+        margin: 0 0 1.35rem !important;
+        padding: .72rem !important;
+        gap: .72rem !important;
+        background: linear-gradient(180deg, rgba(15,15,15,.88), rgba(8,8,8,.78)) !important;
+        border: 1px solid rgba(201,165,90,.28) !important;
+        border-radius: 6px !important;
+        box-shadow: 0 24px 70px rgba(0,0,0,.46) !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field {
+        gap: .28rem !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field span {
+        margin-bottom: .2rem !important;
+        font-size: .52rem !important;
+        letter-spacing: .17em !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field input,
+      #hero .hero-booking.hero-booking-simple .hero-booking-submit {
+        height: 48px !important;
+        border-radius: 4px !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field input {
+        background: rgba(8,8,8,.72) !important;
+        border-color: rgba(245,240,232,.16) !important;
+        font-size: .82rem !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field input:focus {
+        border-color: rgba(226,192,122,.72) !important;
+        background: rgba(8,8,8,.9) !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-submit {
+        min-width: 150px !important;
+        padding: 0 1.25rem !important;
+        font-size: .58rem !important;
+        letter-spacing: .17em !important;
+      }
+      #hero .hero-price-badges {
+        order: 5 !important;
+        max-width: 520px !important;
+        margin-bottom: 1.2rem !important;
+      }
+      #hero .hero-badge {
+        border-color: rgba(201,165,90,.20) !important;
+        background: rgba(201,165,90,.055) !important;
+        padding: .46rem .85rem !important;
+      }
+      #hero .hero-badge--alt {
+        background: rgba(245,240,232,.035) !important;
+        border-color: rgba(245,240,232,.12) !important;
+      }
+      #hero .badge-val {
+        font-size: .96rem !important;
+      }
+      #hero .hero-trust {
+        order: 6 !important;
+        margin-top: 0 !important;
       }
       #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type {
         position: relative !important;
       }
       #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type input {
-        padding-right: 3rem !important;
+        padding-right: 3.1rem !important;
       }
       .hero-booking-geo {
         position: absolute;
@@ -53,8 +156,62 @@ function initSimpleHeroBookingForms(){
         height: 28px;
         min-height: 28px;
       }
+      #hero .hero-booking.hero-booking-simple.is-floating {
+        width: min(900px, calc(100vw - 2rem)) !important;
+        padding: .55rem !important;
+        gap: .52rem !important;
+        margin: 0 !important;
+        border-radius: 6px !important;
+      }
       .hero-booking .hero-booking-field { min-width: min(100%, 210px); }
+      @media(max-width:900px) {
+        #hero h1.hero-h1 {
+          font-size: 3.25rem !important;
+        }
+      }
       @media(max-width:768px) {
+        #hero {
+          min-height: 100svh !important;
+          padding: calc(var(--nav-h) + 1.3rem) 1rem 1.4rem !important;
+          align-items: flex-start !important;
+        }
+        #hero .hero-video-bg {
+          opacity: .68 !important;
+        }
+        #hero .hero-video-overlay {
+          background: linear-gradient(180deg, rgba(8,8,8,.84) 0%, rgba(8,8,8,.56) 45%, rgba(8,8,8,.78) 100%) !important;
+        }
+        #hero .hero-content {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+        #hero .hero-tag {
+          margin-bottom: .75rem !important;
+          font-size: .5rem !important;
+          letter-spacing: .2em !important;
+          gap: .65rem !important;
+        }
+        #hero .hero-tag::before,
+        #hero .hero-tag::after {
+          width: 16px !important;
+        }
+        #hero h1.hero-h1 {
+          margin-bottom: .75rem !important;
+          font-size: 2.15rem !important;
+          line-height: 1.12 !important;
+        }
+        #hero .hero-sub {
+          max-width: 100% !important;
+          margin-bottom: 1rem !important;
+          font-size: .8rem !important;
+          line-height: 1.62 !important;
+        }
+        #hero .hero-booking.hero-booking-simple {
+          margin-bottom: 1rem !important;
+          padding: .6rem !important;
+          gap: .55rem !important;
+          border-radius: 6px !important;
+        }
         #hero .hero-booking.hero-booking-simple,
         #hero .hero-booking.hero-booking-simple.is-floating {
           grid-template-columns: minmax(0, 1fr) !important;
@@ -69,6 +226,38 @@ function initSimpleHeroBookingForms(){
         #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type input {
           padding-right: 2.8rem !important;
         }
+        #hero .hero-booking.hero-booking-simple .hero-booking-field span {
+          font-size: .48rem !important;
+          letter-spacing: .14em !important;
+        }
+        #hero .hero-booking.hero-booking-simple .hero-booking-field input,
+        #hero .hero-booking.hero-booking-simple .hero-booking-submit {
+          height: 42px !important;
+          font-size: .74rem !important;
+        }
+        #hero .hero-booking.hero-booking-simple .hero-booking-submit {
+          min-width: 0 !important;
+          padding: 0 .9rem !important;
+          font-size: .56rem !important;
+        }
+        #hero .hero-price-badges {
+          grid-template-columns: 1fr 1fr !important;
+          gap: .46rem !important;
+          width: 100% !important;
+          margin-bottom: .9rem !important;
+        }
+        #hero .hero-badge {
+          min-width: 0 !important;
+          padding: .4rem .55rem !important;
+        }
+        #hero .badge-val {
+          font-size: .82rem !important;
+          line-height: 1.15 !important;
+        }
+        #hero .hero-trust {
+          font-size: .58rem !important;
+          line-height: 1.55 !important;
+        }
         .hero-booking-geo {
           right: .42rem;
           bottom: 3px;
@@ -78,6 +267,11 @@ function initSimpleHeroBookingForms(){
           min-height: 28px;
         }
         .hero-booking-geo::before { width: 13px; height: 13px; }
+      }
+      @media(max-width:380px) {
+        #hero h1.hero-h1 { font-size: 1.9rem !important; }
+        #hero .hero-sub { font-size: .76rem !important; }
+        #hero .hero-booking.hero-booking-simple { padding: .52rem !important; }
       }
     `;
     document.head.appendChild(style);
@@ -128,9 +322,21 @@ function initSimpleHeroBookingForms(){
             depInput.dispatchEvent(new Event('change', { bubbles: true }));
           };
           if (window.google?.maps?.Geocoder) {
+            let resolved = false;
+            const fallbackTimer = window.setTimeout(() => {
+              if (!resolved) {
+                resolved = true;
+                applyValue(fallbackValue);
+              }
+            }, 1200);
             new google.maps.Geocoder().geocode(
               { location: { lat: pos.coords.latitude, lng: pos.coords.longitude } },
-              (results, status) => applyValue(status === 'OK' && results?.[0]?.formatted_address ? results[0].formatted_address : fallbackValue)
+              (results, status) => {
+                if (resolved) return;
+                resolved = true;
+                window.clearTimeout(fallbackTimer);
+                applyValue(status === 'OK' && results?.[0]?.formatted_address ? results[0].formatted_address : fallbackValue);
+              }
             );
           } else {
             applyValue(fallbackValue);
