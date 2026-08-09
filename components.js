@@ -9,13 +9,22 @@ function initSimpleHeroBookingForms(){
     style.textContent = `
       .hero-booking .hero-booking-field:has(select[name="service"]) { display: none !important; }
       #hero .hero-booking.hero-booking-simple {
-        grid-template-columns: minmax(180px,1fr) 32px minmax(180px,1fr) auto !important;
+        grid-template-columns: minmax(180px,1fr) minmax(180px,1fr) auto !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type {
+        position: relative !important;
+      }
+      #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type input {
+        padding-right: 3rem !important;
       }
       .hero-booking-geo {
-        width: 32px;
-        min-width: 32px;
-        height: 32px;
-        min-height: 32px;
+        position: absolute;
+        right: .55rem;
+        bottom: 8px;
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+        min-height: 30px;
         padding: 0;
         border: 1px solid rgba(201,165,90,.24);
         background: rgba(201,165,90,.055);
@@ -23,7 +32,6 @@ function initSimpleHeroBookingForms(){
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        align-self: end;
         font-size: 0;
         line-height: 0;
         overflow: hidden;
@@ -38,43 +46,25 @@ function initSimpleHeroBookingForms(){
         mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z%22/%3E%3C/svg%3E") center / contain no-repeat;
       }
       .hero-booking.is-floating .hero-booking-geo {
-        width: 30px;
-        min-width: 30px;
-        height: 30px;
-        min-height: 30px;
+        right: .42rem;
+        bottom: 4px;
+        width: 28px;
+        min-width: 28px;
+        height: 28px;
+        min-height: 28px;
       }
       .hero-booking .hero-booking-field { min-width: min(100%, 210px); }
       @media(max-width:768px) {
-        #hero .hero-booking.hero-booking-simple,
-        #hero .hero-booking.hero-booking-simple.is-floating {
-          grid-template-columns: minmax(0,1fr) 30px !important;
-        }
-        #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type {
-          grid-column: 1 !important;
-          grid-row: 1 !important;
-          width: 100% !important;
-        }
-        #hero .hero-booking.hero-booking-simple .hero-booking-geo {
-          grid-column: 2 !important;
-          grid-row: 1 !important;
-          width: 30px !important;
-          justify-self: end !important;
-        }
-        #hero .hero-booking.hero-booking-simple .hero-booking-field:last-of-type {
-          grid-column: 1 / -1 !important;
-          grid-row: 2 !important;
-          width: 100% !important;
-        }
-        #hero .hero-booking.hero-booking-simple .hero-booking-submit {
-          grid-column: 1 / -1 !important;
-          grid-row: 3 !important;
-          width: 100% !important;
+        #hero .hero-booking.hero-booking-simple .hero-booking-field:first-of-type input {
+          padding-right: 2.8rem !important;
         }
         .hero-booking-geo {
-          width: 30px;
-          min-width: 30px;
-          height: 30px;
-          min-height: 30px;
+          right: .42rem;
+          bottom: 3px;
+          width: 28px;
+          min-width: 28px;
+          height: 28px;
+          min-height: 28px;
         }
         .hero-booking-geo::before { width: 13px; height: 13px; }
       }
@@ -108,7 +98,9 @@ function initSimpleHeroBookingForms(){
     geoBtn.setAttribute('aria-label', copy.geo);
     geoBtn.title = copy.geo;
     geoBtn.textContent = '';
-    geoBtn.addEventListener('click', () => {
+    geoBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       if (!navigator.geolocation) {
         depInput.focus();
         return;
@@ -140,7 +132,7 @@ function initSimpleHeroBookingForms(){
         { timeout: 8000, maximumAge: 300000, enableHighAccuracy: false }
       );
     });
-    depInput.closest('.hero-booking-field')?.after(geoBtn);
+    depInput.closest('.hero-booking-field')?.append(geoBtn);
   });
 }
 
