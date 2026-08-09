@@ -61,18 +61,23 @@
   width: 14px; height: 14px; stroke: var(--gold); fill: none; pointer-events: none;
 }
 .input-padded { padding-left: 2.6rem !important; }
-.input-icon-wrap .input-padded { padding-right: 7.4rem !important; }
+.input-icon-wrap .input-padded { padding-right: 3.6rem !important; }
 .geo-btn {
   position: absolute; right: .55rem; top: 50%; transform: translateY(-50%);
-  height: 26px; padding: 0 .58rem; border: 1px solid rgba(201,165,90,.26);
-  background: rgba(201,165,90,.06); color: var(--gold); font-size: .52rem;
-  font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
-  line-height: 1; white-space: nowrap;
+  width: 30px; height: 30px; padding: 0; border: 1px solid rgba(201,165,90,.24);
+  background: rgba(201,165,90,.055); color: var(--gold); display: inline-flex;
+  align-items: center; justify-content: center;
 }
 .geo-btn:hover, .geo-btn:focus-visible { border-color: rgba(201,165,90,.55); background: rgba(201,165,90,.12); outline: 0; }
+.geo-btn::before {
+  content: ''; width: 14px; height: 14px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z%22/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z%22/%3E%3C/svg%3E") center / contain no-repeat;
+}
 @media(max-width:560px) {
-  .input-icon-wrap .input-padded { padding-right: 6.6rem !important; }
-  .geo-btn { right: .45rem; height: 24px; padding: 0 .46rem; font-size: .48rem; letter-spacing: .08em; }
+  .input-icon-wrap .input-padded { padding-right: 3.4rem !important; }
+  .geo-btn { right: .45rem; width: 28px; height: 28px; }
+  .geo-btn::before { width: 13px; height: 13px; }
 }
 .info-note {
   background: rgba(201,165,90,.05); border: 1px solid rgba(201,165,90,.14);
@@ -344,7 +349,7 @@
         <label for="addr-dep">Adresse de prise en charge</label>
         <div class="input-icon-wrap">
           <input type="text" id="addr-dep" class="input-padded" placeholder="Entrez votre adresse ou activez Ma position" oninput="checkStep2()" autocomplete="off">
-          <button type="button" class="geo-btn" onclick="geolocateAddr('addr-dep')" title="">Ma position</button>
+          <button type="button" class="geo-btn" onclick="geolocateAddr('addr-dep')" aria-label="Utiliser ma position" title="Utiliser ma position"></button>
         </div>
       </div>
       <div class="form-group" id="arr-field-aeroport" style="display:none">
@@ -386,7 +391,7 @@
         <label for="addr-arr">Adresse de destination</label>
         <div class="input-icon-wrap">
           <input type="text" id="addr-arr" class="input-padded" placeholder="ex. Aéroport de Bruxelles, Zaventem" oninput="checkStep2()" autocomplete="off">
-          <button type="button" class="geo-btn" onclick="geolocateAddr('addr-arr')" title="">Ma position</button>
+          <button type="button" class="geo-btn" onclick="geolocateAddr('addr-arr')" aria-label="Utiliser ma position" title="Utiliser ma position"></button>
         </div>
       </div>
 
@@ -437,7 +442,7 @@
             <div class="form-group"><label for="retour-vol">Numéro de vol retour</label><input type="text" id="retour-vol" placeholder="Ex : SN 3703"></div>
           </div>
           <div class="form-row-2">
-            <div class="form-group"><label for="retour-adresse">Adresse de dépôt</label><div class="input-icon-wrap"><input type="text" id="retour-adresse" class="input-padded" placeholder="Adresse de dépôt au retour…" autocomplete="off" oninput="checkStep2()"><button type="button" class="geo-btn" onclick="geolocateAddr('retour-adresse')" title="">Ma position</button></div></div>
+            <div class="form-group"><label for="retour-adresse">Adresse de dépôt</label><div class="input-icon-wrap"><input type="text" id="retour-adresse" class="input-padded" placeholder="Adresse de dépôt au retour…" autocomplete="off" oninput="checkStep2()"><button type="button" class="geo-btn" onclick="geolocateAddr('retour-adresse')" aria-label="Utiliser ma position" title="Utiliser ma position"></button></div></div>
             <div class="form-group" style="display:flex;align-items:flex-end"><div style="font-size:.7rem;color:var(--white-muted);line-height:1.6;padding:.5rem 0">Votre chauffeur vous déposera à cette adresse au retour.</div></div>
           </div>
         </div>
