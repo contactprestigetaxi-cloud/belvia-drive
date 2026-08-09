@@ -9,7 +9,7 @@ function initSimpleHeroBookingForms(){
     style.textContent = `
       .hero-booking .hero-booking-field:has(select[name="service"]) { display: none !important; }
       #hero .hero-booking.hero-booking-simple {
-        grid-template-columns: minmax(210px,1fr) minmax(230px,1fr) minmax(150px,auto) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
       #hero {
         min-height: clamp(680px, 92vh, 860px) !important;
@@ -88,7 +88,10 @@ function initSimpleHeroBookingForms(){
         background: rgba(8,8,8,.9) !important;
       }
       #hero .hero-booking.hero-booking-simple .hero-booking-submit {
-        min-width: 150px !important;
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
         padding: 0 1.25rem !important;
         font-size: .58rem !important;
         letter-spacing: .17em !important;
@@ -158,6 +161,7 @@ function initSimpleHeroBookingForms(){
       }
       #hero .hero-booking.hero-booking-simple.is-floating {
         width: min(900px, calc(100vw - 2rem)) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         padding: .55rem !important;
         gap: .52rem !important;
         margin: 0 !important;
