@@ -52,10 +52,20 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+SC:wght@300;400;500&display=swap">
 </noscript>
 
-<link rel="stylesheet" href="style.css?v=20260809homevision">
+<link rel="stylesheet" href="style.css?v=20260815hero-balance3">
 
 <style>/* ─── HERO ─── */#hero {  position: relative; height: auto; aspect-ratio: 16/9;  display: flex; align-items: center;  overflow: hidden; background: var(--black);  padding: 0 5vw;  width: 100%; max-width: 100%; box-sizing: border-box;}@media(max-width:1024px) {  #hero { aspect-ratio: auto; min-height: 100vh; height: auto; }}.hero-video-bg {  position: absolute;  top: 0; left: 0;  width: 100%; height: 100%;  object-fit: cover;  z-index: 0; pointer-events: none;  opacity: 0.85;}.hero-picture-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }.hero-video-desk { display: block; }.hero-video-mobile { display: none; }@media(max-width:768px) {  .hero-video-desk { display: none; }  .hero-video-mobile { display: block; }}.hero-video-overlay {  position: absolute; inset: 0;  width: 100%; height: 100%;  background: linear-gradient(to right, rgba(8,8,8,.7) 0%, rgba(8,8,8,.35) 30%, rgba(8,8,8,.08) 60%, rgba(8,8,8,0) 100%);  z-index: 1; pointer-events: none;}#hero .hero-corner, #hero .hero-geo, #hero .hero-content { z-index: 2; }.hero-geo {  position: absolute; right: 5%; top: 50%; transform: translateY(-50%);  width: min(45vw, 560px); height: min(45vw, 560px);  opacity: .1; pointer-events: none;}.hero-geo svg { width: 100%; height: 100%; }.hero-corner {  position: absolute; opacity: .22; pointer-events: none;}.hero-corner.tl { top: 90px; left: 5vw; width: 100px; }.hero-corner.br { bottom: 60px; right: 5vw; width: 80px; transform: rotate(180deg); }.hero-content {  position: relative; z-index: 2;  max-width: 660px;  padding-top: var(--nav-h);}.hero-tag {  display: inline-flex; align-items: center; gap: 1rem;  font-size: .58rem; letter-spacing: .34em; text-transform: uppercase;  color: var(--gold); margin-bottom: 2rem;  opacity: 0; transform: translateY(16px);  animation: fadeUp .7s .3s forwards;}.hero-tag::before, .hero-tag::after { content: ''; width: 22px; height: 1px; background: var(--gold); }h1.hero-h1 {  font-family: var(--serif);  font-size: clamp(3rem, 6.5vw, 5.8rem);  font-weight: 300; line-height: 1.05;  letter-spacing: .02em; color: var(--white);  margin-bottom: 1.5rem;  opacity: 0; transform: translateY(28px);  animation: fadeUp .9s .5s forwards;}h1.hero-h1 em { font-style: italic; color: var(--gold); display: block; }h1.hero-h1 .hero-thin { font-weight: 200; opacity: .7; font-size: 75%; letter-spacing: .06em; }.hero-sub {  font-size: .86rem; color: var(--white-muted);  line-height: 1.9; max-width: 440px;  margin-bottom: 3rem;  opacity: 0; transform: translateY(16px);  animation: fadeUp .7s .7s forwards;}.hero-actions {  display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;  opacity: 0; transform: translateY(16px);  animation: fadeUp .7s .9s forwards;}.hero-trust {  display: flex; align-items: center; gap: .6rem;  font-size: .65rem; color: var(--white-muted); letter-spacing: .08em;  opacity: 0; animation: fadeUp .7s 1.1s forwards;  margin-top: 2rem;}.hero-trust::before { content: ''; width: 20px; height: 1px; background: rgba(201,165,90,.4); }.hero-trust strong { color: var(--gold); }/* Quick book bar */#quick-book {  background: var(--black-3);  border-top: 1px solid rgba(201,165,90,.2);  border-bottom: 1px solid rgba(201,165,90,.2);  padding: 2.2rem 5vw;}.qb-inner {  max-width: var(--max-w); margin: 0 auto;  display: grid;  grid-template-columns: 1fr 1fr 200px;  gap: .9rem 1.2rem;  align-items: end;}.qb-field { min-width: 0; }#qb-go {  align-self: center;  justify-self: center;  height: auto;}@media(max-width:600px) {  .qb-inner-simple { flex-direction:column !important; }  .qb-inner-simple .qb-field { max-width:100% !important; }  #qb-go { width:100%; text-align:center; justify-content:center; }}@media(max-width:768px) {  #quick-book { padding: 1.4rem 1.2rem; }  .qb-inner { display: flex; flex-direction: column; gap: .7rem; }  .qb-field { width: 100%; min-width: unset; }  .qb-field select, .qb-field input { font-size: .85rem; padding: .8rem 1rem; }  #qb-go { width: 100%; text-align: center; justify-content: center; margin-top: .3rem; }}.qb-field label {  display: block; font-size: .62rem; letter-spacing: .22em;  text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; font-weight: 500;}.qb-field input, .qb-field select {  width: 100%; background: var(--black-2);  border: 1px solid rgba(201,165,90,.18); color: var(--white);  font-family: var(--sans); font-size: .88rem; font-weight: 300;  padding: .82rem 1rem; outline: none; transition: border-color .3s;  -webkit-appearance: none;}.qb-field input:focus, .qb-field select:focus { border-color: var(--gold); }.qb-field input::placeholder { color: rgba(245,240,232,.25); }/* Why us */.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }.why-features { display: flex; flex-direction: column; gap: 2.4rem; }.why-feature { display: flex; gap: 1.4rem; align-items: flex-start; }.why-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: var(--gold); opacity: .4; min-width: 2.5rem; line-height: 1.1; }.why-feature-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--white); margin-bottom: .35rem; }.why-feature-desc { font-size: .78rem; color: var(--white-muted); line-height: 1.9; }.why-visual {  background: var(--black-3); border: 1px solid rgba(201,165,90,.15);  padding: 3rem; text-align: center; position: relative; overflow: hidden;}.fleet-badge {  display: inline-block; border: 1px solid rgba(201,165,90,.3);  padding: .35rem 1.1rem; font-size: .58rem; letter-spacing: .28em;  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;}/* Testimonials */.testi-card {  background: var(--black-2); border: 1px solid rgba(201,165,90,.1);  padding: 2rem 2.2rem;  transition: border-color .3s;}.testi-card:hover { border-color: rgba(201,165,90,.3); }.testi-stars { color: var(--gold); font-size: .9rem; letter-spacing: .12em; margin-bottom: .9rem; }.testi-text { font-size: .82rem; color: var(--white-muted); line-height: 1.9; font-style: italic; margin-bottom: 1.2rem; }.testi-author { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }.testi-role { font-size: .68rem; color: var(--white-muted); margin-top: .2rem; }/* Stretched card link — couvre toute la carte pour faciliter le clic */.card-cover-link {  position: absolute;  inset: 0;  z-index: 1;  display: block;}.card-cover-link:focus {  outline: 2px solid var(--gold);  outline-offset: -2px;}.service-card .card-link {  position: relative;  z-index: 2;}.service-card .card-icon,.service-card .card-title,.service-card .card-desc,.service-card .card-num {  position: relative;  z-index: 2;}/* Zone tags */.zone-tags { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.5rem; }.landmarks-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }@media(max-width:768px) {  .landmarks-grid { grid-template-columns:1fr; }  .zone-map-desktop { display:none; }}.zone-tag {  background: rgba(201,165,90,.07); border: 1px solid rgba(201,165,90,.18);  padding: .32rem .85rem; font-size: .66rem; letter-spacing: .1em; color: var(--gold);  transition: background .3s, border-color .3s;}.zone-tag:hover { background: rgba(201,165,90,.14); border-color: rgba(201,165,90,.35); }/* Hero price badges */.hero-badge {  display: inline-flex; align-items: center; gap: .45rem;  background: rgba(201,165,90,.08); border: 1px solid rgba(201,165,90,.28);  padding: .42rem 1rem; font-size: .7rem;}.hero-badge--alt {  background: rgba(245,240,232,.04); border-color: rgba(245,240,232,.15);}.badge-val { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--gold); }.hero-badge--alt .badge-val { color: var(--white); }.badge-sep { color: rgba(201,165,90,.35); }.badge-lbl { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white-muted); }/* Comparison table */.compare-wrap { overflow-x: auto; margin-top: 2.5rem; }.compare-table { width: 100%; border-collapse: collapse; min-width: 500px; }.compare-table th {  padding: .85rem 1.2rem; font-size: .58rem; letter-spacing: .24em;  text-transform: uppercase; font-weight: 600; text-align: left;  border-bottom: 1px solid rgba(201,165,90,.25);}.compare-table th.col-belvia { color: var(--gold); background: rgba(201,165,90,.07); }.compare-table th.col-other { color: var(--white-muted); }.compare-table td {  padding: .75rem 1.2rem; font-size: .78rem; color: var(--white-muted);  border-bottom: 1px solid rgba(201,165,90,.06); vertical-align: middle;}.compare-table td.col-belvia { color: var(--white); background: rgba(201,165,90,.04); font-weight: 400; }.compare-table td.col-label { font-size: .7rem; letter-spacing: .06em; color: rgba(200,194,180,.6); }.compare-table tr:last-child td { border-bottom: none; }.check-yes { color: #7BC67E; font-weight: 700; }.check-no  { color: #E27A7A; }.check-maybe { color: #E2BA7A; }/* Testimonials Google style */.google-logo { font-size: .65rem; letter-spacing: .12em; color: var(--white-muted); display: flex; align-items: center; gap: .4rem; }.google-score { font-family: var(--serif); font-size: 2.6rem; font-weight: 600; color: var(--gold); line-height: 1; }.google-count { font-size: .7rem; color: var(--white-muted); }/* ─── FLOTTE GRID ─── */.flotte-grid {  display: grid;  grid-template-columns: repeat(3, 1fr);  gap: 1rem;}.flotte-item {  margin: 0; overflow: hidden; position: relative;  border: 1px solid rgba(201,165,90,.15);  background: var(--black-2);  cursor: pointer;  transition: transform .3s, border-color .3s, box-shadow .3s;}/* hover disabled per brief */.flotte-link { display: block; text-decoration: none; }.flotte-item img {  width: 100%; height: 240px;  object-fit: cover; display: block;  transition: transform .5s;}/* hover disabled per brief */.flotte-item figcaption {  padding: .85rem 1rem;  font-size: .65rem; letter-spacing: .14em;  text-transform: uppercase; color: var(--gold);  background: var(--black-2);}@media(max-width:900px) { .flotte-grid { grid-template-columns: repeat(2, 1fr); } }@media(max-width:500px) { .flotte-grid { grid-template-columns: 1fr; } .flotte-item img { height: 200px; } }/* ─── WHY VISUAL image ─── */.why-fleet-img {  width: 100%; height: auto; display: block;  border: 1px solid rgba(201,165,90,.2);}@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }@media(max-width:900px) {  .why-grid { grid-template-columns: 1fr; gap: 3rem; }  .hero-geo { display: none; }  h1.hero-h1 { font-size: clamp(2.5rem, 10vw, 3.8rem); }}/* Desktop : badges en grille 2x2 */.hero-price-badges { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; max-width:420px; }@media(max-width:600px) {  .hero-price-badges { gap: .5rem; }  }@media(max-width:480px) {  #hero { padding: 0 1.2rem !important; }  .hero-content { max-width: 100% !important; }  h1.hero-h1 { font-size: 1.9rem !important; line-height: 1.2 !important; }  .hero-sub { white-space: normal !important; overflow: visible !important; font-size: .8rem !important; }  .hero-trust { flex-direction: column !important; align-items: flex-start !important; gap: .4rem !important; font-size: .6rem !important; }  .hero-trust::before { display: none !important; }  .hero-trust span { display: block; }  .hero-price-badges {    display: grid !important;    grid-template-columns: 1fr 1fr !important;    gap: .4rem !important;    width: 100% !important;  }  .hero-badge { overflow: hidden; min-width: 0; }  .badge-lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .55rem !important; }  .badge-val { font-size: .88rem !important; }  .hero-actions { flex-direction: column !important; width: 100% !important; }  .hero-actions .btn { width: 100% !important; justify-content: center !important; }  .hero-tag, h1.hero-h1, .hero-sub, .hero-actions, .hero-trust, .hero-price-badges { opacity: 1 !important; transform: none !important; animation: none !important; }}@media(max-width:380px) {  h1.hero-h1 { font-size: 1.7rem !important; }}
-.hero-tag, h1.hero-h1, .hero-sub, .hero-actions, .hero-trust, .hero-price-badges { opacity: 1 !important; transform: none !important; animation: none !important; }</style>
+.hero-tag, h1.hero-h1, .hero-sub, .hero-actions, .hero-trust, .hero-price-badges { opacity: 1 !important; transform: none !important; animation: none !important; }
+@media(max-width:560px) {
+  body.home-full-vision #hero {
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+  }
+  body.home-full-vision #hero .hero-content,
+  body.home-full-vision #hero .hero-booking {
+    max-width: 100% !important;
+  }
+}</style>
 
 </head>
 
@@ -77,7 +87,7 @@
 <div class="hero-geo" aria-hidden="true">  
 </div>  
 <div class="hero-content">    
-<h1 class="hero-h1">      <em>Chauffeur privé</em>      Service premium.      
+<h1 class="hero-h1">      <em>Chauffeur privé</em>      Accueil soigné.
 <span class="hero-thin" style="white-space:nowrap">Tarif garanti, 24h/24.
 </span>    </h1>    <form class="hero-booking hero-booking-simple" data-booking-lang="fr" action="/reservation" method="get" aria-label="Réservation rapide">
       <input type="hidden" name="service" value="classique">
@@ -92,47 +102,23 @@
       <button class="hero-booking-submit" type="submit">Voir le tarif</button>
     </form>    <div class="hero-tag">Bruxelles · Brabant · Europe · 24h/24
 </div>    <p class="hero-sub">      
-<span style="display:block">Standing chauffeur privé, tarif clair.
+<span style="display:block">Un chauffeur identifié vous accueille avec calme et ponctualité.
 </span>      
-<span style="display:block;color:var(--white);font-weight:600">Accueil soigné, véhicules premium.
+<span style="display:block;color:var(--white);font-weight:600">Véhicules premium propres, confortables et discrets.
 </span>      
-<span style="display:block">Prix annoncé avant le départ.
+<span style="display:block">Le tarif est visible avant validation.
 </span>    </p>    
 <div class="hero-price-badges" style="margin-bottom:2.2rem;opacity:0;transform:translateY(16px);animation:fadeUp .7s .75s forwards">
-      <div class="hero-badge"><span class="badge-val">Accueil pancarte</span></div>
-      <div class="hero-badge"><span class="badge-val">Véhicules premium</span></div>
-      <div class="hero-badge hero-badge--alt"><span class="badge-val">Tarif annoncé</span></div>
-      <div class="hero-badge hero-badge--alt"><span class="badge-val">24h/24</span></div>
+      <div class="hero-badge"><span class="badge-val">Chauffeur identifié</span></div>
+      <div class="hero-badge"><span class="badge-val">Véhicule premium</span></div>
+      <div class="hero-badge hero-badge--alt"><span class="badge-val">Tarif visible</span></div>
+      <div class="hero-badge hero-badge--alt"><span class="badge-val">Accueil soigné</span></div>
     </div>
 <div class="hero-trust">      
-<span>Chauffeur privé · Taxi agréé Bruxelles · Service premium</span>    
+<span>Taxi agréé Bruxelles · Chauffeur privé local · Prise en charge premium</span>
 </div>  
 </div>
 
-</section>
-<section class="home-trust-strip" aria-label="Garanties Belvia Drive">
-  <div class="home-trust-inner">
-    <div class="home-trust-item">
-      <span class="home-trust-kicker">Tarif clair</span>
-      <strong>Prix annoncé avant validation</strong>
-      <p>Le trajet reste lisible avant de confirmer.</p>
-    </div>
-    <div class="home-trust-item">
-      <span class="home-trust-kicker">Accueil</span>
-      <strong>Chauffeur ponctuel et identifié</strong>
-      <p>Une prise en charge calme, propre et professionnelle.</p>
-    </div>
-    <div class="home-trust-item">
-      <span class="home-trust-kicker">Aéroport</span>
-      <strong>Suivi de vol et accueil pancarte</strong>
-      <p>BRU, CRL, hôtels et gares suivis avec attention.</p>
-    </div>
-    <div class="home-trust-item">
-      <span class="home-trust-kicker">Local</span>
-      <strong>Bruxelles, Brabant et trajets Europe</strong>
-      <p>Un service local, disponible pour vos trajets clés.</p>
-    </div>
-  </div>
 </section>
 <section class="section-wrap home-flow" aria-labelledby="home-flow-h2">
   <div class="section-inner">
